@@ -60,7 +60,7 @@ tr.row:hover td{background:var(--na-bg)}
   <label>搜尋<input id="f-q" type="search" placeholder="代碼或名稱"></label>
 </div>
 <div class="tw"><table>
-<thead><tr><th>代碼</th><th>名稱</th><th>板塊</th><th>隊別</th><th>狀態</th><th>題材驗證</th><th>主標籤</th><th>否決欄</th><th>自由現金流</th><th>淨負債÷自由現金流</th><th>利息保障</th><th>股數年增</th><th>來源</th></tr></thead>
+<thead><tr><th>代碼</th><th>名稱</th><th>板塊</th><th>隊別</th><th>狀態</th><th>題材驗證</th><th>主標籤</th><th>否決欄</th><th>自由現金流</th><th>槓桿</th><th>利息保障</th><th>股數年增</th><th>來源</th></tr></thead>
 <tbody id="rows"></tbody></table><div class="empty" id="empty" hidden>沒有符合條件的標的</div></div>
 <p class="small">點任一列可以看各項檢查的明細。財務數字是最近一個完整會計年度。否決欄只做了能自動計算的項目，潛在稀釋、近 2 年到期負債、最大客戶占比要人工補。本頁不是投資建議。</p>
 </div>
@@ -85,7 +85,7 @@ async function load(){
   render();
 }
 function fmtVal(c){const v=c.value;if(v==null)return "—";
-  return /倍數|年）|Altman|跑道/.test(c.label)?num(v,2):pct(v);}
+  return /倍數|年）|倍）|Altman|跑道|EBITDA ÷/.test(c.label)?num(v,2):pct(v);}
 function render(){
   const f={team:val("f-team"),stage:val("f-stage"),sector:val("f-sector"),verdict:val("f-verdict"),q:val("f-q").trim().toLowerCase()};
   const sname=Object.fromEntries(U.sectors.map(s=>[s.id,s.name]));
@@ -106,7 +106,7 @@ function render(){
     let h=`<tr class="row" tabindex="0" data-t="${esc(t.ticker)}"><td><b>${esc(t.ticker)}</b></td><td>${esc(t.name)}</td><td>${esc(sname[t.sector])}</td>
       <td class="${t.team==="white"?"w":"b"}">${t.team==="white"?"白":"藍"}</td><td>${L.stage[t.stage]}</td>
       <td>${esc(L.ver[t.verification.status])}</td><td>${esc(U.factor_tags[t.tags.primary])}</td><td>${chip(t.v,L.verdict[t.v])}</td>
-      <td>${money(m.fcf)}${cur(t)}</td><td>${num(m.net_debt_to_fcf)}</td><td>${num(m.interest_coverage)}</td><td>${pct(m.share_growth)}</td><td>${esc((t.m||{}).source||"—")}</td></tr>`;
+      <td>${money(m.fcf)}${cur(t)}</td><td>${m.net_debt_to_ebitda!=null?num(m.net_debt_to_ebitda)+' <span class="small">倍 EBITDA</span>':m.net_debt_to_fcf!=null?num(m.net_debt_to_fcf)+' <span class="small">年 FCF</span>':'—'}</td><td>${num(m.interest_coverage)}</td><td>${pct(m.share_growth)}</td><td>${esc((t.m||{}).source||"—")}</td></tr>`;
     if(open.has(t.ticker)){
       const checks=((t.m||{}).checks||[]).map(c=>`<tr><td>${esc(c.label)}</td><td>${fmtVal(c)}</td><td>${chip(c.result,L.verdict[c.result]||c.result)}</td></tr>`).join("");
       const cc=((t.m||{}).crosscheck||[]).map(c=>`${esc(c.field)} 差 ${pct(c.diff)}`).join("、");

@@ -80,8 +80,27 @@ def test_utility_exception():
     assert out["verdict"] == "pass", out["checks"]
 
 
-def test_reit_pending():
-    assert verdict(base(), sector="dc_reit")["verdict"] == "flag"
+def test_reit_rules():
+    fin = base(da=100, debt=1200, dividends=150, shares=52)
+    fin["prev"].update(net_income=90, da=90)
+    out = verdict(fin, sector="dc_reit")
+    assert out["verdict"] == "pass", out["checks"]          # 淨負債 1155 ÷ EBITDA 250 = 4.6
+    assert abs(out["metrics"]["net_debt_to_ebitda"] - 4.62) < 0.01
+    assert verdict(base(da=100, debt=1800), sector="dc_reit")["verdict"] == "veto"   # 7.0 倍
+    assert verdict(base(), sector="dc_reit")["verdict"] == "insufficient"             # 沒有折舊資料
+
+
+def test_infra_uses_ebitda():
+    fin = base(da=100, debt=1000)                # 淨負債 955：÷ FCF 100 = 9.6 年，÷ EBITDA 250 = 3.8 倍
+    assert verdict(fin)["verdict"] == "veto"
+    assert verdict(fin, sector="midstream")["verdict"] == "pass"
+    assert verdict(base(da=100, debt=1400), sector="midstream")["verdict"] == "veto"
+
+
+def test_utility_coverage_two():
+    fin = base(ocf=120, capex=300, debt=800, dividends=60, interest_expense=60)   # 2.5 倍
+    assert verdict(fin, sector="grid_utility")["verdict"] == "pass"
+    assert verdict(fin)["verdict"] == "veto"
 
 
 def test_yield_trap():

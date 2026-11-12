@@ -34,6 +34,8 @@ DURATION = {
     "interest_expense": ["InterestExpense", "InterestExpenseNonoperating", "InterestExpenseDebt",
                          "InterestAndDebtExpense", "InterestPaidNet"],
     "sbc": ["ShareBasedCompensation", "AllocatedShareBasedCompensationExpense"],
+    "da": ["DepreciationDepletionAndAmortization", "DepreciationAmortizationAndAccretionNet",
+           "DepreciationAndAmortization", "DepreciationAmortizationAndOther"],
     "dividends": ["PaymentsOfDividends", "PaymentsOfDividendsCommonStock"],
     "shares": ["WeightedAverageNumberOfDilutedSharesOutstanding",
                "WeightedAverageNumberOfSharesOutstandingBasicAndDiluted",
@@ -126,6 +128,7 @@ YF_ROWS = {
     "ocf": ("cashflow", ["Operating Cash Flow"]),
     "capex": ("cashflow", ["Capital Expenditure"]),
     "sbc": ("cashflow", ["Stock Based Compensation"]),
+    "da": ("cashflow", ["Depreciation And Amortization", "Depreciation Amortization Depletion"]),
     "dividends": ("cashflow", ["Cash Dividends Paid", "Common Stock Dividend Paid"]),
     "revenue": ("income", ["Total Revenue"]),
     "op_income": ("income", ["Operating Income", "EBIT"]),
@@ -224,6 +227,13 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
     fcf = cur["ocf"] - (cur.get("capex") or 0) if cur.get("ocf") is not None else None
     fcf_prev = prev["ocf"] - (prev.get("capex") or 0) if prev.get("ocf") is not None else None
     m["fcf"] = fcf
+
+    def _sum(d, a, b):
+        return d[a] + d[b] if d.get(a) is not None and d.get(b) is not None else None
+
+    ebitda = _sum(cur, "op_income", "da")
+    ffo, ffo_prev = _sum(cur, "net_income", "da"), _sum(prev, "net_income", "da")
+    m["ebitda"] = ebitda
     m["share_growth"] = _div(cur.get("shares"), prev.get("shares"))
     if m["share_growth"] is not None:
         m["share_growth"] -= 1
@@ -235,7 +245,9 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
     elif sg <= v["share_growth_check"]:
         add("dilution", "已發生的稀釋", sg, v["share_growth_check"], "pass")
     else:
-        if fcf and fcf_prev and fcf > 0 and fcf_prev > 0:
+        if sector in v["reit_sectors"] and ffo and ffo_prev and ffo > 0 and ffo_prev > 0:
+            growth, basis = (ffo / cur["shares"]) / (ffo_prev / prev["shares"]) - 1, "每股 FFO 粗估"
+        elif fcf and fcf_prev and fcf > 0 and fcf_prev > 0:
             growth, basis = (fcf / cur["shares"]) / (fcf_prev / prev["shares"]) - 1, "每股自由現金流"
         elif cur.get("revenue") and prev.get("revenue"):
             growth, basis = (cur["revenue"] / cur["shares"]) / (prev["revenue"] / prev["shares"]) - 1, "每股營收"
@@ -263,10 +275,17 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
     is_reit = sector in v["reit_sectors"]
     soft = "veto" if team == "white" else "flag"
 
-    m["interest_coverage"] = _div(cur.get("op_income"), cur.get("interest_expense"))
+    is_infra = sector in v["infra_sectors"]
+    if is_reit:
+        ic_min, ic_label = v["reit_ebitda_coverage_min"], "REIT：EBITDA ÷ 利息"
+        m["interest_coverage"] = _div(ebitda, cur.get("interest_expense"))
+    else:
+        ic_min = v["utility_interest_coverage_min"] if is_utility else v["interest_coverage_min"]
+        ic_label = "利息保障倍數"
+        m["interest_coverage"] = _div(cur.get("op_income"), cur.get("interest_expense"))
     ic = m["interest_coverage"]
     if ic is not None:
-        add("coverage", "利息保障倍數", ic, v["interest_coverage_min"], soft if ic < v["interest_coverage_min"] else "pass")
+        add("coverage", ic_label, ic, ic_min, soft if ic < ic_min else "pass")
     elif not cur.get("interest_expense"):
         add("coverage", "利息保障倍數（無利息費用或未揭露）", None, v["interest_coverage_min"], "pass")
 
@@ -274,8 +293,28 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
     net_debt = (debt or 0) + (cur.get("leases") or 0) - (cur.get("cash_total") or 0) if debt is not None else None
     m["net_debt_incl_leases"] = net_debt
 
-    if is_reit:
-        add("reit", "REIT：要用 AFFO 檢查，規則待補", None, None, "pending")
+    if is_reit or is_infra:
+        cap = v["reit_net_debt_to_ebitda_max"] if is_reit else v["infra_net_debt_to_ebitda_max"]
+        label = "含租賃淨負債 ÷ EBITDA（倍）"
+        if net_debt is None or ebitda is None:
+            add("leverage", label, None, cap, "missing")
+        elif net_debt <= 0:
+            m["net_debt_to_ebitda"] = 0.0
+            add("leverage", label, 0.0, cap, "pass")
+        elif ebitda <= 0:
+            add("leverage", label, None, cap, soft)
+        else:
+            m["net_debt_to_ebitda"] = net_debt / ebitda
+            add("leverage", label, m["net_debt_to_ebitda"], cap, soft if m["net_debt_to_ebitda"] > cap else "pass")
+        if is_reit:
+            m["dividend_to_ffo"] = _div(cur.get("dividends"), ffo) if ffo and ffo > 0 else None
+            if m["dividend_to_ffo"] is not None:
+                add("reit_payout", "REIT：股息 ÷ FFO 粗估（淨利＋折舊攤銷）", m["dividend_to_ffo"], v["reit_payout_max"],
+                    soft if m["dividend_to_ffo"] > v["reit_payout_max"] else "pass")
+        elif team == "white" and cur.get("dividends") and fcf is not None:
+            m["dividend_to_fcf"] = _div(cur["dividends"], fcf) if fcf > 0 else None
+            bad = fcf <= 0 or m["dividend_to_fcf"] > v["dividend_to_fcf_max"]
+            add("div_cover", "股息 ÷ 自由現金流", m["dividend_to_fcf"], v["dividend_to_fcf_max"], "veto" if bad else "pass")
     elif is_utility:
         m["payout_ratio"] = _div(cur.get("dividends"), cur.get("net_income"))
         m["ocf_to_debt"] = _div(cur.get("ocf"), debt)
@@ -329,6 +368,8 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
     else:
         verdict = "pass"
     manual = ["潛在稀釋（權證、可轉債、ATM）", "近 2 年到期負債", "最大客戶占比"]
+    if is_reit:
+        manual.append("公司公布的每股 AFFO 與 AFFO 配息率")
     return {"metrics": m, "checks": checks, "verdict": verdict, "manual_todo": manual}
 
 
@@ -419,7 +460,7 @@ def main() -> int:
             rec["fiscal_end"] = fin["fiscal_end"]
             rec["raw"] = {k: fin["cur"].get(k) for k in
                           ("ocf", "capex", "revenue", "op_income", "net_income", "interest_expense", "sbc",
-                           "dividends", "shares", "cash_total", "debt", "leases")}
+                           "dividends", "shares", "cash_total", "debt", "leases", "da")}
             try:
                 rec.update(evaluate(fin, market, entry, rules))
             except Exception as e:  # noqa: BLE001

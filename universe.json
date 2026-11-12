@@ -51,7 +51,18 @@
       ],
       "bank_sectors": [
         "banks"
-      ]
+      ],
+      "utility_interest_coverage_min": 2.0,
+      "infra_sectors": [
+        "rail",
+        "midstream",
+        "power_gen",
+        "asset_mgmt"
+      ],
+      "infra_net_debt_to_ebitda_max": 4.5,
+      "reit_net_debt_to_ebitda_max": 6.0,
+      "reit_ebitda_coverage_min": 3.0,
+      "reit_payout_max": 0.85
     }
   },
   "factor_tags": {
