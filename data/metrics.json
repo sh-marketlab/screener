@@ -321,29 +321,10 @@
       }
     },
     "CEG": {
-      "source": "SEC",
+      "source": "Yahoo",
       "errors": [],
-      "crosscheck": [
-        {
-          "field": "ocf",
-          "sec": 4206000000,
-          "yahoo": 5784000000.0,
-          "diff": 0.3751783166904422
-        },
-        {
-          "field": "capex",
-          "sec": 3897000000,
-          "yahoo": 4447000000.0,
-          "diff": 0.1411342057993328
-        },
-        {
-          "field": "revenue",
-          "sec": 24780000000,
-          "yahoo": 34250000000.0,
-          "diff": 0.3821630347054076
-        }
-      ],
-      "yahoo_filled": [],
+      "note": "SEC 算得出的近四季只到 2026-06-30，改用較新的 Yahoo 資料",
+      "sec_latest_fact_end": "2026-06-30",
       "market": {
         "price": 274.73,
         "market_cap": 96597409792,
@@ -357,81 +338,79 @@
         "financial_currency": "USD",
         "currency_mismatch": false
       },
-      "fiscal_end": "2026-06-30",
+      "fiscal_end": "2026-09-30",
       "basis": "近四季",
       "trend": [
         {
           "end": "2023-12-31",
-          "capex_to_revenue": 0.11621323353006094
+          "capex_to_revenue": 0.09719881210370014
         },
         {
           "end": "2024-12-31",
-          "capex_to_revenue": 0.13525627504745835
+          "capex_to_revenue": 0.10883401221995927
         },
         {
           "end": "2025-12-31",
-          "capex_to_revenue": 0.1301239906455456
+          "capex_to_revenue": 0.11549759135236752
         }
       ],
       "raw": {
-        "ocf": 4206000000,
-        "capex": 3897000000,
-        "revenue": 24780000000,
-        "op_income": 4596000000,
-        "net_income": 3465000000,
-        "interest_expense": 783000000,
+        "ocf": 5784000000.0,
+        "capex": 4447000000.0,
+        "revenue": 34250000000.0,
+        "op_income": 5489000000.0,
+        "net_income": 4370000000.0,
+        "interest_expense": 511000000.0,
         "sbc": null,
-        "dividends": 551000000,
-        "shares": 360000000,
-        "cash_total": 697000000,
-        "debt": 24700000000,
+        "dividends": 580000000.0,
+        "shares": 354000000.0,
+        "cash_total": 603000000.0,
+        "debt": 23387000000.0,
         "leases": 0,
-        "da": 3669000000,
-        "equity": 31977000000
+        "da": 2574000000.0,
+        "equity": 32712000000.0
       },
       "metrics": {
-        "fcf": 309000000,
-        "ebitda": 8265000000,
-        "share_growth": 0.14649681528662417,
-        "per_share_growth": 0.050839491767146194,
-        "per_share_basis": "每股營收",
+        "fcf": 1337000000.0,
+        "ebitda": 8063000000.0,
+        "share_growth": -0.0031746031746031633,
         "sbc_to_revenue": null,
-        "interest_coverage": 5.869731800766283,
-        "net_debt_incl_leases": 24003000000,
-        "net_debt_to_ebitda": 2.904174228675136,
-        "dividend_to_fcf": 1.7831715210355987
+        "interest_coverage": 10.741682974559687,
+        "net_debt_incl_leases": 22784000000.0,
+        "net_debt_to_ebitda": 2.8257472404812103,
+        "dividend_to_fcf": 0.4338070306656694
       },
       "checks": [
         {
           "id": "dilution",
-          "label": "已發生的稀釋（每股營收成長 5.1%）",
-          "value": 0.14649681528662417,
-          "threshold": 0.14649681528662417,
-          "result": "veto"
+          "label": "已發生的稀釋",
+          "value": -0.0031746031746031633,
+          "threshold": 0.02,
+          "result": "pass"
         },
         {
           "id": "coverage",
           "label": "利息保障倍數",
-          "value": 5.869731800766283,
+          "value": 10.741682974559687,
           "threshold": 3,
           "result": "pass"
         },
         {
           "id": "leverage",
           "label": "含租賃淨負債 ÷ EBITDA（倍）",
-          "value": 2.904174228675136,
+          "value": 2.8257472404812103,
           "threshold": 4.5,
           "result": "pass"
         },
         {
           "id": "div_cover",
           "label": "股息 ÷ 自由現金流",
-          "value": 1.7831715210355987,
+          "value": 0.4338070306656694,
           "threshold": 1.0,
-          "result": "veto"
+          "result": "pass"
         }
       ],
-      "verdict": "veto",
+      "verdict": "pass",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -440,29 +419,29 @@
       "score": {
         "triangle": {
           "roe": {
-            "value": 0.10835913312693499,
+            "value": 0.13359011983370017,
             "points": 0.5,
             "note": null
           },
           "debt_to_equity": {
-            "value": 0.7724301841948901,
+            "value": 0.7149364147713377,
             "points": 1.0,
             "note": null
           },
           "interest_coverage": {
-            "value": 5.869731800766283,
-            "points": 0.5,
+            "value": 10.741682974559687,
+            "points": 1.0,
             "note": null
           }
         },
         "indicators": {
           "fcf_to_capex": {
-            "value": 0.07929176289453425,
+            "value": 0.30065212502810884,
             "points": 0.0,
             "note": null
           },
           "net_debt_to_fcf": {
-            "value": 77.67961165048544,
+            "value": 17.04113687359761,
             "points": 0.0,
             "note": null
           },
@@ -472,17 +451,17 @@
             "note": "要人工填 top_customer_pct"
           },
           "capex_trend": {
-            "value": 0.013910757115484673,
+            "value": 0.01829877924866738,
             "note": null,
             "points": 0.5
           }
         },
-        "triangle_points": 2.0,
+        "triangle_points": 2.5,
         "triangle_items": 3,
         "indicator_points": 0.5,
         "indicator_items": 3,
         "score20": null,
-        "partial": 21.666666666666668,
+        "partial": 26.666666666666668,
         "partial_max": 40,
         "total": null,
         "passed": null
@@ -823,23 +802,10 @@
       }
     },
     "NEE": {
-      "source": "SEC",
+      "source": "Yahoo",
       "errors": [],
-      "crosscheck": [
-        {
-          "field": "ocf",
-          "sec": 12330000000,
-          "yahoo": 14821000000.0,
-          "diff": 0.20202757502027574
-        },
-        {
-          "field": "revenue",
-          "sec": 25900000000,
-          "yahoo": 28825000000.0,
-          "diff": 0.11293436293436293
-        }
-      ],
-      "yahoo_filled": [],
+      "note": "SEC 算得出的近四季只到 2026-03-31，改用較新的 Yahoo 資料",
+      "sec_latest_fact_end": "2026-03-31",
       "market": {
         "price": 85.99,
         "market_cap": 180347355136,
@@ -853,7 +819,7 @@
         "financial_currency": "USD",
         "currency_mismatch": false
       },
-      "fiscal_end": "2026-03-31",
+      "fiscal_end": "2026-09-30",
       "basis": "近四季",
       "trend": [
         {
@@ -870,59 +836,59 @@
         }
       ],
       "raw": {
-        "ocf": 12330000000,
-        "capex": null,
-        "revenue": 25900000000,
-        "op_income": 8232000000,
-        "net_income": 8184000000,
-        "interest_expense": 3901000000,
+        "ocf": 14821000000.0,
+        "capex": 10732000000.0,
+        "revenue": 28825000000.0,
+        "op_income": 8350000000.0,
+        "net_income": 11636000000.0,
+        "interest_expense": 4572000000.0,
         "sbc": null,
-        "dividends": 4814000000,
-        "shares": 2092400000,
-        "cash_total": 1998000000,
-        "debt": 103145000000,
+        "dividends": 5088000000.0,
+        "shares": 2098000000.0,
+        "cash_total": 5579000000.0,
+        "debt": 113932000000.0,
         "leases": 0,
-        "da": 6856000000,
-        "equity": 55222000000
+        "da": 6845000000.0,
+        "equity": 61498000000.0
       },
       "metrics": {
-        "fcf": 12330000000,
-        "ebitda": 15088000000,
-        "share_growth": 0.01538312224001559,
+        "fcf": 4089000000.0,
+        "ebitda": 15195000000.0,
+        "share_growth": 0.011656143759106286,
         "sbc_to_revenue": null,
-        "interest_coverage": 2.1102281466290695,
-        "net_debt_incl_leases": 101147000000,
-        "payout_ratio": 0.5882209188660802,
-        "ocf_to_debt": 0.11954045276067672
+        "interest_coverage": 1.826334208223972,
+        "net_debt_incl_leases": 108353000000.0,
+        "payout_ratio": 0.4372636644895153,
+        "ocf_to_debt": 0.13008636730681458
       },
       "checks": [
         {
           "id": "dilution",
           "label": "已發生的稀釋",
-          "value": 0.01538312224001559,
+          "value": 0.011656143759106286,
           "threshold": 0.02,
           "result": "pass"
         },
         {
           "id": "coverage",
           "label": "利息保障倍數",
-          "value": 2.1102281466290695,
+          "value": 1.826334208223972,
           "threshold": 2.0,
-          "result": "pass"
+          "result": "veto"
         },
         {
           "id": "u_payout",
           "label": "公用事業：股息 ÷ 淨利",
-          "value": 0.5882209188660802,
+          "value": 0.4372636644895153,
           "threshold": 0.75,
           "result": "pass"
         },
         {
           "id": "u_ocf_debt",
           "label": "公用事業：營運現金流 ÷ 負債",
-          "value": 0.11954045276067672,
+          "value": 0.13008636730681458,
           "threshold": 0.13,
-          "result": "veto"
+          "result": "pass"
         },
         {
           "id": "yield_trap",
@@ -941,29 +907,29 @@
       "score": {
         "triangle": {
           "roe": {
-            "value": 0.14820180362898844,
-            "points": 0.5,
+            "value": 0.1892094051839084,
+            "points": 1.0,
             "note": null
           },
           "debt_to_equity": {
-            "value": 1.8678244178044983,
+            "value": 1.852613093108719,
             "points": 0.5,
             "note": null
           },
           "interest_coverage": {
-            "value": 2.1102281466290695,
+            "value": 1.826334208223972,
             "points": 0.0,
             "note": null
           }
         },
         "indicators": {
           "fcf_to_capex": {
-            "value": null,
-            "points": null,
+            "value": 0.3810100633619083,
+            "points": 0.0,
             "note": null
           },
           "net_debt_to_fcf": {
-            "value": 8.203325223033252,
+            "value": 26.49865492785522,
             "points": 0.0,
             "note": null
           },
@@ -978,12 +944,12 @@
             "points": 1.0
           }
         },
-        "triangle_points": 1.0,
+        "triangle_points": 1.5,
         "triangle_items": 3,
         "indicator_points": 1.0,
-        "indicator_items": 2,
+        "indicator_items": 3,
         "score20": null,
-        "partial": 15.0,
+        "partial": 18.333333333333332,
         "partial_max": 40,
         "total": null,
         "passed": null
@@ -4200,29 +4166,10 @@
       }
     },
     "PNR": {
-      "source": "SEC",
+      "source": "Yahoo",
       "errors": [],
-      "crosscheck": [
-        {
-          "field": "ocf",
-          "sec": 786300000,
-          "yahoo": 724500000.0,
-          "diff": -0.07859595574208317
-        },
-        {
-          "field": "capex",
-          "sec": 70500000,
-          "yahoo": 77900000.0,
-          "diff": 0.1049645390070922
-        },
-        {
-          "field": "revenue",
-          "sec": 4202300000,
-          "yahoo": 3966200000.0,
-          "diff": -0.056183518549365825
-        }
-      ],
-      "yahoo_filled": [],
+      "note": "SEC 算得出的近四季只到 2026-03-31，改用較新的 Yahoo 資料",
+      "sec_latest_fact_end": "2026-03-31",
       "market": {
         "price": 69.33,
         "market_cap": 11068859392,
@@ -4236,7 +4183,7 @@
         "financial_currency": "USD",
         "currency_mismatch": false
       },
-      "fiscal_end": "2026-03-31",
+      "fiscal_end": "2026-09-30",
       "basis": "近四季",
       "trend": [
         {
@@ -4253,65 +4200,65 @@
         }
       ],
       "raw": {
-        "ocf": 786300000,
-        "capex": 70500000,
-        "revenue": 4202300000,
-        "op_income": 864400000,
-        "net_income": 671300000,
-        "interest_expense": null,
-        "sbc": 40100000,
-        "dividends": 167200000,
-        "shares": 163700000,
-        "cash_total": 67700000,
-        "debt": 1944300000,
+        "ocf": 724500000.0,
+        "capex": 77900000.0,
+        "revenue": 3966200000.0,
+        "op_income": 847000000.0,
+        "net_income": 612200000.0,
+        "interest_expense": 78600000.0,
+        "sbc": 33300000.0,
+        "dividends": 171800000.0,
+        "shares": 160300000.0,
+        "cash_total": 74000000.0,
+        "debt": 1639100000.0,
         "leases": 0,
-        "da": null,
-        "equity": 3810100000
+        "da": 121800000.0,
+        "equity": 3859800000.0
       },
       "metrics": {
-        "fcf": 715800000,
-        "ebitda": null,
-        "share_growth": -0.015634395670475087,
-        "sbc_to_revenue": 0.009542393451205292,
-        "interest_coverage": null,
-        "net_debt_incl_leases": 1876600000,
-        "net_debt_to_fcf": 2.621682034087734,
-        "dividend_to_fcf": 0.23358480022352612,
-        "altman_z": 3.7576019699213417
+        "fcf": 646600000.0,
+        "ebitda": 968800000.0,
+        "share_growth": -0.00957510472770795,
+        "sbc_to_revenue": 0.008395945741515809,
+        "interest_coverage": 10.776081424936386,
+        "net_debt_incl_leases": 1565100000.0,
+        "net_debt_to_fcf": 2.420507268790597,
+        "dividend_to_fcf": 0.2656974945870708,
+        "altman_z": 4.120578921677232
       },
       "checks": [
         {
           "id": "dilution",
           "label": "已發生的稀釋",
-          "value": -0.015634395670475087,
+          "value": -0.00957510472770795,
           "threshold": 0.02,
           "result": "pass"
         },
         {
           "id": "sbc",
           "label": "股票薪酬 ÷ 營收",
-          "value": 0.009542393451205292,
+          "value": 0.008395945741515809,
           "threshold": 0.15,
           "result": "pass"
         },
         {
           "id": "coverage",
-          "label": "利息保障倍數（無利息費用或未揭露）",
-          "value": null,
+          "label": "利息保障倍數",
+          "value": 10.776081424936386,
           "threshold": 3,
           "result": "pass"
         },
         {
           "id": "leverage",
           "label": "含租賃淨負債 ÷ 自由現金流（年）",
-          "value": 2.621682034087734,
+          "value": 2.420507268790597,
           "threshold": 3,
           "result": "pass"
         },
         {
           "id": "div_cover",
           "label": "股息 ÷ 自由現金流",
-          "value": 0.23358480022352612,
+          "value": 0.2656974945870708,
           "threshold": 1.0,
           "result": "pass"
         },
@@ -4325,7 +4272,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 3.7576019699213417,
+          "value": 4.120578921677232,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -4339,29 +4286,29 @@
       "score": {
         "triangle": {
           "roe": {
-            "value": 0.17618960132279993,
+            "value": 0.15860925436551115,
             "points": 1.0,
             "note": null
           },
           "debt_to_equity": {
-            "value": 0.5103015668880082,
+            "value": 0.42465930877247526,
             "points": 1.0,
             "note": null
           },
           "interest_coverage": {
-            "value": null,
+            "value": 10.776081424936386,
             "points": 1.0,
-            "note": "沒有利息費用"
+            "note": null
           }
         },
         "indicators": {
           "fcf_to_capex": {
-            "value": 10.153191489361703,
+            "value": 8.300385109114249,
             "points": 1.0,
             "note": null
           },
           "net_debt_to_fcf": {
-            "value": 2.621682034087734,
+            "value": 2.420507268790597,
             "points": 0.5,
             "note": null
           },
@@ -4614,29 +4561,10 @@
       ]
     },
     "AEP": {
-      "source": "SEC",
+      "source": "Yahoo",
       "errors": [],
-      "crosscheck": [
-        {
-          "field": "ocf",
-          "sec": 7013000000,
-          "yahoo": 7580200000.0,
-          "diff": 0.08087836874376159
-        },
-        {
-          "field": "capex",
-          "sec": 4418000000,
-          "yahoo": 15886600000.0,
-          "diff": 2.5958804889090086
-        },
-        {
-          "field": "revenue",
-          "sec": 21992000000,
-          "yahoo": 23612300000.0,
-          "diff": 0.07367679156056747
-        }
-      ],
-      "yahoo_filled": [],
+      "note": "SEC 算得出的近四季只到 2026-03-31，改用較新的 Yahoo 資料",
+      "sec_latest_fact_end": "2026-03-31",
       "market": {
         "price": 129.21,
         "market_cap": 70358253568,
@@ -4650,76 +4578,74 @@
         "financial_currency": "USD",
         "currency_mismatch": false
       },
-      "fiscal_end": "2026-03-31",
+      "fiscal_end": "2026-09-30",
       "basis": "近四季",
       "trend": [
         {
           "end": "2023-12-31",
-          "capex_to_revenue": 0.007966694078947368
+          "capex_to_revenue": 0.40359287746285955
         },
         {
           "end": "2024-12-31",
-          "capex_to_revenue": 0.019979969954932397
+          "capex_to_revenue": 0.41427919476699965
         },
         {
           "end": "2025-12-31",
-          "capex_to_revenue": 0.15910975946917336
+          "capex_to_revenue": 0.5501919912232583
         }
       ],
       "raw": {
-        "ocf": 7013000000,
-        "capex": 4418000000,
-        "revenue": 21992000000,
-        "op_income": 5395000000,
-        "net_income": 3797000000,
-        "interest_expense": 2083000000,
+        "ocf": 7580200000.0,
+        "capex": 15886600000.0,
+        "revenue": 23612300000.0,
+        "op_income": 5630300000.0,
+        "net_income": 3356000000.0,
+        "interest_expense": 2276100000.0,
         "sbc": null,
-        "dividends": 2028000000,
-        "shares": 547054104,
-        "cash_total": 516000000,
-        "debt": 51109000000,
+        "dividends": 2068100000.0,
+        "shares": 550103235.0,
+        "cash_total": 670000000.0,
+        "debt": 55095000000.0,
         "leases": 0,
-        "da": null,
-        "equity": 31808000000
+        "da": 3764900000.0,
+        "equity": 32775000000.0
       },
       "metrics": {
-        "fcf": 2595000000,
-        "ebitda": null,
-        "share_growth": 0.02317459703574709,
-        "per_share_growth": -0.6276719765539467,
-        "per_share_basis": "每股自由現金流",
+        "fcf": -8306400000.0,
+        "ebitda": 9395200000.0,
+        "share_growth": 0.01153722381338329,
         "sbc_to_revenue": null,
-        "interest_coverage": 2.5900144023043685,
-        "net_debt_incl_leases": 50593000000,
-        "payout_ratio": 0.5341058730576771,
-        "ocf_to_debt": 0.1372165372047976
+        "interest_coverage": 2.473661086946971,
+        "net_debt_incl_leases": 54425000000.0,
+        "payout_ratio": 0.6162395709177593,
+        "ocf_to_debt": 0.13758417279244942
       },
       "checks": [
         {
           "id": "dilution",
-          "label": "已發生的稀釋（每股自由現金流成長 -62.8%）",
-          "value": 0.02317459703574709,
-          "threshold": 0.02317459703574709,
-          "result": "veto"
+          "label": "已發生的稀釋",
+          "value": 0.01153722381338329,
+          "threshold": 0.02,
+          "result": "pass"
         },
         {
           "id": "coverage",
           "label": "利息保障倍數",
-          "value": 2.5900144023043685,
+          "value": 2.473661086946971,
           "threshold": 2.0,
           "result": "pass"
         },
         {
           "id": "u_payout",
           "label": "公用事業：股息 ÷ 淨利",
-          "value": 0.5341058730576771,
+          "value": 0.6162395709177593,
           "threshold": 0.75,
           "result": "pass"
         },
         {
           "id": "u_ocf_debt",
           "label": "公用事業：營運現金流 ÷ 負債",
-          "value": 0.1372165372047976,
+          "value": 0.13758417279244942,
           "threshold": 0.13,
           "result": "pass"
         },
@@ -4731,7 +4657,7 @@
           "result": "pass"
         }
       ],
-      "verdict": "veto",
+      "verdict": "pass",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -4740,31 +4666,31 @@
       "score": {
         "triangle": {
           "roe": {
-            "value": 0.11937248490945675,
+            "value": 0.1023951182303585,
             "points": 0.5,
             "note": null
           },
           "debt_to_equity": {
-            "value": 1.606797032193159,
+            "value": 1.6810068649885583,
             "points": 0.5,
             "note": null
           },
           "interest_coverage": {
-            "value": 2.5900144023043685,
+            "value": 2.473661086946971,
             "points": 0.0,
             "note": null
           }
         },
         "indicators": {
           "fcf_to_capex": {
-            "value": 0.5873698506111362,
+            "value": -0.5228557400576587,
             "points": 0.0,
             "note": null
           },
           "net_debt_to_fcf": {
-            "value": 19.496339113680154,
+            "value": null,
             "points": 0.0,
-            "note": null
+            "note": "自由現金流為負"
           },
           "top_customer": {
             "value": null,
@@ -4772,7 +4698,7 @@
             "note": "要人工填 top_customer_pct"
           },
           "capex_trend": {
-            "value": 0.15114306539022598,
+            "value": 0.1465991137603988,
             "note": null,
             "points": 0.0
           }
@@ -4789,10 +4715,10 @@
       }
     },
     "EXC": {
-      "source": "SEC",
+      "source": "Yahoo",
       "errors": [],
-      "crosscheck": [],
-      "yahoo_filled": [],
+      "note": "SEC 算得出的近四季只到 2026-03-31，改用較新的 Yahoo 資料",
+      "sec_latest_fact_end": "2026-03-31",
       "market": {
         "price": 45.61,
         "market_cap": 47201640448,
@@ -4806,7 +4732,7 @@
         "financial_currency": "USD",
         "currency_mismatch": false
       },
-      "fiscal_end": "2026-03-31",
+      "fiscal_end": "2026-09-30",
       "basis": "近四季",
       "trend": [
         {
@@ -4823,59 +4749,59 @@
         }
       ],
       "raw": {
-        "ocf": 6778000000,
-        "capex": 8941000000,
-        "revenue": 24786000000,
-        "op_income": 5217000000,
-        "net_income": 2779000000,
-        "interest_expense": null,
+        "ocf": 6648000000.0,
+        "capex": 9233000000.0,
+        "revenue": 25940000000.0,
+        "op_income": 5146000000.0,
+        "net_income": 2638000000.0,
+        "interest_expense": 2271000000.0,
         "sbc": null,
-        "dividends": 1644000000,
-        "shares": 1026000000,
-        "cash_total": 713000000,
-        "debt": 50850000000,
+        "dividends": 1699000000.0,
+        "shares": 1037000000.0,
+        "cash_total": 1469000000.0,
+        "debt": 53193000000.0,
         "leases": 0,
-        "da": 3691000000,
-        "equity": 29315000000
+        "da": 3685000000.0,
+        "equity": 30132000000.0
       },
       "metrics": {
-        "fcf": -2163000000,
-        "ebitda": 8908000000,
-        "share_growth": 0.01684836471754214,
+        "fcf": -2585000000.0,
+        "ebitda": 8831000000.0,
+        "share_growth": 0.017267866346416083,
         "sbc_to_revenue": null,
-        "interest_coverage": null,
-        "net_debt_incl_leases": 50137000000,
-        "payout_ratio": 0.5915797049298309,
-        "ocf_to_debt": 0.13329400196656835
+        "interest_coverage": 2.265962131219727,
+        "net_debt_incl_leases": 51724000000.0,
+        "payout_ratio": 0.6440485216072782,
+        "ocf_to_debt": 0.12497885060064294
       },
       "checks": [
         {
           "id": "dilution",
           "label": "已發生的稀釋",
-          "value": 0.01684836471754214,
+          "value": 0.017267866346416083,
           "threshold": 0.02,
           "result": "pass"
         },
         {
           "id": "coverage",
-          "label": "利息保障倍數（無利息費用或未揭露）",
-          "value": null,
-          "threshold": 3,
+          "label": "利息保障倍數",
+          "value": 2.265962131219727,
+          "threshold": 2.0,
           "result": "pass"
         },
         {
           "id": "u_payout",
           "label": "公用事業：股息 ÷ 淨利",
-          "value": 0.5915797049298309,
+          "value": 0.6440485216072782,
           "threshold": 0.75,
           "result": "pass"
         },
         {
           "id": "u_ocf_debt",
           "label": "公用事業：營運現金流 ÷ 負債",
-          "value": 0.13329400196656835,
+          "value": 0.12497885060064294,
           "threshold": 0.13,
-          "result": "pass"
+          "result": "veto"
         },
         {
           "id": "yield_trap",
@@ -4885,7 +4811,7 @@
           "result": "pass"
         }
       ],
-      "verdict": "pass",
+      "verdict": "veto",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -4894,24 +4820,24 @@
       "score": {
         "triangle": {
           "roe": {
-            "value": 0.09479788504178747,
+            "value": 0.0875481215983008,
             "points": 0.5,
             "note": null
           },
           "debt_to_equity": {
-            "value": 1.7346068565580761,
+            "value": 1.7653325368379131,
             "points": 0.5,
             "note": null
           },
           "interest_coverage": {
-            "value": null,
-            "points": 1.0,
-            "note": "沒有利息費用"
+            "value": 2.265962131219727,
+            "points": 0.0,
+            "note": null
           }
         },
         "indicators": {
           "fcf_to_capex": {
-            "value": -0.24191924840621853,
+            "value": -0.27997400628181524,
             "points": 0.0,
             "note": null
           },
@@ -4931,12 +4857,12 @@
             "points": 0.5
           }
         },
-        "triangle_points": 2.0,
+        "triangle_points": 1.0,
         "triangle_items": 3,
         "indicator_points": 0.5,
         "indicator_items": 3,
         "score20": null,
-        "partial": 21.666666666666668,
+        "partial": 11.666666666666666,
         "partial_max": 40,
         "total": null,
         "passed": null
@@ -5263,23 +5189,10 @@
       }
     },
     "WMB": {
-      "source": "SEC",
+      "source": "Yahoo",
       "errors": [],
-      "crosscheck": [
-        {
-          "field": "capex",
-          "sec": 6102000000,
-          "yahoo": 7663000000.0,
-          "diff": 0.2558177646673222
-        },
-        {
-          "field": "revenue",
-          "sec": 15431000000,
-          "yahoo": 12504000000.0,
-          "diff": -0.18968310543710712
-        }
-      ],
-      "yahoo_filled": [],
+      "note": "SEC 算得出的近四季只到 2026-06-30，改用較新的 Yahoo 資料",
+      "sec_latest_fact_end": "2026-06-30",
       "market": {
         "price": 68.92,
         "market_cap": 86163955712,
@@ -5293,84 +5206,77 @@
         "financial_currency": "USD",
         "currency_mismatch": false
       },
-      "fiscal_end": "2026-06-30",
+      "fiscal_end": "2026-09-30",
       "basis": "近四季",
       "trend": [
         {
           "end": "2023-12-31",
-          "capex_to_revenue": 0.20973657885961988
+          "capex_to_revenue": 0.23535344274319245
         },
         {
           "end": "2024-12-31",
-          "capex_to_revenue": 0.20368904369854338
+          "capex_to_revenue": 0.2549747691135866
         },
         {
           "end": "2025-12-31",
-          "capex_to_revenue": 0.32841130277199815
+          "capex_to_revenue": 0.418326359832636
         }
       ],
       "raw": {
-        "ocf": 5994000000,
-        "capex": 6102000000,
-        "revenue": 15431000000,
-        "op_income": 4660000000,
-        "net_income": 3073000000,
-        "interest_expense": 1490000000,
-        "sbc": 83000000,
-        "dividends": 2505000000,
-        "shares": 1225000000,
-        "cash_total": 203000000,
-        "debt": 30793000000,
+        "ocf": 6060000000.0,
+        "capex": 7663000000.0,
+        "revenue": 12504000000.0,
+        "op_income": 4622000000.0,
+        "net_income": 3126000000.0,
+        "interest_expense": 1503000000.0,
+        "sbc": 88000000.0,
+        "dividends": 2550000000.0,
+        "shares": 1239000000.0,
+        "cash_total": 1756000000.0,
+        "debt": 33934000000.0,
         "leases": 0,
-        "da": 2333000000,
-        "equity": 13190000000
+        "da": 2347000000.0,
+        "equity": 15733000000.0
       },
       "metrics": {
-        "fcf": -108000000,
-        "ebitda": 6993000000,
-        "share_growth": 0.0008169934640522847,
-        "sbc_to_revenue": 0.005378782969347418,
-        "cash_runway_years": 1.8796296296296295,
-        "interest_coverage": 3.12751677852349,
-        "net_debt_incl_leases": 30590000000,
-        "net_debt_to_ebitda": 4.374374374374375,
-        "dividend_to_fcf": null
+        "fcf": -1603000000.0,
+        "ebitda": 6969000000.0,
+        "share_growth": 0.0016729983302723461,
+        "sbc_to_revenue": 0.007037747920665387,
+        "interest_coverage": 3.0751829673985362,
+        "net_debt_incl_leases": 32178000000.0,
+        "net_debt_to_ebitda": 4.617305208781747,
+        "dividend_to_fcf": null,
+        "altman_z": 1.183164490812089
       },
       "checks": [
         {
           "id": "dilution",
           "label": "已發生的稀釋",
-          "value": 0.0008169934640522847,
+          "value": 0.0016729983302723461,
           "threshold": 0.02,
           "result": "pass"
         },
         {
           "id": "sbc",
           "label": "股票薪酬 ÷ 營收",
-          "value": 0.005378782969347418,
+          "value": 0.007037747920665387,
           "threshold": 0.15,
           "result": "pass"
         },
         {
-          "id": "runway",
-          "label": "現金跑道（年）",
-          "value": 1.8796296296296295,
-          "threshold": 3,
-          "result": "veto"
-        },
-        {
           "id": "coverage",
           "label": "利息保障倍數",
-          "value": 3.12751677852349,
+          "value": 3.0751829673985362,
           "threshold": 3,
           "result": "pass"
         },
         {
           "id": "leverage",
           "label": "含租賃淨負債 ÷ EBITDA（倍）",
-          "value": 4.374374374374375,
+          "value": 4.617305208781747,
           "threshold": 4.5,
-          "result": "pass"
+          "result": "veto"
         },
         {
           "id": "div_cover",
@@ -5385,6 +5291,13 @@
           "value": 0.11633289,
           "threshold": -0.3,
           "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 1.183164490812089,
+          "threshold": 1.8,
+          "result": "veto"
         }
       ],
       "verdict": "veto",
@@ -5396,24 +5309,24 @@
       "score": {
         "triangle": {
           "roe": {
-            "value": 0.2329795299469295,
+            "value": 0.19869065022564036,
             "points": 1.0,
             "note": null
           },
           "debt_to_equity": {
-            "value": 2.3345716451857466,
+            "value": 2.156867730248522,
             "points": 0.0,
             "note": null
           },
           "interest_coverage": {
-            "value": 3.12751677852349,
+            "value": 3.0751829673985362,
             "points": 0.5,
             "note": null
           }
         },
         "indicators": {
           "fcf_to_capex": {
-            "value": -0.017699115044247787,
+            "value": -0.2091870024794467,
             "points": 0.0,
             "note": null
           },
@@ -5428,7 +5341,7 @@
             "note": "要人工填 top_customer_pct"
           },
           "capex_trend": {
-            "value": 0.11867472391237827,
+            "value": 0.18297291708944355,
             "note": null,
             "points": 0.0
           }
@@ -5497,7 +5410,6 @@
         "ebitda": 17313000000.0,
         "share_growth": 0.01297497683039861,
         "sbc_to_revenue": null,
-        "cash_runway_years": 10.98206278026906,
         "interest_coverage": 2.309294871794872,
         "net_debt_incl_leases": 109385000000.0,
         "net_debt_to_ebitda": 6.318084676254838,
@@ -5509,13 +5421,6 @@
           "label": "已發生的稀釋",
           "value": 0.01297497683039861,
           "threshold": 0.02,
-          "result": "pass"
-        },
-        {
-          "id": "runway",
-          "label": "現金跑道（年）",
-          "value": 10.98206278026906,
-          "threshold": 3,
           "result": "pass"
         },
         {
