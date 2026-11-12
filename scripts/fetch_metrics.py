@@ -180,7 +180,7 @@ def extract_sec(companyfacts: dict) -> dict | None:
     for e in sorted(set(capex_a) & set(rev_a))[-3:]:
         if rev_a[e]:
             trend.append({"end": e, "capex_to_revenue": (capex_a[e] + soft_a.get(e, 0)) / rev_a[e]})
-    return {"fiscal_end": end, "basis": basis, "cur": cur, "prev": prev, "trend": trend}
+    return {"fiscal_end": end, "basis": basis, "cur": cur, "prev": prev, "trend": trend, "latest_fact_end": ends[-1]}
 
 
 YF_ROWS = {
@@ -356,6 +356,8 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
     else:
         if sector in v["reit_sectors"] and ffo_g and ffo_prev and ffo_g > 0 and ffo_prev > 0:
             growth, basis = (ffo_g / gc["shares"]) / (ffo_prev / gp["shares"]) - 1, "每股 FFO 粗估"
+        elif sector in v["utility_sectors"] and (gc.get("net_income") or 0) > 0 and (gp.get("net_income") or 0) > 0:
+            growth, basis = (gc["net_income"] / gc["shares"]) / (gp["net_income"] / gp["shares"]) - 1, "每股盈餘"
         elif fcf_g and fcf_prev and fcf_g > 0 and fcf_prev > 0:
             growth, basis = (fcf_g / gc["shares"]) / (fcf_prev / gp["shares"]) - 1, "每股自由現金流"
         elif gc.get("revenue") and gp.get("revenue"):
@@ -373,7 +375,7 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
         add("sbc", "股票薪酬 ÷ 營收", m["sbc_to_revenue"], v["sbc_to_revenue_flag"],
             "flag" if m["sbc_to_revenue"] > v["sbc_to_revenue_flag"] else "pass")
 
-    capex_funded = sector in v["utility_sectors"] or sector in v["reit_sectors"]
+    capex_funded = sector in v["utility_sectors"] + v["reit_sectors"] + v["infra_sectors"]
     if fcf is not None and fcf < 0 and not capex_funded:
         m["cash_runway_years"] = _div(cur.get("cash_total"), -fcf)
         r = m["cash_runway_years"]
@@ -647,6 +649,13 @@ def main() -> int:
                 rec["errors"].append(f"sec fallback: {e}")
         market["currency_mismatch"] = bool(market["currency"] and market["financial_currency"]
                                            and market["currency"] != market["financial_currency"])
+        if fin and yahoo_fin and _days(fin["fiscal_end"], yahoo_fin["fiscal_end"]) > 45:
+            rec["note"] = f"SEC 算得出的近四季只到 {fin['fiscal_end']}，改用較新的 Yahoo 資料"
+            rec["sec_latest_fact_end"] = fin.get("latest_fact_end")
+            yahoo_fin.setdefault("trend", [])
+            if not yahoo_fin["trend"]:
+                yahoo_fin["trend"] = fin.get("trend", [])
+            fin = None
         if fin:
             rec["source"] = "SEC"
             rec["crosscheck"] = crosscheck(fin, yahoo_fin)

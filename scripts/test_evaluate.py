@@ -80,6 +80,19 @@ def test_utility_exception():
     assert out["verdict"] == "pass", out["checks"]
 
 
+def test_utility_dilution_uses_eps():
+    fin = base(ocf=120, capex=300, debt=800, dividends=60, shares=52)        # 股數 +4%
+    fin["prev"]["net_income"] = 90                                           # 每股盈餘 +6.8%
+    assert verdict(fin, sector="grid_utility")["verdict"] == "pass"
+    fin["prev"]["net_income"] = 99                                           # 每股盈餘 -2.9%
+    assert verdict(fin, sector="grid_utility")["verdict"] == "veto"
+
+
+def test_infra_no_runway_check():
+    fin = base(ocf=120, capex=130, da=100, debt=600, dividends=None)
+    assert verdict(fin, sector="midstream")["verdict"] == "pass"
+
+
 def test_reit_rules():
     fin = base(da=100, debt=1200, dividends=150, shares=52)
     fin["prev"].update(net_income=90, da=90)

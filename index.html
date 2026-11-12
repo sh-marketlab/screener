@@ -166,7 +166,7 @@ function render(){
         ${t.disabled_reason?`<div><b>停用原因：</b>${esc(t.disabled_reason)}</div>`:""}
         ${checks?`<table><tr><th>檢查</th><th>數值</th><th>結果</th></tr>${checks}</table>`:`<div class="small">還沒有財務資料</div>`}
         ${scoreDetail(t)}${(t.m||{}).fiscal_end?`<div class="small">資料期間：${esc(t.m.basis||"")}，截至 ${esc(t.m.fiscal_end)}${t.m.yahoo_filled&&t.m.yahoo_filled.length?"；Yahoo 補的欄位："+esc(t.m.yahoo_filled.join("、")):""}</div>`:""}
-        ${cc?`<div class="small">SEC 與 Yahoo 差距超過 5%：${cc}</div>`:""}${err?`<div class="small">抓取錯誤：${esc(err)}</div>`:""}</td></tr>`;
+        ${(t.m||{}).note?`<div class="small">${esc(t.m.note)}</div>`:""}${cc?`<div class="small">SEC 與 Yahoo 差距超過 5%：${cc}</div>`:""}${err?`<div class="small">抓取錯誤：${esc(err)}</div>`:""}</td></tr>`;
     }
     return h;}).join("");
 }
