@@ -42,6 +42,13 @@ tr.row:hover td{background:var(--na-bg)}
 .detail table{width:auto;min-width:60%}
 .detail th,.detail td{padding:4px 10px;border-bottom:1px solid var(--line)}
 .small{color:var(--mute);font-size:13px}
+h2{font-size:17px;margin:22px 0 8px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+h2 select{font-size:13px}
+.port{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.card h3{margin:0 0 6px;font-size:15px}
+.card table td{padding:5px 6px;font-size:13.5px}
+.card table td:last-child{text-align:right;white-space:nowrap}
 .empty{padding:24px;text-align:center;color:var(--mute)}
 </style>
 </head>
@@ -52,6 +59,10 @@ tr.row:hover td{background:var(--na-bg)}
   <div class="meta"><span id="meta">讀取中</span> · <a href="rules.html">規則手冊</a></div>
 </header>
 <div class="tiles" id="tiles"></div>
+<h2>組合檢查 <select id="p-scope" aria-label="組合檢查範圍"><option value="seat">只算席位</option><option value="watch">席位＋觀察名單</option></select></h2>
+<div class="port" id="port"></div>
+<p class="small">上限來自 universe.json 的 rules.caps。資金占比類的上限需要部位金額，這裡沒有計算。</p>
+<h2>候選名單</h2>
 <div class="filters">
   <label>隊別<select id="f-team"><option value="">全部</option><option value="white">白隊（守）</option><option value="blue">藍隊（攻）</option></select></label>
   <label>狀態<select id="f-stage"><option value="">全部（不含停用）</option><option value="seat">席位</option><option value="watch">觀察名單</option><option value="pool">候選池</option><option value="disabled">停用</option></select></label>
@@ -60,9 +71,9 @@ tr.row:hover td{background:var(--na-bg)}
   <label>搜尋<input id="f-q" type="search" placeholder="代碼或名稱"></label>
 </div>
 <div class="tw"><table>
-<thead><tr><th>代碼</th><th>名稱</th><th>板塊</th><th>隊別</th><th>狀態</th><th>題材驗證</th><th>主標籤</th><th>否決欄</th><th>自由現金流</th><th>槓桿</th><th>利息保障</th><th>股數年增</th><th>來源</th></tr></thead>
+<thead><tr><th>代碼</th><th>名稱</th><th>板塊</th><th>隊別</th><th>狀態</th><th>題材驗證</th><th>主標籤</th><th>否決欄</th><th>總分</th><th>三角</th><th>4 指標</th><th>自由現金流</th><th>槓桿</th><th>利息保障</th><th>股數年增</th><th>來源</th></tr></thead>
 <tbody id="rows"></tbody></table><div class="empty" id="empty" hidden>沒有符合條件的標的</div></div>
-<p class="small">點任一列可以看各項檢查的明細。財務數字是最近一個完整會計年度。否決欄只做了能自動計算的項目，潛在稀釋、近 2 年到期負債、最大客戶占比要人工補。本頁不是投資建議。</p>
+<p class="small">點任一列可以看各項檢查的明細。財務數字是近四季合計，抓不到季報時用最近年度。總分要有 20 項分數才算得出來，目前用的是代理版。否決欄只做了能自動計算的項目，潛在稀釋、近 2 年到期負債、最大客戶占比要人工補。本頁不是投資建議。</p>
 </div>
 <script>
 const L={stage:{seat:"席位",watch:"觀察名單",pool:"候選池",disabled:"停用"},
@@ -81,8 +92,45 @@ async function load(){
   const sec=document.getElementById("f-sector");
   U.sectors.filter(s=>s.active).forEach(s=>sec.insertAdjacentHTML("beforeend",`<option value="${esc(s.id)}">${esc(s.name)}</option>`));
   document.getElementById("meta").textContent=`名單更新 ${U.updated}`+(M.generated?` · 財務資料 ${M.generated}`:" · 財務資料尚未抓取");
-  document.querySelectorAll(".filters select,.filters input").forEach(e=>e.addEventListener("input",render));
+  document.querySelectorAll(".filters select,.filters input,#p-scope").forEach(e=>e.addEventListener("input",render));
   render();
+}
+const SL={roe:"ROE",debt_to_equity:"負債權益比",interest_coverage:"利息保障倍數",fcf_to_capex:"自由現金流 ÷ 資本支出",net_debt_to_fcf:"含租賃淨負債 ÷ 自由現金流（年）",top_customer:"最大客戶占比",capex_trend:"資本支出 ÷ 營收的 3 年變化"};
+const SP=new Set(["roe","top_customer","capex_trend"]);
+function scoreCells(t){const s=(t.m||{}).score;if(!s)return "<td>—</td><td>—</td><td>—</td>";
+  const tot=s.total==null?`<span class="small">${s.score20==null?"缺 20 項":"資料不足"}</span>`:chip(s.passed?"pass":"flag",s.total.toFixed(1));
+  return `<td>${tot}</td><td>${s.triangle_points}/${s.triangle_items}</td><td>${s.indicator_points}/${s.indicator_items}</td>`;}
+function scoreDetail(t){const s=(t.m||{}).score;if(!s)return "";
+  const row=(k,x)=>`<tr><td>${SL[k]}</td><td>${x.value==null?"—":SP.has(k)?pct(x.value):num(x.value,2)}</td><td>${x.points==null?"—":x.points}</td><td class="small">${esc(x.note||"")}</td></tr>`;
+  const rows=o=>Object.entries(o).map(([k,x])=>row(k,x)).join("");
+  return `<table><tr><th>評分項目</th><th>數值</th><th>得分</th><th>備註</th></tr>${rows(s.triangle)}${rows(s.indicators)}
+    <tr><td>20 項（代理版）</td><td>${s.score20??"—"}</td><td></td><td class="small">${s.total==null?"":"總分 "+s.total.toFixed(1)+"，門檻 "+U.rules.pass_score}</td></tr></table>`;}
+function portfolio(all){
+  const scope=val("p-scope"),caps=U.rules.caps,mt=M.tickers||{};
+  const stages=scope==="seat"?["seat"]:["seat","watch"];
+  const line=(label,value,ok,warn)=>`<tr><td>${label}</td><td>${value}</td><td>${ok==null?"":chip(ok?"pass":(warn?"flag":"veto"),ok?"符合":(warn?"留意":"超過"))}</td></tr>`;
+  document.getElementById("port").innerHTML=["white","blue"].map(team=>{
+    const mem=all.filter(t=>t.team===team&&stages.includes(t.stage));
+    const seats=team==="white"?U.rules.white_seats:U.rules.blue_seats;
+    const by={};mem.forEach(t=>(by[t.tags.primary]??=[]).push(t.ticker));
+    const cap=team==="white"?caps.white_same_primary:caps.blue_same_primary;
+    const tagRows=Object.entries(by).sort((a,b)=>b[1].length-a[1].length).map(([g,l])=>line(`主標籤：${esc(U.factor_tags[g])}`,`${l.length} 席（上限 ${cap}）<br><span class="small">${l.join("、")}</span>`,l.length<=cap)).join("");
+    const ai=mem.filter(t=>t.tags.primary==="ai_capex"||t.tags.secondary.includes("ai_capex")).map(t=>t.ticker);
+    const fw=(by.funding_window||[]).length,fwCap=team==="white"?caps.white_funding_window:caps.blue_funding_window;
+    const kinds=Object.keys(by).length;
+    const vetoed=mem.filter(t=>t.v==="veto").map(t=>t.ticker);
+    const hiBeta=team==="white"?mem.filter(t=>{const b=((mt[t.ticker]||{}).market||{}).beta;return b==null||b>=1;}).map(t=>t.ticker+"（"+(((mt[t.ticker]||{}).market||{}).beta?.toFixed(2)??"無資料")+"）"):[];
+    const scored=mem.filter(t=>((t.m||{}).score||{}).total!=null),below=scored.filter(t=>!t.m.score.passed).map(t=>t.ticker);
+    return `<div class="card"><h3 class="${team==="white"?"w":"b"}">${team==="white"?"白隊（守）":"藍隊（攻）"}</h3><table>
+      ${line("納入計算的檔數",`${mem.length} ／ ${seats} 席`,mem.length<=seats,true)}
+      ${mem.length?tagRows:""}
+      ${team==="white"?line("帶 AI 標籤（主或副）",`${ai.length} 席（上限 ${caps.white_ai_tag}）<br><span class="small">${ai.join("、")||"無"}</span>`,ai.length<=caps.white_ai_tag):""}
+      ${line("融資視窗",`${fw} 席（上限 ${fwCap}）`,fw<=fwCap)}
+      ${mem.length>=4?line("主標籤種類",`${kinds} 種（至少 4 種）`,kinds>=4):""}
+      ${team==="white"&&mem.length?line("Beta 低於 1",hiBeta.length?`不符合：<span class="small">${hiBeta.join("、")}</span>`:"全部符合",hiBeta.length===0):""}
+      ${mem.length?line("否決欄未過",vetoed.length?vetoed.join("、"):"無",vetoed.length===0):""}
+      ${mem.length?line("總分低於門檻",`${below.join("、")||"無"}<br><span class="small">${scored.length}／${mem.length} 檔有總分</span>`,below.length===0,true):""}
+    </table></div>`;}).join("");
 }
 function fmtVal(c){const v=c.value;if(v==null)return "—";
   return /倍數|年）|倍）|Altman|跑道|EBITDA ÷/.test(c.label)?num(v,2):pct(v);}
@@ -98,6 +146,7 @@ function render(){
     ["藍隊席位",cnt(live,t=>t.team==="blue"&&t.stage==="seat")+" / "+U.rules.blue_seats],
     ["否決",cnt(live,t=>t.v==="veto")],["注意",cnt(live,t=>t.v==="flag")],["通過",cnt(live,t=>t.v==="pass")]
   ].map(([k,n])=>`<div class="tile"><b>${n}</b><span>${k}</span></div>`).join("");
+  portfolio(all);
   const rows=all.filter(t=>(f.stage?t.stage===f.stage:t.stage!=="disabled")&&(!f.team||t.team===f.team)&&(!f.sector||t.sector===f.sector)
     &&(!f.verdict||t.v===f.verdict)&&(!f.q||(t.ticker+" "+t.name).toLowerCase().includes(f.q)));
   document.getElementById("empty").hidden=rows.length>0;
@@ -105,18 +154,18 @@ function render(){
     const m=(t.m||{}).metrics||{};
     let h=`<tr class="row" tabindex="0" data-t="${esc(t.ticker)}"><td><b>${esc(t.ticker)}</b></td><td>${esc(t.name)}</td><td>${esc(sname[t.sector])}</td>
       <td class="${t.team==="white"?"w":"b"}">${t.team==="white"?"白":"藍"}</td><td>${L.stage[t.stage]}</td>
-      <td>${esc(L.ver[t.verification.status])}</td><td>${esc(U.factor_tags[t.tags.primary])}</td><td>${chip(t.v,L.verdict[t.v])}</td>
+      <td>${esc(L.ver[t.verification.status])}</td><td>${esc(U.factor_tags[t.tags.primary])}</td><td>${chip(t.v,L.verdict[t.v])}</td>${scoreCells(t)}
       <td>${money(m.fcf)}${cur(t)}</td><td>${m.net_debt_to_ebitda!=null?num(m.net_debt_to_ebitda)+' <span class="small">倍 EBITDA</span>':m.net_debt_to_fcf!=null?num(m.net_debt_to_fcf)+' <span class="small">年 FCF</span>':'—'}</td><td>${num(m.interest_coverage)}</td><td>${pct(m.share_growth)}</td><td>${esc((t.m||{}).source||"—")}</td></tr>`;
     if(open.has(t.ticker)){
       const checks=((t.m||{}).checks||[]).map(c=>`<tr><td>${esc(c.label)}</td><td>${fmtVal(c)}</td><td>${chip(c.result,L.verdict[c.result]||c.result)}</td></tr>`).join("");
       const cc=((t.m||{}).crosscheck||[]).map(c=>`${esc(c.field)} 差 ${pct(c.diff)}`).join("、");
       const err=((t.m||{}).errors||[]).join("；");
-      h+=`<tr class="detail"><td colspan="13">
+      h+=`<tr class="detail"><td colspan="16">
         <div><b>題材：</b>${esc(t.theme)}　<b>備註：</b>${esc(t.verification.note)}</div>
         <div><b>必需性：</b>${esc(t.role.essential)}　<b>瓶頸性：</b>${esc(t.role.bottleneck)}　<b>副標籤：</b>${t.tags.secondary.concat(t.tags.personal).map(x=>esc(U.factor_tags[x])).join("、")||"無"}</div>
         ${t.disabled_reason?`<div><b>停用原因：</b>${esc(t.disabled_reason)}</div>`:""}
         ${checks?`<table><tr><th>檢查</th><th>數值</th><th>結果</th></tr>${checks}</table>`:`<div class="small">還沒有財務資料</div>`}
-        ${(t.m||{}).fiscal_end?`<div class="small">會計年度結束日 ${esc(t.m.fiscal_end)}</div>`:""}
+        ${scoreDetail(t)}${(t.m||{}).fiscal_end?`<div class="small">資料期間：${esc(t.m.basis||"")}，截至 ${esc(t.m.fiscal_end)}${t.m.yahoo_filled&&t.m.yahoo_filled.length?"；Yahoo 補的欄位："+esc(t.m.yahoo_filled.join("、")):""}</div>`:""}
         ${cc?`<div class="small">SEC 與 Yahoo 差距超過 5%：${cc}</div>`:""}${err?`<div class="small">抓取錯誤：${esc(err)}</div>`:""}</td></tr>`;
     }
     return h;}).join("");

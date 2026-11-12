@@ -8,9 +8,9 @@
 |---|---|
 | `universe.json` | 候選池和所有門檻。人工維護，是唯一的名單來源 |
 | `docs/universe-fields.md` | `universe.json` 的欄位定義 |
-| `scripts/fetch_metrics.py` | 抓財務資料、計算第 3 步否決欄，輸出 `data/metrics.json` |
+| `scripts/fetch_metrics.py` | 抓財務資料，計算第 3 步否決欄和第 4 步評分，輸出 `data/metrics.json` |
 | `scripts/test_evaluate.py` | 用假資料測試解析和否決邏輯 |
-| `index.html` | 儀表板頁面 |
+| `index.html` | 儀表板頁面，含第 5 步組合檢查 |
 | `rules.html` | 8 步規則手冊 |
 
 ## 第一次設定
@@ -32,10 +32,11 @@
 
 ## 目前的限制
 
-- 財務數字用最近一個完整會計年度，不是近四季。
-- 外國公司（`rules.veto.foreign_filers`）只用 Yahoo Finance，沒有交叉檢查。
-- REIT 的否決規則還沒寫，結果會顯示「注意」。
-- 潛在稀釋、近 2 年到期負債、最大客戶占比要人工補。
-- 只做了第 3 步。第 4 步評分、第 5 步組合檢查、第 6 步進場訊號還沒做。
+- 財務數字是近四季合計。外國公司（`rules.veto.foreign_filers`）用 Yahoo Finance 的季報，稀釋比較用年度數字。
+- 總分要有 20 項分數（`proxy_score20`）才算得出來；目前是代理版，而且只有部分標的有分數。
+- 最大客戶占比（`top_customer_pct`）、潛在稀釋、近 2 年到期負債、REIT 的 AFFO 要人工補。
+- 銀行的否決規則還沒寫，結果會顯示「注意」。
+- 組合檢查只算席位數，資金占比類的上限需要部位金額，沒有計算。
+- 第 6 步進場訊號還沒做。
 
 本專案是個人研究工具，不是投資建議。

@@ -63,6 +63,34 @@
       "reit_net_debt_to_ebitda_max": 6.0,
       "reit_ebitda_coverage_min": 3.0,
       "reit_payout_max": 0.85
+    },
+    "score": {
+      "weights": {
+        "white": {
+          "s20": 60,
+          "triangle": 30,
+          "indicators": 10
+        },
+        "blue": {
+          "s20": 60,
+          "triangle": 10,
+          "indicators": 30
+        }
+      },
+      "roe_good": 0.15,
+      "roe_mid": 0.08,
+      "roe_distorted_above": 1.0,
+      "de_good": 1.0,
+      "de_mid": 2.0,
+      "coverage_good": 8,
+      "coverage_mid": 3,
+      "fcf_to_capex_good": 3,
+      "fcf_to_capex_mid": 1,
+      "net_debt_to_fcf_good": 1,
+      "net_debt_to_fcf_mid": 3,
+      "top_customer_good": 0.1,
+      "top_customer_mid": 0.25,
+      "capex_trend_mid": 0.05
     }
   },
   "factor_tags": {
@@ -232,7 +260,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "CNI",
@@ -261,7 +290,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "CEG",
@@ -288,7 +318,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "MSFT",
@@ -315,7 +346,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "BLK",
@@ -344,7 +376,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "NEE",
@@ -373,7 +406,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "VRTX",
@@ -400,7 +434,8 @@
       },
       "proxy_score20": 17.5,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "ASML",
@@ -429,7 +464,9 @@
       },
       "proxy_score20": 18.5,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null,
+      "yahoo_alt": "ASML.AS"
     },
     {
       "ticker": "CDNS",
@@ -456,7 +493,8 @@
       },
       "proxy_score20": 18.0,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "SNPS",
@@ -483,7 +521,8 @@
       },
       "proxy_score20": 15.5,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "TSM",
@@ -514,7 +553,8 @@
       },
       "proxy_score20": 17.5,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "NVDA",
@@ -543,7 +583,8 @@
       },
       "proxy_score20": 17.0,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "PLTR",
@@ -570,7 +611,8 @@
       },
       "proxy_score20": 16.5,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "GEV",
@@ -597,7 +639,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "RKLB",
@@ -626,7 +669,8 @@
       },
       "proxy_score20": 11.0,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "TWST",
@@ -653,7 +697,8 @@
       },
       "proxy_score20": 11.0,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "IONQ",
@@ -682,7 +727,8 @@
       },
       "proxy_score20": 10.5,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "MP",
@@ -711,7 +757,8 @@
       },
       "proxy_score20": 10.0,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "QNT",
@@ -738,7 +785,8 @@
       },
       "proxy_score20": 9.0,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "CRSP",
@@ -767,7 +815,8 @@
       },
       "proxy_score20": 8.0,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "OKLO",
@@ -794,7 +843,8 @@
       },
       "proxy_score20": 7.5,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "SMR",
@@ -821,7 +871,8 @@
       },
       "proxy_score20": 6.0,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "RXRX",
@@ -848,7 +899,8 @@
       },
       "proxy_score20": 5.5,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "MA",
@@ -875,7 +927,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "XYL",
@@ -902,7 +955,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "VLTO",
@@ -929,7 +983,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "PNR",
@@ -956,7 +1011,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "NDAQ",
@@ -983,7 +1039,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "BK",
@@ -1010,7 +1067,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "JPM",
@@ -1037,7 +1095,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "SPCX",
@@ -1066,7 +1125,8 @@
       },
       "proxy_score20": 12.5,
       "disabled_reason": "判定為賣設備／屬性改變，移出藍隊",
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "VRT",
@@ -1093,7 +1153,8 @@
       },
       "proxy_score20": 14.5,
       "disabled_reason": "判定為賣設備，移出藍隊",
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "PWR",
@@ -1120,7 +1181,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": "判定為賣設備，移出藍隊",
-      "updated": "2026-11-11"
+      "updated": "2026-11-11",
+      "top_customer_pct": null
     },
     {
       "ticker": "AEP",
@@ -1149,7 +1211,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-12"
+      "updated": "2026-11-12",
+      "top_customer_pct": null
     },
     {
       "ticker": "EXC",
@@ -1176,7 +1239,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-12"
+      "updated": "2026-11-12",
+      "top_customer_pct": null
     },
     {
       "ticker": "DLR",
@@ -1205,7 +1269,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-12"
+      "updated": "2026-11-12",
+      "top_customer_pct": null
     },
     {
       "ticker": "EQIX",
@@ -1234,7 +1299,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-12"
+      "updated": "2026-11-12",
+      "top_customer_pct": null
     },
     {
       "ticker": "WMB",
@@ -1264,7 +1330,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-12"
+      "updated": "2026-11-12",
+      "top_customer_pct": null
     },
     {
       "ticker": "ENB",
@@ -1293,7 +1360,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-12"
+      "updated": "2026-11-12",
+      "top_customer_pct": null
     },
     {
       "ticker": "LNG",
@@ -1322,7 +1390,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-12"
+      "updated": "2026-11-12",
+      "top_customer_pct": null
     },
     {
       "ticker": "SAP",
@@ -1349,7 +1418,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-12"
+      "updated": "2026-11-12",
+      "top_customer_pct": null
     },
     {
       "ticker": "ARM",
@@ -1379,7 +1449,8 @@
       },
       "proxy_score20": null,
       "disabled_reason": null,
-      "updated": "2026-11-12"
+      "updated": "2026-11-12",
+      "top_customer_pct": null
     }
   ]
 }

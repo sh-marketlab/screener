@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-from fetch_metrics import evaluate, extract_sec, merge_sources
+from fetch_metrics import evaluate, extract_sec, merge_sources, score
 
 RULES = json.loads((Path(__file__).resolve().parent.parent / "universe.json").read_text(encoding="utf-8"))["rules"]
 
@@ -115,12 +115,51 @@ def test_tag_switch_and_merge():
         "LongTermDebtCurrent": inst({2025: 20}),
     }}}
     fin = extract_sec(facts)
-    assert fin["cur"]["revenue"] == 400 and fin["prev"]["revenue"] == 360
+    assert fin["cur"]["revenue"] == 400 and fin["prev"]["revenue"] == 360 and fin["basis"] == "年度"
     yahoo = {"fiscal_end": "2025-12-31", "cur": {"debt": 500, "cash_total": 80, "capex": 30, "shares": 49},
-             "prev": {"shares": 50, "capex": 10}}
+             "prev": {}, "growth_cur": {"shares": 49, "ocf": 120}, "growth_prev": {"shares": 50, "ocf": 100}}
     fin, used = merge_sources(fin, yahoo)
     assert fin["cur"]["debt"] == 500 and fin["cur"]["leases"] == 0 and fin["cur"]["capex"] == 30
-    assert fin["cur"]["shares"] == 49 and "debt" in used
+    assert fin["growth_prev"]["shares"] == 50 and "debt" in used
+
+
+def test_ttm():
+    def q(tag_vals):
+        rows = []
+        for (start, end, form), val in tag_vals.items():
+            rows.append({"form": form, "start": start, "end": end, "val": val, "filed": end})
+        return {"units": {"USD": rows}}
+    facts = {"facts": {"us-gaap": {
+        "NetCashProvidedByUsedInOperatingActivities": q({
+            ("2023-01-01", "2023-12-31", "10-K"): 80, ("2024-01-01", "2024-12-31", "10-K"): 100,
+            ("2023-01-01", "2023-09-30", "10-Q"): 55, ("2024-01-01", "2024-09-30", "10-Q"): 70,
+            ("2025-01-01", "2025-09-30", "10-Q"): 90, ("2025-07-01", "2025-09-30", "10-Q"): 33}),
+        "WeightedAverageNumberOfDilutedSharesOutstanding": q({
+            ("2025-01-01", "2025-09-30", "10-Q"): 49, ("2025-07-01", "2025-09-30", "10-Q"): 48,
+            ("2024-07-01", "2024-09-30", "10-Q"): 50, ("2024-01-01", "2024-09-30", "10-Q"): 51}),
+        "CashAndCashEquivalentsAtCarryingValue": {"units": {"USD": [
+            {"form": "10-Q", "end": "2025-09-30", "val": 66, "filed": "2025-10-30"},
+            {"form": "10-K", "end": "2024-12-31", "val": 60, "filed": "2025-02-01"}]}},
+    }}}
+    fin = extract_sec(facts)
+    assert fin["fiscal_end"] == "2025-09-30" and fin["basis"] == "近四季"
+    assert fin["cur"]["ocf"] == 100 + 90 - 70 and fin["prev"]["ocf"] == 80 + 70 - 55
+    assert fin["cur"]["shares"] == 48 and fin["prev"]["shares"] == 50 and fin["cur"]["cash"] == 66
+
+
+def test_score():
+    fin = base(equity=400, da=50)
+    fin["trend"] = [{"end": "2023", "capex_to_revenue": 0.04}, {"end": "2024", "capex_to_revenue": 0.05},
+                    {"end": "2025", "capex_to_revenue": 0.05}]
+    entry = {"team": "blue", "sector": "semi_design", "proxy_score20": 18, "top_customer_pct": 0.3}
+    m = evaluate(fin, MARKET, entry, RULES)["metrics"]
+    out = score(fin, m, entry, RULES)
+    # 三角：ROE 25%=1、負債權益比 0.55=1、保障 15 倍=1；指標：FCF÷資本支出 5=1、淨負債 1.75 年=0.5、大客戶 30%=0、趨勢 +1pp=0.5
+    assert out["triangle_points"] == 3 and out["indicator_points"] == 2.0
+    assert abs(out["total"] - (54 + 10 + 15)) < 1e-9 and out["passed"] is False
+    entry2 = {**entry, "proxy_score20": None, "top_customer_pct": None}
+    out2 = score(fin, m, entry2, RULES)
+    assert out2["total"] is None and out2["indicator_items"] == 3 and out2["partial"] is not None
 
 
 def test_bank_pending_and_prerevenue():

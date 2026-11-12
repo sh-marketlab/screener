@@ -46,13 +46,17 @@
 | `tags.secondary` | 最多兩個副標籤 | 第 5 步 |
 | `tags.personal` | 個人標籤，例如 `taiwan_concentration` | 第 5 步 |
 | `proxy_score20` | 代理版 20 項分數，沒有評過填 `null` | 第 4 步 |
+| `top_customer_pct` | 最大客戶占比，小數（0.25 代表 25%），沒查過填 `null` | 第 4 步 |
+| `yahoo_alt` | 選填。Yahoo 用主代碼抓不到報表時改用的代碼，例如 `ASML.AS` | |
 | `disabled_reason` | `stage` 是 `disabled` 時必填 | 第 7 步 |
 | `updated` | 這一筆最後修改日期 | |
 
 新增標的：在 `tickers` 加一筆，`stage` 先填 `pool`、`verification.status` 填 `unreviewed`。
 刪除標的：把 `stage` 改成 `disabled`，並填 `disabled_reason`。
 
-## metrics.json（程式自動產生，尚未實作）
+## metrics.json（程式自動產生）
+
+目前已實作稀釋、漏錢、Altman Z、黃金三角、4 個指標。價格均線、估值快照、擁擠、內部人還沒做。
 
 | 欄位群 | 內容 | 對應步驟 | 更新頻率 |
 |---|---|---|---|
