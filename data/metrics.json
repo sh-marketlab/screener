@@ -44,10 +44,12 @@
         "shares": 2105560000.0,
         "cash_total": 14083000000.0,
         "debt": 22071000000,
-        "leases": 884000000
+        "leases": 884000000,
+        "da": 1403000000
       },
       "metrics": {
         "fcf": 22057000000,
+        "ebitda": 29513000000,
         "share_growth": -0.03963168153625363,
         "sbc_to_revenue": 0.02021654358102956,
         "interest_coverage": 37.0844327176781,
@@ -136,15 +138,17 @@
         "shares": 623700000.0,
         "cash_total": 350000000.0,
         "debt": 21630000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 1938000000.0
       },
       "metrics": {
         "fcf": 3391000000.0,
+        "ebitda": 8525000000.0,
         "share_growth": -0.017021276595744705,
         "sbc_to_revenue": null,
         "interest_coverage": 7.214676889375685,
         "net_debt_incl_leases": 21280000000.0,
-        "net_debt_to_fcf": 6.275434974933648,
+        "net_debt_to_ebitda": 2.4961876832844574,
         "dividend_to_fcf": 0.651135358301386
       },
       "checks": [
@@ -164,10 +168,10 @@
         },
         {
           "id": "leverage",
-          "label": "含租賃淨負債 ÷ 自由現金流（年）",
-          "value": 6.275434974933648,
-          "threshold": 3,
-          "result": "veto"
+          "label": "含租賃淨負債 ÷ EBITDA（倍）",
+          "value": 2.4961876832844574,
+          "threshold": 4.5,
+          "result": "pass"
         },
         {
           "id": "div_cover",
@@ -184,7 +188,7 @@
           "result": "pass"
         }
       ],
-      "verdict": "veto",
+      "verdict": "pass",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -237,15 +241,17 @@
         "shares": 314000000,
         "cash_total": 3641000000,
         "debt": 8992000000,
-        "leases": 505000000
+        "leases": 505000000,
+        "da": 2601000000
       },
       "metrics": {
         "fcf": 1288000000,
+        "ebitda": 5687000000,
         "share_growth": -0.0031746031746031633,
         "sbc_to_revenue": 0.016988042183294357,
         "interest_coverage": 6.039138943248532,
         "net_debt_incl_leases": 5856000000,
-        "net_debt_to_fcf": 4.546583850931677,
+        "net_debt_to_ebitda": 1.0297168981888518,
         "dividend_to_fcf": 0.37732919254658387
       },
       "checks": [
@@ -272,10 +278,10 @@
         },
         {
           "id": "leverage",
-          "label": "含租賃淨負債 ÷ 自由現金流（年）",
-          "value": 4.546583850931677,
-          "threshold": 3,
-          "result": "veto"
+          "label": "含租賃淨負債 ÷ EBITDA（倍）",
+          "value": 1.0297168981888518,
+          "threshold": 4.5,
+          "result": "pass"
         },
         {
           "id": "div_cover",
@@ -285,7 +291,7 @@
           "result": "pass"
         }
       ],
-      "verdict": "veto",
+      "verdict": "pass",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -297,6 +303,8 @@
       "errors": [],
       "crosscheck": [],
       "yahoo_filled": [
+        "da(cur)",
+        "da(prev)",
         "cash_total(prev)",
         "debt(prev)",
         "total_assets(prev)",
@@ -333,10 +341,12 @@
         "shares": 7453000000,
         "cash_total": 76651000000.0,
         "debt": 56826000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 38534000000.0
       },
       "metrics": {
         "fcf": 66987000000,
+        "ebitda": 193771000000.0,
         "share_growth": -0.0016075016744808712,
         "sbc_to_revenue": 0.0373825861336371,
         "interest_coverage": 50.880694854146185,
@@ -441,17 +451,19 @@
         "shares": 160866521,
         "cash_total": 14257000000.0,
         "debt": 14996000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 1126000000
       },
       "metrics": {
         "fcf": 3552000000,
+        "ebitda": 8171000000,
         "share_growth": 0.06101923169452439,
         "per_share_growth": -0.2878697239930986,
         "per_share_basis": "每股自由現金流",
         "sbc_to_revenue": 0.05397258011232243,
         "interest_coverage": 11.473941368078176,
         "net_debt_incl_leases": 739000000.0,
-        "net_debt_to_fcf": 0.2080518018018018,
+        "net_debt_to_ebitda": 0.09044180638844694,
         "dividend_to_fcf": 0.942286036036036
       },
       "checks": [
@@ -478,9 +490,9 @@
         },
         {
           "id": "leverage",
-          "label": "含租賃淨負債 ÷ 自由現金流（年）",
-          "value": 0.2080518018018018,
-          "threshold": 3,
+          "label": "含租賃淨負債 ÷ EBITDA（倍）",
+          "value": 0.09044180638844694,
+          "threshold": 4.5,
           "result": "pass"
         },
         {
@@ -554,10 +566,12 @@
         "shares": 2070600000,
         "cash_total": 2812000000,
         "debt": 95619000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 6580000000
       },
       "metrics": {
         "fcf": 3211000000.0,
+        "ebitda": 14860000000,
         "share_growth": 0.005536130536130557,
         "sbc_to_revenue": 0.007170542635658915,
         "interest_coverage": 2.365038560411311,
@@ -584,8 +598,8 @@
           "id": "coverage",
           "label": "利息保障倍數",
           "value": 2.365038560411311,
-          "threshold": 3,
-          "result": "veto"
+          "threshold": 2.0,
+          "result": "pass"
         },
         {
           "id": "u_payout",
@@ -609,7 +623,7 @@
           "result": "pass"
         }
       ],
-      "verdict": "veto",
+      "verdict": "pass",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -657,10 +671,12 @@
         "shares": 258000000,
         "cash_total": 6608100000,
         "debt": 2030500000.0,
-        "leases": 2036000000
+        "leases": 2036000000,
+        "da": 209800000
       },
       "metrics": {
         "fcf": 3193800000,
+        "ebitda": 4383100000,
         "share_growth": 0.0003877471888329431,
         "sbc_to_revenue": 0.057152141851299444,
         "interest_coverage": 313.78195488721803,
@@ -771,10 +787,12 @@
         "shares": 273312000,
         "cash_total": 3155530000,
         "debt": 2616439000.0,
-        "leases": 186178000
+        "leases": 186178000,
+        "da": 227828000
       },
       "metrics": {
         "fcf": 1586910000,
+        "ebitda": 1719870000,
         "share_growth": -0.001902619479755896,
         "sbc_to_revenue": 0.08593462530577661,
         "interest_coverage": 12.802721788898328,
@@ -866,10 +884,12 @@
         "shares": 165656000,
         "cash_total": 2960959000,
         "debt": 14293418000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 660430000
       },
       "metrics": {
         "fcf": 1349154000,
+        "ebitda": 1575357000,
         "share_growth": 0.062278766736777236,
         "per_share_growth": 0.0019939982219501218,
         "per_share_basis": "每股自由現金流",
@@ -952,10 +972,12 @@
         "shares": 5186111400.0,
         "cash_total": 3128068100000.0,
         "debt": 1064582700000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 688096400000.0
       },
       "metrics": {
         "fcf": 992378400000.0,
+        "ebitda": 2624192000000.0,
         "share_growth": 3.51720974198777e-05,
         "sbc_to_revenue": 0.00032714156897159486,
         "interest_coverage": 156.51034728060532,
@@ -1039,10 +1061,12 @@
         "shares": 24514000000,
         "cash_total": 62556000000.0,
         "debt": 11040000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 2843000000
       },
       "metrics": {
         "fcf": 96676000000,
+        "ebitda": 133230000000,
         "share_growth": -0.01169166263505883,
         "sbc_to_revenue": 0.029573303448211987,
         "interest_coverage": 503.42471042471044,
@@ -1134,10 +1158,12 @@
         "shares": 2565197000,
         "cash_total": 7177043000,
         "debt": 229338000.0,
-        "leases": 229338000
+        "leases": 229338000,
+        "da": 26145000
       },
       "metrics": {
         "fcf": 2100591000,
+        "ebitda": 1440160000,
         "share_growth": 0.04666972414924331,
         "per_share_growth": 0.7585644044643838,
         "per_share_basis": "每股自由現金流",
@@ -1196,6 +1222,8 @@
       "errors": [],
       "crosscheck": [],
       "yahoo_filled": [
+        "da(cur)",
+        "da(prev)",
         "cash_total(prev)",
         "debt(prev)",
         "total_assets(prev)",
@@ -1232,10 +1260,12 @@
         "shares": 276000000,
         "cash_total": 9314000000.0,
         "debt": 1172000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 853000000.0
       },
       "metrics": {
         "fcf": 3710000000,
+        "ebitda": 2241000000.0,
         "share_growth": -0.007194244604316502,
         "sbc_to_revenue": 0.006751077020069349,
         "interest_coverage": 26.18867924528302,
@@ -1327,10 +1357,12 @@
         "shares": 530664781,
         "cash_total": 1016577000,
         "debt": 253955000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 43935000
       },
       "metrics": {
         "fcf": -321806000,
+        "ebitda": -184903000,
         "share_growth": 0.07003998494859731,
         "per_share_growth": 0.2892936844700067,
         "per_share_basis": "每股營收",
@@ -1432,10 +1464,12 @@
         "shares": 59808000,
         "cash_total": 232434000,
         "debt": 75572000.0,
-        "leases": 75572000
+        "leases": 75572000,
+        "da": 24853000
       },
       "metrics": {
         "fcf": -75632000,
+        "ebitda": -111406000,
         "share_growth": 0.030888030888030826,
         "per_share_growth": 0.16715428061188686,
         "per_share_basis": "每股營收",
@@ -1537,10 +1571,12 @@
         "shares": 280345046,
         "cash_total": 2392156000,
         "debt": 30021000.0,
-        "leases": 30021000
+        "leases": 30021000,
+        "da": 82004000
       },
       "metrics": {
         "fcf": -299604000,
+        "ebitda": -551711000,
         "share_growth": 0.31599249709071797,
         "per_share_growth": 1.2937087236628289,
         "per_share_basis": "每股營收",
@@ -1642,10 +1678,12 @@
         "shares": 170126753,
         "cash_total": 1830286000,
         "debt": 1007170000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 89267000
       },
       "metrics": {
         "fcf": -328130000,
+        "ebitda": -60107000,
         "share_growth": 0.001436950826759098,
         "sbc_to_revenue": 0.1343916664067617,
         "cash_runway_years": 5.577929479169841,
@@ -1734,10 +1772,12 @@
         "shares": 33208419.0,
         "cash_total": 762642000.0,
         "debt": 10456000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 29800000.0
       },
       "metrics": {
         "fcf": -235350000.0,
+        "ebitda": -500253000.0,
         "share_growth": -0.04199918584805329,
         "sbc_to_revenue": 0.0,
         "cash_runway_years": 3.2404588910133842,
@@ -1845,10 +1885,12 @@
         "shares": 89925109,
         "cash_total": 1975828000,
         "debt": 206746000.0,
-        "leases": 206746000
+        "leases": 206746000,
+        "da": 19479000
       },
       "metrics": {
         "fcf": -370928000.0,
+        "ebitda": -645092000,
         "share_growth": 0.06597961908709205,
         "per_share_growth": -0.9117557517012455,
         "per_share_basis": "每股營收",
@@ -1953,10 +1995,12 @@
         "shares": 146351775,
         "cash_total": 1227971000.0,
         "debt": 1450000.0,
-        "leases": 1450000
+        "leases": 1450000,
+        "da": 522000
       },
       "metrics": {
         "fcf": -115379000,
+        "ebitda": -138772000,
         "share_growth": 0.4796456957295112,
         "per_share_growth": null,
         "per_share_basis": null,
@@ -2016,6 +2060,8 @@
       "errors": [],
       "crosscheck": [],
       "yahoo_filled": [
+        "da(cur)",
+        "da(prev)",
         "cash_total(prev)",
         "total_assets(prev)",
         "total_liabilities(prev)",
@@ -2049,10 +2095,12 @@
         "shares": 163731673,
         "cash_total": 1254217000,
         "debt": null,
-        "leases": 0
+        "leases": 0,
+        "da": 1181000.0
       },
       "metrics": {
         "fcf": -460118000,
+        "ebitda": -688390000.0,
         "share_growth": 0.7558380455471296,
         "per_share_growth": -0.5160428914046451,
         "per_share_basis": "每股營收",
@@ -2155,10 +2203,12 @@
         "shares": 447446109,
         "cash_total": 743294000,
         "debt": 77965000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 83701000
       },
       "metrics": {
         "fcf": -380435000.0,
+        "ebitda": -564431000,
         "share_growth": 0.631781357733106,
         "per_share_growth": -0.22217325070772154,
         "per_share_basis": "每股營收",
@@ -2260,10 +2310,12 @@
         "shares": 906000000,
         "cash_total": 10898000000.0,
         "debt": 19000000000,
-        "leases": 833000000
+        "leases": 833000000,
+        "da": 1143000000
       },
       "metrics": {
         "fcf": 16433000000,
+        "ebitda": 20040000000,
         "share_growth": -0.02265372168284785,
         "sbc_to_revenue": 0.01820621512000244,
         "interest_coverage": 26.173130193905816,
@@ -2363,10 +2415,12 @@
         "shares": 243994000,
         "cash_total": 1479000000,
         "debt": 2063000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 575000000
       },
       "metrics": {
         "fcf": 910000000,
+        "ebitda": 1798000000,
         "share_growth": 0.0019423376218068444,
         "sbc_to_revenue": 0.005866076369673492,
         "interest_coverage": 42.172413793103445,
@@ -2474,10 +2528,12 @@
         "shares": 250300000,
         "cash_total": 2031000000,
         "debt": 2879000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 78000000
       },
       "metrics": {
         "fcf": 1014000000,
+        "ebitda": 1355000000,
         "share_growth": 0.002804487179487225,
         "sbc_to_revenue": 0.01344721061239324,
         "interest_coverage": 13.302083333333334,
@@ -2542,6 +2598,8 @@
       "errors": [],
       "crosscheck": [],
       "yahoo_filled": [
+        "da(cur)",
+        "da(prev)",
         "cash_total(prev)",
         "debt(prev)",
         "total_assets(prev)",
@@ -2577,10 +2635,12 @@
         "shares": 165500000,
         "cash_total": 101600000,
         "debt": 1765900000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 117700000.0
       },
       "metrics": {
         "fcf": 746000000,
+        "ebitda": 975200000.0,
         "share_growth": -0.00957510472770795,
         "sbc_to_revenue": 0.008860153256704981,
         "interest_coverage": 10.74561403508772,
@@ -2688,15 +2748,17 @@
         "shares": 578597687,
         "cash_total": 3354000000.0,
         "debt": 9466000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 145000000
       },
       "metrics": {
         "fcf": 1989000000,
+        "ebitda": 2476000000,
         "share_growth": -0.0010218330572631107,
         "sbc_to_revenue": 0.019970951343500364,
         "interest_coverage": 6.35149863760218,
         "net_debt_incl_leases": 6112000000.0,
-        "net_debt_to_fcf": 3.0729009552538966,
+        "net_debt_to_ebitda": 2.468497576736672,
         "dividend_to_fcf": 0.3021618903971845
       },
       "checks": [
@@ -2723,10 +2785,10 @@
         },
         {
           "id": "leverage",
-          "label": "含租賃淨負債 ÷ 自由現金流（年）",
-          "value": 3.0729009552538966,
-          "threshold": 3,
-          "result": "veto"
+          "label": "含租賃淨負債 ÷ EBITDA（倍）",
+          "value": 2.468497576736672,
+          "threshold": 4.5,
+          "result": "pass"
         },
         {
           "id": "div_cover",
@@ -2736,7 +2798,7 @@
           "result": "pass"
         }
       ],
-      "verdict": "veto",
+      "verdict": "pass",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -2799,7 +2861,8 @@
         "shares": 2781500000,
         "cash_total": 343338000000,
         "debt": 499982000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 8821000000
       },
       "metrics": {},
       "verdict": "flag",
@@ -2865,10 +2928,12 @@
         "shares": 537467865,
         "cash_total": 417000000,
         "debt": 49508000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 3325000000
       },
       "metrics": {
         "fcf": -5092000000.0,
+        "ebitda": 8644000000,
         "share_growth": 0.01153722381338329,
         "sbc_to_revenue": 0.0024421712284582067,
         "interest_coverage": 2.625370187561698,
@@ -2895,8 +2960,8 @@
           "id": "coverage",
           "label": "利息保障倍數",
           "value": 2.625370187561698,
-          "threshold": 3,
-          "result": "veto"
+          "threshold": 2.0,
+          "result": "pass"
         },
         {
           "id": "u_payout",
@@ -2920,7 +2985,7 @@
           "result": "pass"
         }
       ],
-      "verdict": "veto",
+      "verdict": "pass",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -2967,10 +3032,12 @@
         "shares": 1012000000,
         "cash_total": 626000000,
         "debt": 50080000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 3643000000
       },
       "metrics": {
         "fcf": -2275000000,
+        "ebitda": 8791000000,
         "share_growth": 0.008973080757726848,
         "sbc_to_revenue": null,
         "interest_coverage": 2.5472538347352796,
@@ -2990,8 +3057,8 @@
           "id": "coverage",
           "label": "利息保障倍數",
           "value": 2.5472538347352796,
-          "threshold": 3,
-          "result": "veto"
+          "threshold": 2.0,
+          "result": "pass"
         },
         {
           "id": "u_payout",
@@ -3072,24 +3139,28 @@
         "shares": 347810000,
         "cash_total": 3451647000,
         "debt": 19655352000.0,
-        "leases": 1593847000
+        "leases": 1593847000,
+        "da": 1894636000
       },
       "metrics": {
         "fcf": 2412136000,
+        "ebitda": 2553128000,
         "share_growth": 0.049051868965787726,
-        "per_share_growth": 0.016746423356116535,
-        "per_share_basis": "每股自由現金流",
+        "per_share_growth": 0.28604826808891426,
+        "per_share_basis": "每股 FFO 粗估",
         "sbc_to_revenue": 0.015339559068246853,
-        "interest_coverage": 1.5035883337481477,
-        "net_debt_incl_leases": 17797552000.0
+        "interest_coverage": 5.82976478888998,
+        "net_debt_incl_leases": 17797552000.0,
+        "net_debt_to_ebitda": 6.97088120924607,
+        "dividend_to_ffo": 0.5396018075533252
       },
       "checks": [
         {
           "id": "dilution",
-          "label": "已發生的稀釋（每股自由現金流成長 1.7%）",
+          "label": "已發生的稀釋（每股 FFO 粗估成長 28.6%）",
           "value": 0.049051868965787726,
           "threshold": 0.049051868965787726,
-          "result": "veto"
+          "result": "pass"
         },
         {
           "id": "sbc",
@@ -3100,17 +3171,24 @@
         },
         {
           "id": "coverage",
-          "label": "利息保障倍數",
-          "value": 1.5035883337481477,
-          "threshold": 3,
+          "label": "REIT：EBITDA ÷ 利息",
+          "value": 5.82976478888998,
+          "threshold": 3.0,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ EBITDA（倍）",
+          "value": 6.97088120924607,
+          "threshold": 6.0,
           "result": "veto"
         },
         {
-          "id": "reit",
-          "label": "REIT：要用 AFFO 檢查，規則待補",
-          "value": null,
-          "threshold": null,
-          "result": "pending"
+          "id": "reit_payout",
+          "label": "REIT：股息 ÷ FFO 粗估（淨利＋折舊攤銷）",
+          "value": 0.5396018075533252,
+          "threshold": 0.85,
+          "result": "pass"
         },
         {
           "id": "yield_trap",
@@ -3124,7 +3202,8 @@
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
-        "最大客戶占比"
+        "最大客戶占比",
+        "公司公布的每股 AFFO 與 AFFO 配息率"
       ]
     },
     "EQIX": {
@@ -3167,21 +3246,25 @@
         "shares": 98123000,
         "cash_total": 3227000000,
         "debt": 22726000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 2050000000
       },
       "metrics": {
         "fcf": -400000000,
+        "ebitda": 3898000000,
         "share_growth": 0.023959844302753996,
-        "per_share_growth": 0.028958567166250226,
-        "per_share_basis": "每股營收",
+        "per_share_growth": 0.17579416064459075,
+        "per_share_basis": "每股 FFO 粗估",
         "sbc_to_revenue": 0.054030595638494085,
-        "interest_coverage": 3.506641366223909,
-        "net_debt_incl_leases": 19499000000.0
+        "interest_coverage": 7.396584440227704,
+        "net_debt_incl_leases": 19499000000.0,
+        "net_debt_to_ebitda": 5.002308876346844,
+        "dividend_to_ffo": 0.5458823529411765
       },
       "checks": [
         {
           "id": "dilution",
-          "label": "已發生的稀釋（每股營收成長 2.9%）",
+          "label": "已發生的稀釋（每股 FFO 粗估成長 17.6%）",
           "value": 0.023959844302753996,
           "threshold": 0.023959844302753996,
           "result": "pass"
@@ -3195,17 +3278,24 @@
         },
         {
           "id": "coverage",
-          "label": "利息保障倍數",
-          "value": 3.506641366223909,
-          "threshold": 3,
+          "label": "REIT：EBITDA ÷ 利息",
+          "value": 7.396584440227704,
+          "threshold": 3.0,
           "result": "pass"
         },
         {
-          "id": "reit",
-          "label": "REIT：要用 AFFO 檢查，規則待補",
-          "value": null,
-          "threshold": null,
-          "result": "pending"
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ EBITDA（倍）",
+          "value": 5.002308876346844,
+          "threshold": 6.0,
+          "result": "pass"
+        },
+        {
+          "id": "reit_payout",
+          "label": "REIT：股息 ÷ FFO 粗估（淨利＋折舊攤銷）",
+          "value": 0.5458823529411765,
+          "threshold": 0.85,
+          "result": "pass"
         },
         {
           "id": "yield_trap",
@@ -3215,11 +3305,12 @@
           "result": "pass"
         }
       ],
-      "verdict": "flag",
+      "verdict": "pass",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
-        "最大客戶占比"
+        "最大客戶占比",
+        "公司公布的每股 AFFO 與 AFFO 配息率"
       ]
     },
     "WMB": {
@@ -3270,15 +3361,17 @@
         "shares": 1225000000,
         "cash_total": 63000000,
         "debt": 29393000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 2347000000
       },
       "metrics": {
         "fcf": 1005000000,
+        "ebitda": 6543000000,
         "share_growth": 0.0016353229762877675,
         "sbc_to_revenue": 0.006242029666420565,
         "interest_coverage": 2.909847434119279,
         "net_debt_incl_leases": 29330000000.0,
-        "net_debt_to_fcf": 29.18407960199005,
+        "net_debt_to_ebitda": 4.482653217178664,
         "dividend_to_fcf": 2.4298507462686567,
         "altman_z": 1.3259890829555343
       },
@@ -3306,10 +3399,10 @@
         },
         {
           "id": "leverage",
-          "label": "含租賃淨負債 ÷ 自由現金流（年）",
-          "value": 29.18407960199005,
-          "threshold": 3,
-          "result": "veto"
+          "label": "含租賃淨負債 ÷ EBITDA（倍）",
+          "value": 4.482653217178664,
+          "threshold": 4.5,
+          "result": "pass"
         },
         {
           "id": "div_cover",
@@ -3369,15 +3462,17 @@
         "shares": 2186000000.0,
         "cash_total": 1094000000.0,
         "debt": 105252000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 5661000000.0
       },
       "metrics": {
         "fcf": 3105000000.0,
+        "ebitda": 17189000000.0,
         "share_growth": 0.01297497683039861,
         "sbc_to_revenue": null,
         "interest_coverage": 2.309294871794872,
         "net_debt_incl_leases": 104158000000.0,
-        "net_debt_to_fcf": 33.54524959742351,
+        "net_debt_to_ebitda": 6.059572982721508,
         "dividend_to_fcf": 2.7822866344605477
       },
       "checks": [
@@ -3397,9 +3492,9 @@
         },
         {
           "id": "leverage",
-          "label": "含租賃淨負債 ÷ 自由現金流（年）",
-          "value": 33.54524959742351,
-          "threshold": 3,
+          "label": "含租賃淨負債 ÷ EBITDA（倍）",
+          "value": 6.059572982721508,
+          "threshold": 4.5,
           "result": "veto"
         },
         {
@@ -3464,15 +3559,17 @@
         "shares": 220300000,
         "cash_total": 1099000000,
         "debt": 25515000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 1329000000
       },
       "metrics": {
         "fcf": 2461000000,
+        "ebitda": 10441000000,
         "share_growth": -0.03841117415975559,
         "sbc_to_revenue": 0.008271681052198932,
         "interest_coverage": 9.611814345991561,
         "net_debt_incl_leases": 24416000000.0,
-        "net_debt_to_fcf": 9.921170255993498,
+        "net_debt_to_ebitda": 2.3384733263097406,
         "dividend_to_fcf": 0.18325883787078423,
         "altman_z": 2.458829440506471
       },
@@ -3500,10 +3597,10 @@
         },
         {
           "id": "leverage",
-          "label": "含租賃淨負債 ÷ 自由現金流（年）",
-          "value": 9.921170255993498,
-          "threshold": 3,
-          "result": "veto"
+          "label": "含租賃淨負債 ÷ EBITDA（倍）",
+          "value": 2.3384733263097406,
+          "threshold": 4.5,
+          "result": "pass"
         },
         {
           "id": "div_cover",
@@ -3520,7 +3617,7 @@
           "result": "pass"
         }
       ],
-      "verdict": "veto",
+      "verdict": "pass",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -3556,10 +3653,12 @@
         "shares": 1175000000.0,
         "cash_total": 9772000000.0,
         "debt": 7476000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 1311000000.0
       },
       "metrics": {
         "fcf": 8417000000.0,
+        "ebitda": 10931000000.0,
         "share_growth": -0.004237288135593209,
         "sbc_to_revenue": 0.04605978260869565,
         "interest_coverage": 19.552845528455286,
@@ -3640,10 +3739,12 @@
         "shares": 1068000000.0,
         "cash_total": 3601000000.0,
         "debt": 457000000.0,
-        "leases": 0
+        "leases": 0,
+        "da": 249000000.0
       },
       "metrics": {
         "fcf": 949000000.0,
+        "ebitda": 1157000000.0,
         "share_growth": 0.00470366886171214,
         "sbc_to_revenue": 0.2138211382113821,
         "interest_coverage": null,
