@@ -1,0 +1,3173 @@
+{
+  "generated": "2026-11-12",
+  "basis": "最近一個完整會計年度",
+  "tickers": {
+    "V": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 425.55,
+        "market_cap": 793991184384,
+        "beta": 0.786,
+        "dividend_yield": 0.0065957448,
+        "change_52w": 0.2482295,
+        "forward_pe": 24.827293,
+        "inst_held": 0.89322,
+        "short_float": 0.0124
+      },
+      "fiscal_end": "2026-09-30",
+      "raw": {
+        "ocf": 23728000000,
+        "capex": 1671000000,
+        "revenue": 45903000000,
+        "op_income": 28110000000,
+        "net_income": 23504000000,
+        "interest_expense": null,
+        "sbc": 928000000,
+        "dividends": 5112000000,
+        "shares": null,
+        "cash_total": 12938000000,
+        "debt": 22071000000,
+        "leases": 884000000
+      },
+      "metrics": {
+        "fcf": 22057000000,
+        "share_growth": null,
+        "sbc_to_revenue": 0.02021654358102956,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 10017000000,
+        "net_debt_to_fcf": 0.45414154236750237,
+        "dividend_to_fcf": 0.23176315908781792,
+        "altman_z": 9.836373331769686
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": null,
+          "threshold": null,
+          "result": "missing"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.02021654358102956,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 0.45414154236750237,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.23176315908781792,
+          "threshold": 1.0,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 9.836373331769686,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "insufficient",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "CNI": {
+      "source": "Yahoo",
+      "errors": [],
+      "market": {
+        "price": 127.56,
+        "market_cap": 76497723392,
+        "beta": 0.953,
+        "dividend_yield": 0.028655939,
+        "change_52w": 0.2953918,
+        "forward_pe": 19.880407,
+        "inst_held": 0.74424005,
+        "short_float": null
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 7049000000.0,
+        "capex": 3658000000.0,
+        "revenue": 17304000000.0,
+        "op_income": 6587000000.0,
+        "net_income": 4720000000.0,
+        "interest_expense": 913000000.0,
+        "sbc": null,
+        "dividends": 2208000000.0,
+        "shares": 623700000.0,
+        "cash_total": 350000000.0,
+        "debt": 21630000000.0,
+        "leases": 0
+      },
+      "metrics": {
+        "fcf": 3391000000.0,
+        "share_growth": -0.017021276595744705,
+        "sbc_to_revenue": null,
+        "interest_coverage": 7.214676889375685,
+        "net_debt_incl_leases": 21280000000.0,
+        "net_debt_to_fcf": 6.275434974933648,
+        "dividend_to_fcf": 0.651135358301386,
+        "altman_z": 2.3348906146405937
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.017021276595744705,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": 7.214676889375685,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 6.275434974933648,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.651135358301386,
+          "threshold": 1.0,
+          "result": "pass"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": 0.2953918,
+          "threshold": -0.3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 2.3348906146405937,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "CEG": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [
+        {
+          "field": "revenue",
+          "sec": 22663000000,
+          "yahoo": 25533000000.0,
+          "diff": 0.1266381326391034
+        }
+      ],
+      "market": {
+        "price": 274.73,
+        "market_cap": 96597409792,
+        "beta": 1.127,
+        "dividend_yield": 0.0062257247,
+        "change_52w": -0.24365854,
+        "forward_pe": 20.491383,
+        "inst_held": 0.84188,
+        "short_float": 0.0334
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 4237000000,
+        "capex": 2949000000,
+        "revenue": 22663000000,
+        "op_income": 3086000000,
+        "net_income": 2319000000,
+        "interest_expense": null,
+        "sbc": 385000000,
+        "dividends": 486000000,
+        "shares": 314000000,
+        "cash_total": 3641000000,
+        "debt": 8992000000,
+        "leases": 505000000
+      },
+      "metrics": {
+        "fcf": 1288000000,
+        "share_growth": -0.0031746031746031633,
+        "sbc_to_revenue": 0.016988042183294357,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 5856000000,
+        "net_debt_to_fcf": 4.546583850931677,
+        "dividend_to_fcf": 0.37732919254658387
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.0031746031746031633,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.016988042183294357,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 4.546583850931677,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.37732919254658387,
+          "threshold": 1.0,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "MSFT": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 521.125,
+        "market_cap": 3869975511040,
+        "beta": 1.045,
+        "dividend_yield": 0.006958512,
+        "change_52w": 0.04308021,
+        "forward_pe": 21.537926,
+        "inst_held": 0.76192003,
+        "short_float": 0.0082
+      },
+      "fiscal_end": "2026-06-30",
+      "raw": {
+        "ocf": 182935000000,
+        "capex": 115948000000,
+        "revenue": 331839000000,
+        "op_income": 155237000000,
+        "net_income": 133749000000,
+        "interest_expense": null,
+        "sbc": 12405000000,
+        "dividends": 26445000000,
+        "shares": 7453000000,
+        "cash_total": 76843000000,
+        "debt": 40294000000,
+        "leases": 88519000000
+      },
+      "metrics": {
+        "fcf": 66987000000,
+        "share_growth": -0.0016075016744808712,
+        "sbc_to_revenue": 0.0373825861336371,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 51970000000,
+        "net_debt_to_fcf": 0.7758221744517593,
+        "dividend_to_fcf": 0.3947780912714407,
+        "altman_z": 9.128897106241432
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.0016075016744808712,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.0373825861336371,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 0.7758221744517593,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.3947780912714407,
+          "threshold": 1.0,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 9.128897106241432,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "BLK": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 1226.31,
+        "market_cap": 189370990592,
+        "beta": 1.382,
+        "dividend_yield": 0.018328356,
+        "change_52w": 0.11721039,
+        "forward_pe": 18.91843,
+        "inst_held": 0.85594004,
+        "short_float": 0.0139999995
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 3927000000,
+        "capex": 375000000,
+        "revenue": 24216000000,
+        "op_income": 7045000000,
+        "net_income": 5553000000,
+        "interest_expense": 614000000,
+        "sbc": 1307000000,
+        "dividends": null,
+        "shares": 160866521,
+        "cash_total": 11468000000,
+        "debt": 12768000000,
+        "leases": 2228000000
+      },
+      "metrics": {
+        "fcf": 3552000000,
+        "share_growth": 0.06101923169452439,
+        "per_share_growth": -0.2878697239930986,
+        "per_share_basis": "每股自由現金流",
+        "sbc_to_revenue": 0.05397258011232243,
+        "interest_coverage": 11.473941368078176,
+        "net_debt_incl_leases": 3528000000,
+        "net_debt_to_fcf": 0.9932432432432432
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股自由現金流成長 -28.8%）",
+          "value": 0.06101923169452439,
+          "threshold": 0.06101923169452439,
+          "result": "veto"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.05397258011232243,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": 11.473941368078176,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 0.9932432432432432,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": 0.11721039,
+          "threshold": -0.3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "NEE": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 85.99,
+        "market_cap": 180347355136,
+        "beta": 0.6,
+        "dividend_yield": 0.028236933,
+        "change_52w": 0.0044242144,
+        "forward_pe": 19.653645,
+        "inst_held": 0.86799,
+        "short_float": 0.0
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 12485000000,
+        "capex": null,
+        "revenue": null,
+        "op_income": 8280000000,
+        "net_income": 6835000000,
+        "interest_expense": 3501000000,
+        "sbc": 185000000,
+        "dividends": 4680000000,
+        "shares": 2070600000,
+        "cash_total": 2812000000,
+        "debt": 93056000000,
+        "leases": 1601000000
+      },
+      "metrics": {
+        "fcf": 12485000000,
+        "share_growth": 0.005536130536130557,
+        "sbc_to_revenue": null,
+        "interest_coverage": 2.365038560411311,
+        "net_debt_incl_leases": 91845000000,
+        "payout_ratio": 0.6847110460863204,
+        "ocf_to_debt": 0.13416652338376892
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.005536130536130557,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": 2.365038560411311,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "u_payout",
+          "label": "公用事業：股息 ÷ 淨利",
+          "value": 0.6847110460863204,
+          "threshold": 0.75,
+          "result": "pass"
+        },
+        {
+          "id": "u_ocf_debt",
+          "label": "公用事業：營運現金流 ÷ 負債",
+          "value": 0.13416652338376892,
+          "threshold": 0.13,
+          "result": "pass"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": 0.0044242144,
+          "threshold": -0.3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "VRTX": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 547.03,
+        "market_cap": 138692722688,
+        "beta": 0.28,
+        "dividend_yield": 0.0,
+        "change_52w": 0.26186693,
+        "forward_pe": 27.421207,
+        "inst_held": 0.98428,
+        "short_float": 0.0214
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 3631400000,
+        "capex": 437600000,
+        "revenue": 12001300000,
+        "op_income": 4173300000,
+        "net_income": 3953200000,
+        "interest_expense": null,
+        "sbc": 685900000,
+        "dividends": null,
+        "shares": 258000000,
+        "cash_total": 6608100000,
+        "debt": null,
+        "leases": 2036000000
+      },
+      "metrics": {
+        "fcf": 3193800000,
+        "share_growth": 0.0003877471888329431,
+        "sbc_to_revenue": 0.057152141851299444,
+        "interest_coverage": null,
+        "net_debt_incl_leases": null,
+        "altman_z": 14.015667140739058
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.0003877471888329431,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.057152141851299444,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 14.015667140739058,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "ASML": {
+      "source": "Yahoo",
+      "errors": [],
+      "market": {
+        "price": 1534.42,
+        "market_cap": 591392669696,
+        "beta": 1.333,
+        "dividend_yield": 0.0049739694,
+        "change_52w": 0.45358753,
+        "forward_pe": 24.20248,
+        "inst_held": 0.20367001,
+        "short_float": 0.003
+      },
+      "verdict": "insufficient"
+    },
+    "CDNS": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 329.26,
+        "market_cap": 90342031360,
+        "beta": 1.102,
+        "dividend_yield": 0.0,
+        "change_52w": 0.051023602,
+        "forward_pe": 33.44347,
+        "inst_held": 0.90933,
+        "short_float": 0.0201
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 1728781000,
+        "capex": 141871000,
+        "revenue": 5296759000,
+        "op_income": 1492042000,
+        "net_income": 1108888000,
+        "interest_expense": 116541000,
+        "sbc": 455175000,
+        "dividends": null,
+        "shares": 273312000,
+        "cash_total": 3155530000,
+        "debt": null,
+        "leases": 186178000
+      },
+      "metrics": {
+        "fcf": 1586910000,
+        "share_growth": -0.001902619479755896,
+        "sbc_to_revenue": 0.08593462530577661,
+        "interest_coverage": 12.802721788898328,
+        "net_debt_incl_leases": null
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.001902619479755896,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.08593462530577661,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": 12.802721788898328,
+          "threshold": 3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "SNPS": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 462.12,
+        "market_cap": 88559124480,
+        "beta": 1.184,
+        "dividend_yield": 0.0,
+        "change_52w": 0.15330613,
+        "forward_pe": 24.784533,
+        "inst_held": 0.91866994,
+        "short_float": 0.033099998
+      },
+      "fiscal_end": "2025-10-31",
+      "raw": {
+        "ocf": 1518608000,
+        "capex": 169454000,
+        "revenue": 7054178000,
+        "op_income": 914927000,
+        "net_income": 1332220000,
+        "interest_expense": null,
+        "sbc": 893294000,
+        "dividends": null,
+        "shares": 165656000,
+        "cash_total": 2960959000,
+        "debt": 13484515000,
+        "leases": 808903000
+      },
+      "metrics": {
+        "fcf": 1349154000,
+        "share_growth": 0.062278766736777236,
+        "per_share_growth": 0.0019939982219501218,
+        "per_share_basis": "每股自由現金流",
+        "sbc_to_revenue": 0.12663332283364553,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 11332459000,
+        "net_debt_to_fcf": 8.399677872207324,
+        "altman_z": 3.2357953043923624
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股自由現金流成長 0.2%）",
+          "value": 0.062278766736777236,
+          "threshold": 0.062278766736777236,
+          "result": "veto"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.12663332283364553,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 8.399677872207324,
+          "threshold": 3,
+          "result": "flag"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 3.2357953043923624,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "TSM": {
+      "source": "Yahoo",
+      "errors": [],
+      "market": {
+        "price": 413.35,
+        "market_cap": 2143828574208,
+        "beta": 1.233,
+        "dividend_yield": 0.015133171,
+        "change_52w": 0.3642558,
+        "forward_pe": 17.675642,
+        "inst_held": 0.15491,
+        "short_float": 0.0066000004
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 2274975600000.0,
+        "capex": 1282597200000.0,
+        "revenue": 3809054300000.0,
+        "op_income": 1936095600000.0,
+        "net_income": 1697604000000.0,
+        "interest_expense": 12370400000.0,
+        "sbc": 1246100000.0,
+        "dividends": 466779200000.0,
+        "shares": 5186111400.0,
+        "cash_total": 3128068100000.0,
+        "debt": 1064582700000.0,
+        "leases": 0
+      },
+      "metrics": {
+        "fcf": 992378400000.0,
+        "share_growth": 3.51720974198777e-05,
+        "sbc_to_revenue": 0.00032714156897159486,
+        "interest_coverage": 156.51034728060532,
+        "net_debt_incl_leases": -2063485400000.0,
+        "net_debt_to_fcf": 0.0,
+        "altman_z": 2.958739623995502
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 3.51720974198777e-05,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.00032714156897159486,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": 156.51034728060532,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（淨現金）",
+          "value": 0.0,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 2.958739623995502,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "NVDA": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 173.73,
+        "market_cap": 4195058188288,
+        "beta": 2.247,
+        "dividend_yield": 0.001658807,
+        "change_52w": -0.12853456,
+        "forward_pe": 10.92035,
+        "inst_held": 0.71384,
+        "short_float": 0.0121
+      },
+      "fiscal_end": "2026-01-25",
+      "raw": {
+        "ocf": 102718000000,
+        "capex": null,
+        "revenue": null,
+        "op_income": 130387000000,
+        "net_income": 120067000000,
+        "interest_expense": null,
+        "sbc": 6386000000,
+        "dividends": 974000000,
+        "shares": 24514000000,
+        "cash_total": 10605000000,
+        "debt": 8468000000,
+        "leases": 2944000000
+      },
+      "metrics": {
+        "fcf": 102718000000,
+        "share_growth": -0.01169166263505883,
+        "sbc_to_revenue": null,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 807000000,
+        "net_debt_to_fcf": 0.00785646137969976
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.01169166263505883,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 0.00785646137969976,
+          "threshold": 3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "PLTR": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 172.4,
+        "market_cap": 415397380096,
+        "beta": 1.61,
+        "dividend_yield": 0.0,
+        "change_52w": -0.0833469,
+        "forward_pe": 67.9069,
+        "inst_held": 0.66245,
+        "short_float": 0.025999999
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 2134473000,
+        "capex": 33882000,
+        "revenue": 4475446000,
+        "op_income": 1414015000,
+        "net_income": 1625033000,
+        "interest_expense": null,
+        "sbc": 684033000,
+        "dividends": null,
+        "shares": 2565197000,
+        "cash_total": 7177043000,
+        "debt": null,
+        "leases": 229338000
+      },
+      "metrics": {
+        "fcf": 2100591000,
+        "share_growth": 0.04666972414924331,
+        "per_share_growth": 0.7585644044643838,
+        "per_share_basis": "每股自由現金流",
+        "sbc_to_revenue": 0.15284130341422955,
+        "interest_coverage": null,
+        "net_debt_incl_leases": null,
+        "altman_z": 177.90200854427434
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股自由現金流成長 75.9%）",
+          "value": 0.04666972414924331,
+          "threshold": 0.04666972414924331,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.15284130341422955,
+          "threshold": 0.15,
+          "result": "flag"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 177.90200854427434,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "flag",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "GEV": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 808.24,
+        "market_cap": 213922594816,
+        "beta": 1.058,
+        "dividend_yield": 0.0025092845,
+        "change_52w": 0.38519287,
+        "forward_pe": 31.248793,
+        "inst_held": 0.8199,
+        "short_float": 0.028299998
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 4987000000,
+        "capex": 1277000000,
+        "revenue": 38068000000,
+        "op_income": 1388000000,
+        "net_income": 4884000000,
+        "interest_expense": 53000000,
+        "sbc": 257000000,
+        "dividends": 275000000,
+        "shares": 276000000,
+        "cash_total": 8848000000,
+        "debt": 63000000,
+        "leases": 1121000000
+      },
+      "metrics": {
+        "fcf": 3710000000,
+        "share_growth": -0.007194244604316502,
+        "sbc_to_revenue": 0.006751077020069349,
+        "interest_coverage": 26.18867924528302,
+        "net_debt_incl_leases": -7664000000,
+        "net_debt_to_fcf": 0.0,
+        "altman_z": 3.329741401661396
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.007194244604316502,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.006751077020069349,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": 26.18867924528302,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（淨現金）",
+          "value": 0.0,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 3.329741401661396,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "RKLB": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 66.15,
+        "market_cap": 44517109760,
+        "beta": 3.176,
+        "dividend_yield": 0.0,
+        "change_52w": 0.25495303,
+        "forward_pe": 972.3652,
+        "inst_held": 0.59568,
+        "short_float": 0.073
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": -165521000,
+        "capex": 156285000,
+        "revenue": 601799000,
+        "op_income": -228838000,
+        "net_income": -198209000,
+        "interest_expense": 26489000,
+        "sbc": 71099000,
+        "dividends": null,
+        "shares": 530664781,
+        "cash_total": 1016577000,
+        "debt": 1716000,
+        "leases": 110977000
+      },
+      "metrics": {
+        "fcf": -321806000,
+        "share_growth": 0.07003998494859731,
+        "per_share_growth": 0.2892936844700067,
+        "per_share_basis": "每股營收",
+        "sbc_to_revenue": 0.11814409794632427,
+        "cash_runway_years": 3.1589746617527332,
+        "interest_coverage": -8.638982219034316,
+        "net_debt_incl_leases": -903884000,
+        "net_debt_to_fcf": 0.0,
+        "altman_z": 44.180115123857966
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股營收成長 28.9%）",
+          "value": 0.07003998494859731,
+          "threshold": 0.07003998494859731,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.11814409794632427,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": 3.1589746617527332,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": -8.638982219034316,
+          "threshold": 3,
+          "result": "flag"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（淨現金）",
+          "value": 0.0,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 44.180115123857966,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "flag",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "TWST": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 122.59,
+        "market_cap": 8127860736,
+        "beta": 2.222,
+        "dividend_yield": 0.0,
+        "change_52w": 3.145905,
+        "forward_pe": -306.47498,
+        "inst_held": 1.2075801,
+        "short_float": 0.1871
+      },
+      "fiscal_end": "2025-09-30",
+      "raw": {
+        "ocf": -47628000,
+        "capex": 28004000,
+        "revenue": 376572000,
+        "op_income": -136259000,
+        "net_income": -77670000,
+        "interest_expense": null,
+        "sbc": 64459000,
+        "dividends": null,
+        "shares": 59808000,
+        "cash_total": 232434000,
+        "debt": null,
+        "leases": 75572000
+      },
+      "metrics": {
+        "fcf": -75632000,
+        "share_growth": 0.030888030888030826,
+        "per_share_growth": 0.16715428061188686,
+        "per_share_basis": "每股營收",
+        "sbc_to_revenue": 0.1711731089937648,
+        "cash_runway_years": 3.0732229744023694,
+        "interest_coverage": null,
+        "net_debt_incl_leases": null,
+        "altman_z": 26.332425891893283
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股營收成長 16.7%）",
+          "value": 0.030888030888030826,
+          "threshold": 0.030888030888030826,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.1711731089937648,
+          "threshold": 0.15,
+          "result": "flag"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": 3.0732229744023694,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 26.332425891893283,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "flag",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "IONQ": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 34.06,
+        "market_cap": 15827544064,
+        "beta": 3.409,
+        "dividend_yield": 0.0,
+        "change_52w": -0.30999804,
+        "forward_pe": -24.256323,
+        "inst_held": 0.44184,
+        "short_float": 0.1176
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": -283187000,
+        "capex": 16417000,
+        "revenue": 130016000,
+        "op_income": -633715000,
+        "net_income": -510378000,
+        "interest_expense": null,
+        "sbc": 312032000,
+        "dividends": null,
+        "shares": 280345046,
+        "cash_total": 2392156000,
+        "debt": null,
+        "leases": 30021000
+      },
+      "metrics": {
+        "fcf": -299604000,
+        "share_growth": 0.31599249709071797,
+        "per_share_growth": 1.2937087236628289,
+        "per_share_basis": "每股營收",
+        "sbc_to_revenue": 2.399950775289195,
+        "cash_runway_years": 7.984392731739229,
+        "interest_coverage": null,
+        "net_debt_incl_leases": null,
+        "altman_z": 3.333911407205865
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股營收成長 129.4%）",
+          "value": 0.31599249709071797,
+          "threshold": 0.31599249709071797,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 2.399950775289195,
+          "threshold": 0.15,
+          "result": "flag"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": 7.984392731739229,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 3.333911407205865,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "flag",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "MP": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 36.73,
+        "market_cap": 6547782144,
+        "beta": 2.108,
+        "dividend_yield": 0.0,
+        "change_52w": -0.3894843,
+        "forward_pe": 78.73189,
+        "inst_held": 0.79150003,
+        "short_float": 0.2183
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": -155755000,
+        "capex": 172375000,
+        "revenue": 224441000,
+        "op_income": -149374000,
+        "net_income": -85874000,
+        "interest_expense": null,
+        "sbc": 30163000,
+        "dividends": null,
+        "shares": 170126753,
+        "cash_total": 1830286000,
+        "debt": 998741000,
+        "leases": 11645000
+      },
+      "metrics": {
+        "fcf": -328130000,
+        "share_growth": 0.001436950826759098,
+        "sbc_to_revenue": 0.1343916664067617,
+        "cash_runway_years": 5.577929479169841,
+        "interest_coverage": null,
+        "net_debt_incl_leases": -819900000,
+        "net_debt_to_fcf": 0.0,
+        "altman_z": 3.2644739891070054
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.001436950826759098,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.1343916664067617,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": 5.577929479169841,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（淨現金）",
+          "value": 0.0,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 3.2644739891070054,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "QNT": {
+      "source": "Yahoo",
+      "errors": [],
+      "market": {
+        "price": 40.57,
+        "market_cap": 10868468736,
+        "beta": null,
+        "dividend_yield": 0.0,
+        "change_52w": -0.28784364,
+        "forward_pe": -23.424328,
+        "inst_held": 0.88891,
+        "short_float": null
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": -160273000.0,
+        "capex": 75077000.0,
+        "revenue": 30931000.0,
+        "op_income": -530053000.0,
+        "net_income": -71530000.0,
+        "interest_expense": null,
+        "sbc": 0.0,
+        "dividends": null,
+        "shares": 33208419.0,
+        "cash_total": 762642000.0,
+        "debt": 10456000.0,
+        "leases": 0
+      },
+      "metrics": {
+        "fcf": -235350000.0,
+        "share_growth": -0.04199918584805329,
+        "sbc_to_revenue": 0.0,
+        "cash_runway_years": 3.2404588910133842,
+        "interest_coverage": null,
+        "net_debt_incl_leases": -752186000.0,
+        "net_debt_to_fcf": 0.0,
+        "altman_z": 40.25315779259974
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.04199918584805329,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.0,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": 3.2404588910133842,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（淨現金）",
+          "value": 0.0,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 40.25315779259974,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "CRSP": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [
+        {
+          "field": "capex",
+          "sec": 914000,
+          "yahoo": 25914000.0,
+          "diff": 27.35229759299781
+        }
+      ],
+      "market": {
+        "price": 45.75,
+        "market_cap": 4437787136,
+        "beta": 1.897,
+        "dividend_yield": 0.0,
+        "change_52w": -0.13489175,
+        "forward_pe": -12.463937,
+        "inst_held": 0.78526,
+        "short_float": 0.2028
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": -345014000,
+        "capex": 914000,
+        "revenue": 3510000,
+        "op_income": -664571000,
+        "net_income": -581599000,
+        "interest_expense": null,
+        "sbc": 72499000,
+        "dividends": null,
+        "shares": 89925109,
+        "cash_total": 1975828000,
+        "debt": null,
+        "leases": 206746000
+      },
+      "metrics": {
+        "fcf": -345928000,
+        "share_growth": 0.06597961908709205,
+        "per_share_growth": -0.9117557517012455,
+        "per_share_basis": "每股營收",
+        "sbc_to_revenue": 20.654985754985756,
+        "cash_runway_years": 5.711674105594228,
+        "interest_coverage": null,
+        "net_debt_incl_leases": null,
+        "altman_z": 6.555825084508511
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股營收成長 -91.2%）",
+          "value": 0.06597961908709205,
+          "threshold": 0.06597961908709205,
+          "result": "veto"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 20.654985754985756,
+          "threshold": 0.15,
+          "result": "flag"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": 5.711674105594228,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 6.555825084508511,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "OKLO": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 25.86,
+        "market_cap": 5050189312,
+        "beta": 1.313,
+        "dividend_yield": 0.0,
+        "change_52w": -0.77430964,
+        "forward_pe": -22.594034,
+        "inst_held": 0.45948002,
+        "short_float": 0.2188
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": -82174000,
+        "capex": 33205000,
+        "revenue": null,
+        "op_income": -139294000,
+        "net_income": -105663000,
+        "interest_expense": null,
+        "sbc": 41795000,
+        "dividends": null,
+        "shares": 146351775,
+        "cash_total": 788445000,
+        "debt": null,
+        "leases": 1450000
+      },
+      "metrics": {
+        "fcf": -115379000,
+        "share_growth": 0.4796456957295112,
+        "per_share_growth": null,
+        "per_share_basis": null,
+        "sbc_to_revenue": null,
+        "cash_runway_years": 6.833522564764818,
+        "interest_coverage": null,
+        "net_debt_incl_leases": null
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.4796456957295112,
+          "threshold": null,
+          "result": "missing"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": 6.833522564764818,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "insufficient",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "SMR": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 5.23,
+        "market_cap": 2147131392,
+        "beta": 2.429,
+        "dividend_yield": 0.0,
+        "change_52w": -0.7989214,
+        "forward_pe": -7.802244,
+        "inst_held": 0.62450004,
+        "short_float": 0.2636
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": -459610000,
+        "capex": 508000,
+        "revenue": 31479000,
+        "op_income": -689571000,
+        "net_income": -355794000,
+        "interest_expense": null,
+        "sbc": 19160000,
+        "dividends": null,
+        "shares": 163731673,
+        "cash_total": 1254217000,
+        "debt": null,
+        "leases": 0
+      },
+      "metrics": {
+        "fcf": -460118000,
+        "share_growth": 0.7558380455471296,
+        "per_share_growth": -0.5160428914046451,
+        "per_share_basis": "每股營收",
+        "sbc_to_revenue": 0.6086597414149115,
+        "cash_runway_years": 2.725859453444551,
+        "interest_coverage": null,
+        "net_debt_incl_leases": null,
+        "altman_z": 2.823673537342382
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股營收成長 -51.6%）",
+          "value": 0.7558380455471296,
+          "threshold": 0.7558380455471296,
+          "result": "veto"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.6086597414149115,
+          "threshold": 0.15,
+          "result": "flag"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": 2.725859453444551,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 2.823673537342382,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "RXRX": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [
+        {
+          "field": "capex",
+          "sec": 6469000,
+          "yahoo": 8627000.0,
+          "diff": 0.3335909723295718
+        }
+      ],
+      "market": {
+        "price": 3.59,
+        "market_cap": 2237890560,
+        "beta": 1.15,
+        "dividend_yield": 0.0,
+        "change_52w": -0.23655915,
+        "forward_pe": -4.345352,
+        "inst_held": 0.61959,
+        "short_float": 0.2376
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": -371808000,
+        "capex": 6469000,
+        "revenue": 74681000,
+        "op_income": -648132000,
+        "net_income": -644759000,
+        "interest_expense": null,
+        "sbc": 111223000,
+        "dividends": null,
+        "shares": 447446109,
+        "cash_total": 743294000,
+        "debt": 18655000,
+        "leases": 77648000
+      },
+      "metrics": {
+        "fcf": -378277000,
+        "share_growth": 0.631781357733106,
+        "per_share_growth": -0.22217325070772154,
+        "per_share_basis": "每股營收",
+        "sbc_to_revenue": 1.4893078560811988,
+        "cash_runway_years": 1.9649463224039527,
+        "interest_coverage": null,
+        "net_debt_incl_leases": -646991000,
+        "net_debt_to_fcf": 0.0,
+        "altman_z": 1.0812455747586642
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股營收成長 -22.2%）",
+          "value": 0.631781357733106,
+          "threshold": 0.631781357733106,
+          "result": "veto"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 1.4893078560811988,
+          "threshold": 0.15,
+          "result": "flag"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": 1.9649463224039527,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（淨現金）",
+          "value": 0.0,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 1.0812455747586642,
+          "threshold": 1.8,
+          "result": "flag"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "MA": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [
+        {
+          "field": "capex",
+          "sec": 489000000,
+          "yahoo": 1215000000.0,
+          "diff": 1.4846625766871167
+        }
+      ],
+      "market": {
+        "price": 660.73,
+        "market_cap": 575612190720,
+        "beta": 0.77,
+        "dividend_yield": 0.0052820104,
+        "change_52w": 0.17392159,
+        "forward_pe": 28.523016,
+        "inst_held": 0.91111,
+        "short_float": 0.0082
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 17648000000,
+        "capex": 489000000,
+        "revenue": null,
+        "op_income": 18897000000,
+        "net_income": null,
+        "interest_expense": null,
+        "sbc": 597000000,
+        "dividends": 2756000000,
+        "shares": 906000000,
+        "cash_total": 10566000000,
+        "debt": 19000000000,
+        "leases": 833000000
+      },
+      "metrics": {
+        "fcf": 17159000000,
+        "share_growth": -0.02265372168284785,
+        "sbc_to_revenue": null,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 9267000000,
+        "net_debt_to_fcf": 0.5400664374380791,
+        "dividend_to_fcf": 0.1606154204790489
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.02265372168284785,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 0.5400664374380791,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.1606154204790489,
+          "threshold": 1.0,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "XYL": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 95.11,
+        "market_cap": 21812013056,
+        "beta": 0.994,
+        "dividend_yield": 0.017451467,
+        "change_52w": -0.35384,
+        "forward_pe": 16.191416,
+        "inst_held": 0.99263,
+        "short_float": 0.049099997
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 1241000000,
+        "capex": 331000000,
+        "revenue": 9035000000,
+        "op_income": 1223000000,
+        "net_income": 957000000,
+        "interest_expense": null,
+        "sbc": 53000000,
+        "dividends": 391000000,
+        "shares": 243994000,
+        "cash_total": 1479000000,
+        "debt": 1942000000,
+        "leases": 533000000
+      },
+      "metrics": {
+        "fcf": 910000000,
+        "share_growth": 0.0019423376218068444,
+        "sbc_to_revenue": 0.005866076369673492,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 996000000,
+        "net_debt_to_fcf": 1.0945054945054946,
+        "dividend_to_fcf": 0.42967032967032964,
+        "altman_z": 3.3807544053519685
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.0019423376218068444,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.005866076369673492,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 1.0945054945054946,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.42967032967032964,
+          "threshold": 1.0,
+          "result": "pass"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": -0.35384,
+          "threshold": -0.3,
+          "result": "veto"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 3.3807544053519685,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "VLTO": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 118.77,
+        "market_cap": 28877953024,
+        "beta": 0.666,
+        "dividend_yield": 0.004398951,
+        "change_52w": 0.20955694,
+        "forward_pe": 24.34984,
+        "inst_held": 1.02874,
+        "short_float": 0.0233
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 1077000000,
+        "capex": 63000000,
+        "revenue": 5503000000,
+        "op_income": 1277000000,
+        "net_income": 940000000,
+        "interest_expense": null,
+        "sbc": 74000000,
+        "dividends": 109000000,
+        "shares": 250300000,
+        "cash_total": 2031000000,
+        "debt": 2673000000,
+        "leases": 206000000
+      },
+      "metrics": {
+        "fcf": 1014000000,
+        "share_growth": 0.002804487179487225,
+        "sbc_to_revenue": 0.01344721061239324,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 848000000,
+        "net_debt_to_fcf": 0.8362919132149902,
+        "dividend_to_fcf": 0.10749506903353057
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.002804487179487225,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.01344721061239324,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 0.8362919132149902,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.10749506903353057,
+          "threshold": 1.0,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "PNR": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 69.33,
+        "market_cap": 11068859392,
+        "beta": 1.01,
+        "dividend_yield": 0.015223323,
+        "change_52w": -0.35931176,
+        "forward_pe": 13.082737,
+        "inst_held": 1.00084,
+        "short_float": 0.0547
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 814800000,
+        "capex": 68800000,
+        "revenue": 4176000000,
+        "op_income": 857500000,
+        "net_income": 653800000,
+        "interest_expense": null,
+        "sbc": 37000000,
+        "dividends": 164300000,
+        "shares": 165500000,
+        "cash_total": null,
+        "debt": 1638600000,
+        "leases": 127300000
+      },
+      "metrics": {
+        "fcf": 746000000,
+        "share_growth": -0.00957510472770795,
+        "sbc_to_revenue": 0.008860153256704981,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 1765900000,
+        "net_debt_to_fcf": 2.3671581769436996,
+        "dividend_to_fcf": 0.22024128686327077,
+        "altman_z": 3.911072386669461
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.00957510472770795,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.008860153256704981,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 2.3671581769436996,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.22024128686327077,
+          "threshold": 1.0,
+          "result": "pass"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": -0.35931176,
+          "threshold": -0.3,
+          "result": "veto"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 3.911072386669461,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "NDAQ": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 109.68,
+        "market_cap": 61308637184,
+        "beta": 0.957,
+        "dividend_yield": 0.010543537,
+        "change_52w": 0.23938262,
+        "forward_pe": 23.101664,
+        "inst_held": 0.87708,
+        "short_float": 0.024
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 2255000000,
+        "capex": 266000000,
+        "revenue": 8262000000,
+        "op_income": 2331000000,
+        "net_income": 1788000000,
+        "interest_expense": null,
+        "sbc": 165000000,
+        "dividends": 601000000,
+        "shares": 578597687,
+        "cash_total": 604000000,
+        "debt": 9004000000,
+        "leases": 522000000
+      },
+      "metrics": {
+        "fcf": 1989000000,
+        "share_growth": -0.0010218330572631107,
+        "sbc_to_revenue": 0.019970951343500364,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 8922000000,
+        "net_debt_to_fcf": 4.4856711915535445,
+        "dividend_to_fcf": 0.3021618903971845
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.0010218330572631107,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.019970951343500364,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 4.4856711915535445,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.3021618903971845,
+          "threshold": 1.0,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "BK": {
+      "source": null,
+      "errors": [],
+      "market": {
+        "price": null,
+        "market_cap": null,
+        "beta": null,
+        "dividend_yield": null,
+        "change_52w": null,
+        "forward_pe": null,
+        "inst_held": null,
+        "short_float": null
+      },
+      "verdict": "insufficient"
+    },
+    "JPM": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 343.39,
+        "market_cap": 911909847040,
+        "beta": 1.02,
+        "dividend_yield": 0.017978776,
+        "change_52w": 0.06760085,
+        "forward_pe": 13.427804,
+        "inst_held": 0.75737,
+        "short_float": 0.009
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": -147782000000,
+        "capex": null,
+        "revenue": 182447000000,
+        "op_income": null,
+        "net_income": 57048000000,
+        "interest_expense": null,
+        "sbc": 3614000000,
+        "dividends": 16625000000,
+        "shares": 2781500000,
+        "cash_total": null,
+        "debt": 64776000000,
+        "leases": 9337000000
+      },
+      "metrics": {
+        "fcf": -147782000000,
+        "share_growth": -0.03386592566863489,
+        "sbc_to_revenue": 0.019808492329279188,
+        "cash_runway_years": null,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 74113000000,
+        "dividend_to_fcf": null
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.03386592566863489,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.019808492329279188,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "runway",
+          "label": "現金跑道（年）",
+          "value": null,
+          "threshold": 3,
+          "result": "missing"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（自由現金流為負）",
+          "value": null,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": null,
+          "threshold": 1.0,
+          "result": "veto"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": 0.06760085,
+          "threshold": -0.3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "AEP": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 129.21,
+        "market_cap": 70358253568,
+        "beta": 0.442,
+        "dividend_yield": 0.029724656,
+        "change_52w": 0.042060614,
+        "forward_pe": 18.731247,
+        "inst_held": 0.96999,
+        "short_float": 0.050300002
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 6944000000,
+        "capex": null,
+        "revenue": 21702000000,
+        "op_income": 5319000000,
+        "net_income": null,
+        "interest_expense": null,
+        "sbc": 53000000,
+        "dividends": 2008000000,
+        "shares": 537467865,
+        "cash_total": 417000000,
+        "debt": 48830000000,
+        "leases": 833000000
+      },
+      "metrics": {
+        "fcf": 6944000000,
+        "share_growth": 0.01153722381338329,
+        "sbc_to_revenue": 0.0024421712284582067,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 49246000000,
+        "payout_ratio": null,
+        "ocf_to_debt": 0.1422076592258857
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.01153722381338329,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.0024421712284582067,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "u_ocf_debt",
+          "label": "公用事業：營運現金流 ÷ 負債",
+          "value": 0.1422076592258857,
+          "threshold": 0.13,
+          "result": "pass"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": 0.042060614,
+          "threshold": -0.3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "EXC": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 45.61,
+        "market_cap": 47201640448,
+        "beta": 0.337,
+        "dividend_yield": 0.036459476,
+        "change_52w": -0.008708894,
+        "forward_pe": 15.041587,
+        "inst_held": 0.95706004,
+        "short_float": 0.0385
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 6254000000,
+        "capex": 8529000000,
+        "revenue": 24258000000,
+        "op_income": 5148000000,
+        "net_income": null,
+        "interest_expense": null,
+        "sbc": null,
+        "dividends": 1617000000,
+        "shares": 1012000000,
+        "cash_total": 626000000,
+        "debt": 2277000000,
+        "leases": 165000000
+      },
+      "metrics": {
+        "fcf": -2275000000,
+        "share_growth": 0.008973080757726848,
+        "sbc_to_revenue": null,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 1816000000,
+        "payout_ratio": null,
+        "ocf_to_debt": 2.7465963987703117
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.008973080757726848,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "u_ocf_debt",
+          "label": "公用事業：營運現金流 ÷ 負債",
+          "value": 2.7465963987703117,
+          "threshold": 0.13,
+          "result": "pass"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": -0.008708894,
+          "threshold": -0.3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "DLR": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [
+        {
+          "field": "shares",
+          "sec": 347810000,
+          "yahoo": 1391240000.0,
+          "diff": 3.0
+        }
+      ],
+      "market": {
+        "price": 181.13,
+        "market_cap": 69733400576,
+        "beta": 1.002,
+        "dividend_yield": 0.026979212,
+        "change_52w": 0.10359979,
+        "forward_pe": 62.61862,
+        "inst_held": 1.03368,
+        "short_float": 0.0001
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 2412136000,
+        "capex": null,
+        "revenue": 6112692000,
+        "op_income": 658492000,
+        "net_income": 1308589000,
+        "interest_expense": 437947000,
+        "sbc": null,
+        "dividends": 1728466000,
+        "shares": 347810000,
+        "cash_total": 3451647000,
+        "debt": null,
+        "leases": 1593847000
+      },
+      "metrics": {
+        "fcf": 2412136000,
+        "share_growth": 0.049051868965787726,
+        "per_share_growth": 0.016746423356116535,
+        "per_share_basis": "每股自由現金流",
+        "sbc_to_revenue": null,
+        "interest_coverage": 1.5035883337481477,
+        "net_debt_incl_leases": null
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股自由現金流成長 1.7%）",
+          "value": 0.049051868965787726,
+          "threshold": 0.049051868965787726,
+          "result": "veto"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": 1.5035883337481477,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "reit",
+          "label": "REIT：要用 AFFO 檢查，規則待補",
+          "value": null,
+          "threshold": null,
+          "result": "pending"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": 0.10359979,
+          "threshold": -0.3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "EQIX": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 1068.06,
+        "market_cap": 105725468672,
+        "beta": 0.966,
+        "dividend_yield": 0.019209525,
+        "change_52w": 0.29113173,
+        "forward_pe": 51.60957,
+        "inst_held": 1.0129399,
+        "short_float": 0.020499999
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 3911000000,
+        "capex": null,
+        "revenue": 9217000000,
+        "op_income": 1848000000,
+        "net_income": 1350000000,
+        "interest_expense": null,
+        "sbc": 498000000,
+        "dividends": 1856000000,
+        "shares": 98123000,
+        "cash_total": 3227000000,
+        "debt": 1299000000,
+        "leases": 3814000000
+      },
+      "metrics": {
+        "fcf": 3911000000,
+        "share_growth": 0.023959844302753996,
+        "per_share_growth": 0.17558809384620866,
+        "per_share_basis": "每股自由現金流",
+        "sbc_to_revenue": 0.054030595638494085,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 1886000000
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋（每股自由現金流成長 17.6%）",
+          "value": 0.023959844302753996,
+          "threshold": 0.023959844302753996,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.054030595638494085,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "reit",
+          "label": "REIT：要用 AFFO 檢查，規則待補",
+          "value": null,
+          "threshold": null,
+          "result": "pending"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": 0.29113173,
+          "threshold": -0.3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "flag",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "WMB": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [
+        {
+          "field": "revenue",
+          "sec": 14899000000,
+          "yahoo": 11950000000.0,
+          "diff": -0.1979327471642392
+        }
+      ],
+      "market": {
+        "price": 68.92,
+        "market_cap": 86163955712,
+        "beta": 0.627,
+        "dividend_yield": 0.03075897,
+        "change_52w": 0.11633289,
+        "forward_pe": 26.683392,
+        "inst_held": 0.89691,
+        "short_float": 0.026800001
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 5898000000,
+        "capex": 4893000000,
+        "revenue": 14899000000,
+        "op_income": 4196000000,
+        "net_income": 2618000000,
+        "interest_expense": null,
+        "sbc": 93000000,
+        "dividends": 2442000000,
+        "shares": 1225000000,
+        "cash_total": null,
+        "debt": 28016000000,
+        "leases": 183000000
+      },
+      "metrics": {
+        "fcf": 1005000000,
+        "share_growth": 0.0016353229762877675,
+        "sbc_to_revenue": 0.006242029666420565,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 28199000000,
+        "net_debt_to_fcf": 28.058706467661693,
+        "dividend_to_fcf": 2.4298507462686567
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.0016353229762877675,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.006242029666420565,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 28.058706467661693,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 2.4298507462686567,
+          "threshold": 1.0,
+          "result": "veto"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": 0.11633289,
+          "threshold": -0.3,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "ENB": {
+      "source": "Yahoo",
+      "errors": [],
+      "market": {
+        "price": 47.91,
+        "market_cap": 106786029568,
+        "beta": 0.786,
+        "dividend_yield": 0.08082077,
+        "change_52w": -0.019503176,
+        "forward_pe": 21.52617,
+        "inst_held": 0.52146,
+        "short_float": 0.024500001
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 12270000000.0,
+        "capex": 9165000000.0,
+        "revenue": 65194000000.0,
+        "op_income": 11528000000.0,
+        "net_income": 7491000000.0,
+        "interest_expense": 4992000000.0,
+        "sbc": null,
+        "dividends": 8639000000.0,
+        "shares": 2186000000.0,
+        "cash_total": 1094000000.0,
+        "debt": 105252000000.0,
+        "leases": 0
+      },
+      "metrics": {
+        "fcf": 3105000000.0,
+        "share_growth": 0.01297497683039861,
+        "sbc_to_revenue": null,
+        "interest_coverage": 2.309294871794872,
+        "net_debt_incl_leases": 104158000000.0,
+        "net_debt_to_fcf": 33.54524959742351,
+        "dividend_to_fcf": 2.7822866344605477,
+        "altman_z": 0.7112356246809161
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.01297497683039861,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": 2.309294871794872,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 33.54524959742351,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 2.7822866344605477,
+          "threshold": 1.0,
+          "result": "veto"
+        },
+        {
+          "id": "yield_trap",
+          "label": "高殖利率是否來自股價下跌（52 週漲跌）",
+          "value": -0.019503176,
+          "threshold": -0.3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 0.7112356246809161,
+          "threshold": 1.8,
+          "result": "veto"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "LNG": {
+      "source": "SEC",
+      "errors": [],
+      "crosscheck": [],
+      "market": {
+        "price": 304.51,
+        "market_cap": 62182137856,
+        "beta": 0.004,
+        "dividend_yield": 0.007802651,
+        "change_52w": 0.3743385,
+        "forward_pe": 13.365157,
+        "inst_held": 0.95841,
+        "short_float": 0.0227
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 5539000000,
+        "capex": 3078000000,
+        "revenue": 19464000000,
+        "op_income": 9112000000,
+        "net_income": 5330000000,
+        "interest_expense": null,
+        "sbc": 161000000,
+        "dividends": 451000000,
+        "shares": 220300000,
+        "cash_total": 1099000000,
+        "debt": 22813000000,
+        "leases": 3633000000
+      },
+      "metrics": {
+        "fcf": 2461000000,
+        "share_growth": -0.03841117415975559,
+        "sbc_to_revenue": 0.008271681052198932,
+        "interest_coverage": null,
+        "net_debt_incl_leases": 25347000000,
+        "net_debt_to_fcf": 10.299471759447378,
+        "dividend_to_fcf": 0.18325883787078423,
+        "altman_z": 2.458829440506471
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.03841117415975559,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.008271681052198932,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（年）",
+          "value": 10.299471759447378,
+          "threshold": 3,
+          "result": "veto"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.18325883787078423,
+          "threshold": 1.0,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 2.458829440506471,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "veto",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "SAP": {
+      "source": "Yahoo",
+      "errors": [],
+      "market": {
+        "price": 234.1,
+        "market_cap": 270199226368,
+        "beta": 0.702,
+        "dividend_yield": 0.010695645,
+        "change_52w": -0.07736641,
+        "forward_pe": 24.564611,
+        "inst_held": 0.082270004,
+        "short_float": 0.0023
+      },
+      "fiscal_end": "2025-12-31",
+      "raw": {
+        "ocf": 9156000000.0,
+        "capex": 739000000.0,
+        "revenue": 36800000000.0,
+        "op_income": 9620000000.0,
+        "net_income": 7161000000.0,
+        "interest_expense": 492000000.0,
+        "sbc": 1695000000.0,
+        "dividends": 2743000000.0,
+        "shares": 1175000000.0,
+        "cash_total": 9772000000.0,
+        "debt": 7476000000.0,
+        "leases": 0
+      },
+      "metrics": {
+        "fcf": 8417000000.0,
+        "share_growth": -0.004237288135593209,
+        "sbc_to_revenue": 0.04605978260869565,
+        "interest_coverage": 19.552845528455286,
+        "net_debt_incl_leases": -2296000000.0,
+        "net_debt_to_fcf": 0.0,
+        "dividend_to_fcf": 0.32588808364025185,
+        "altman_z": 8.375581764249704
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": -0.004237288135593209,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.04605978260869565,
+          "threshold": 0.15,
+          "result": "pass"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數",
+          "value": 19.552845528455286,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（淨現金）",
+          "value": 0.0,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "div_cover",
+          "label": "股息 ÷ 自由現金流",
+          "value": 0.32588808364025185,
+          "threshold": 1.0,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 8.375581764249704,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "pass",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    },
+    "ARM": {
+      "source": "Yahoo",
+      "errors": [],
+      "market": {
+        "price": 203.36,
+        "market_cap": 217595199488,
+        "beta": 3.939,
+        "dividend_yield": 0.0,
+        "change_52w": 0.22010088,
+        "forward_pe": 66.162384,
+        "inst_held": 0.96005994,
+        "short_float": 0.1071
+      },
+      "fiscal_end": "2026-03-31",
+      "raw": {
+        "ocf": 1524000000.0,
+        "capex": 575000000.0,
+        "revenue": 4920000000.0,
+        "op_income": 908000000.0,
+        "net_income": 904000000.0,
+        "interest_expense": null,
+        "sbc": 1052000000.0,
+        "dividends": null,
+        "shares": 1068000000.0,
+        "cash_total": 3601000000.0,
+        "debt": 457000000.0,
+        "leases": 0
+      },
+      "metrics": {
+        "fcf": 949000000.0,
+        "share_growth": 0.00470366886171214,
+        "sbc_to_revenue": 0.2138211382113821,
+        "interest_coverage": null,
+        "net_debt_incl_leases": -3144000000.0,
+        "net_debt_to_fcf": 0.0,
+        "altman_z": 55.9200813305407
+      },
+      "checks": [
+        {
+          "id": "dilution",
+          "label": "已發生的稀釋",
+          "value": 0.00470366886171214,
+          "threshold": 0.02,
+          "result": "pass"
+        },
+        {
+          "id": "sbc",
+          "label": "股票薪酬 ÷ 營收",
+          "value": 0.2138211382113821,
+          "threshold": 0.15,
+          "result": "flag"
+        },
+        {
+          "id": "coverage",
+          "label": "利息保障倍數（無利息費用或未揭露）",
+          "value": null,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "leverage",
+          "label": "含租賃淨負債 ÷ 自由現金流（淨現金）",
+          "value": 0.0,
+          "threshold": 3,
+          "result": "pass"
+        },
+        {
+          "id": "altman",
+          "label": "Altman Z（大量回購的公司可能誤判）",
+          "value": 55.9200813305407,
+          "threshold": 1.8,
+          "result": "pass"
+        }
+      ],
+      "verdict": "flag",
+      "manual_todo": [
+        "潛在稀釋（權證、可轉債、ATM）",
+        "近 2 年到期負債",
+        "最大客戶占比"
+      ]
+    }
+  }
+}
