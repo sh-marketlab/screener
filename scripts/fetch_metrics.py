@@ -23,8 +23,10 @@ OUT = ROOT / "data" / "metrics.json"
 # 每個欄位的備選 XBRL 科目，依序嘗試，取到第一個有值的
 DURATION = {
     "ocf": ["NetCashProvidedByUsedInOperatingActivities"],
-    "capex": ["PaymentsToAcquirePropertyPlantAndEquipment", "PaymentsToAcquireProductiveAssets"],
-    "capex_software": ["PaymentsToDevelopSoftware", "PaymentsForSoftware"],
+    "capex": ["PaymentsToAcquirePropertyPlantAndEquipment", "PaymentsToAcquireProductiveAssets",
+              "PaymentsToAcquirePropertyAndEquipmentAndIntangibleAssets",
+              "PaymentsToAcquireOtherPropertyPlantAndEquipment"],
+    "capex_software": ["PaymentsToDevelopSoftware", "PaymentsForSoftware", "PaymentsToAcquireSoftware"],
     "revenue": ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues",
                 "RevenueFromContractWithCustomerIncludingAssessedTax", "SalesRevenueNet"],
     "op_income": ["OperatingIncomeLoss"],
@@ -34,6 +36,7 @@ DURATION = {
     "sbc": ["ShareBasedCompensation", "AllocatedShareBasedCompensationExpense"],
     "dividends": ["PaymentsOfDividends", "PaymentsOfDividendsCommonStock"],
     "shares": ["WeightedAverageNumberOfDilutedSharesOutstanding",
+               "WeightedAverageNumberOfSharesOutstandingBasicAndDiluted",
                "WeightedAverageNumberOfSharesOutstandingBasic"],
 }
 INSTANT = {
@@ -59,37 +62,33 @@ def _days(a: str, b: str) -> int:
     return (datetime.fromisoformat(b) - datetime.fromisoformat(a)).days
 
 
+def _series(facts: dict, tag: str, duration: bool) -> dict[str, float]:
+    """回傳某個科目的 {期末日: 值}。期間型只取 10-K 裡約一年長度的期間。"""
+    out: dict[str, float] = {}
+    for unit_rows in (facts.get(tag) or {}).get("units", {}).values():
+        for r in unit_rows:
+            if r.get("form") not in ("10-K", "10-K/A") or (("start" in r) != duration):
+                continue
+            if not duration or 350 <= _days(r["start"], r["end"]) <= 380:
+                out[r["end"]] = r["val"]
+    return out
+
+
 def _annual_duration(facts: dict, tags: list[str]) -> dict[str, float]:
-    """回傳 {期末日: 值}，只取 10-K 裡約一年長度的期間。"""
+    """合併備選科目：每個期末日取第一個有值的科目（公司換科目時不會漏）。"""
+    out: dict[str, float] = {}
     for tag in tags:
-        node = facts.get(tag)
-        if not node:
-            continue
-        out: dict[str, float] = {}
-        for unit_rows in node.get("units", {}).values():
-            for r in unit_rows:
-                if r.get("form") not in ("10-K", "10-K/A") or "start" not in r:
-                    continue
-                if 350 <= _days(r["start"], r["end"]) <= 380:
-                    out[r["end"]] = r["val"]
-        if out:
-            return out
-    return {}
+        for end, val in _series(facts, tag, True).items():
+            out.setdefault(end, val)
+    return out
 
 
 def _instant(facts: dict, tags: list[str]) -> dict[str, float]:
+    out: dict[str, float] = {}
     for tag in tags:
-        node = facts.get(tag)
-        if not node:
-            continue
-        out: dict[str, float] = {}
-        for unit_rows in node.get("units", {}).values():
-            for r in unit_rows:
-                if r.get("form") in ("10-K", "10-K/A") and "start" not in r:
-                    out[r["end"]] = r["val"]
-        if out:
-            return out
-    return {}
+        for end, val in _series(facts, tag, False).items():
+            out.setdefault(end, val)
+    return out
 
 
 def extract_sec(companyfacts: dict) -> dict | None:
@@ -170,6 +169,37 @@ def extract_yahoo(tk) -> dict | None:
     return {"fiscal_end": str(cols[0].date()), "cur": cur, "prev": prev}
 
 
+def merge_sources(sec: dict, yahoo: dict | None) -> tuple[dict, list[str]]:
+    """以 SEC 為主，補上 Yahoo。回傳合併後的資料和「哪些欄位用了 Yahoo」。
+
+    - SEC 缺的欄位用 Yahoo 補（僅在兩邊會計年度結束日相同時）。
+    - 現金和負債用 Yahoo 的合計數：各家在 XBRL 裡的負債科目差異太大，常只抓到一部分。
+      Yahoo 的 Total Debt 已含租賃，所以租賃歸零避免重複。
+    - 資本支出取兩邊較大者：XBRL 常漏掉資本化軟體等項目，取大者較保守。
+    """
+    used: list[str] = []
+    if not yahoo or yahoo.get("fiscal_end", "")[:7] != sec["fiscal_end"][:7]:
+        return sec, used
+    for period in ("cur", "prev"):
+        for key, val in yahoo[period].items():
+            if sec[period].get(key) is None and val is not None:
+                sec[period][key] = val
+                used.append(f"{key}({period})")
+    cur, ycur = sec["cur"], yahoo["cur"]
+    for key in ("cash_total", "debt"):
+        if ycur.get(key) is not None and cur.get(key) != ycur[key]:
+            cur[key] = ycur[key]
+            used.append(key)
+            if key == "debt":
+                cur["leases"] = 0
+    for period in ("cur", "prev"):
+        a, b = sec[period].get("capex"), yahoo[period].get("capex")
+        if a is not None and b is not None and b > a * 1.05:
+            sec[period]["capex"] = b
+            used.append(f"capex({period})")
+    return sec, used
+
+
 def _div(a, b):
     if a is None or b is None or b == 0:
         return None
@@ -180,6 +210,10 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
     """依 universe.json 的門檻算出各項檢查和結論。純函式，方便離線測試。"""
     v = rules["veto"]
     team, sector = entry["team"], entry["sector"]
+    if sector in v.get("bank_sectors", []):
+        return {"metrics": {}, "verdict": "flag", "manual_todo": ["銀行要看資本適足率與信用損失"],
+                "checks": [{"id": "bank", "label": "銀行：現金流框架不適用，規則待補", "value": None,
+                            "threshold": None, "result": "pending"}]}
     cur, prev = fin["cur"], fin["prev"]
     m: dict = {}
     checks: list[dict] = []
@@ -209,7 +243,7 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
             growth, basis = None, None
         m["per_share_growth"], m["per_share_basis"] = growth, basis
         if growth is None:
-            add("dilution", "已發生的稀釋", sg, None, "missing")
+            add("dilution", "已發生的稀釋（沒有可比的每股指標）", sg, v["share_growth_check"], "veto")
         else:
             add("dilution", f"已發生的稀釋（{basis}成長 {growth:.1%}）", sg, sg, "pass" if growth >= sg else "veto")
 
@@ -273,7 +307,7 @@ def evaluate(fin: dict, market: dict, entry: dict, rules: dict) -> dict:
             add("yield_trap", "高殖利率是否來自股價下跌（52 週漲跌）", chg, v["price_drop_1y"],
                 "veto" if chg < v["price_drop_1y"] else "pass")
 
-    if sector not in v["altman_exempt_sectors"]:
+    if sector not in v["altman_exempt_sectors"] and not market.get("currency_mismatch"):
         ta, tl = cur.get("total_assets"), cur.get("total_liabilities")
         need = [ta, tl, cur.get("current_assets"), cur.get("current_liabilities"),
                 cur.get("retained_earnings"), cur.get("op_income"), cur.get("revenue"), market.get("market_cap")]
@@ -353,7 +387,11 @@ def main() -> int:
             "forward_pe": info.get("forwardPE"),
             "inst_held": info.get("heldPercentInstitutions"),
             "short_float": info.get("shortPercentOfFloat"),
+            "currency": info.get("currency"),
+            "financial_currency": info.get("financialCurrency"),
         }
+        market["currency_mismatch"] = bool(market["currency"] and market["financial_currency"]
+                                           and market["currency"] != market["financial_currency"])
         yahoo_fin = None
         if yt is not None:
             try:
@@ -373,6 +411,7 @@ def main() -> int:
         if fin:
             rec["source"] = "SEC"
             rec["crosscheck"] = crosscheck(fin, yahoo_fin)
+            fin, rec["yahoo_filled"] = merge_sources(fin, yahoo_fin)
         elif yahoo_fin:
             fin, rec["source"] = yahoo_fin, "Yahoo"
         rec["market"] = market

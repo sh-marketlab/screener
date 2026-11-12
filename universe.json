@@ -48,6 +48,9 @@
         "ENB",
         "CNI",
         "ARM"
+      ],
+      "bank_sectors": [
+        "banks"
       ]
     }
   },

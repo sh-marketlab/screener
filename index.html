@@ -72,6 +72,7 @@ const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&g
 const money=v=>v==null?"—":(Math.abs(v)>=1e9?(v/1e9).toFixed(1)+"B":(v/1e6).toFixed(0)+"M");
 const num=(v,d=1)=>v==null?"—":v.toFixed(d);
 const pct=v=>v==null?"—":(v*100).toFixed(1)+"%";
+const cur=t=>{const c=((t.m||{}).market||{}).financial_currency;return c&&c!=="USD"&&((t.m||{}).metrics||{}).fcf!=null?` <span class="small">${esc(c)}</span>`:"";};
 const chip=(k,t)=>`<span class="chip ${k}">${esc(t)}</span>`;
 let U,M={},open=new Set();
 async function load(){
@@ -105,7 +106,7 @@ function render(){
     let h=`<tr class="row" tabindex="0" data-t="${esc(t.ticker)}"><td><b>${esc(t.ticker)}</b></td><td>${esc(t.name)}</td><td>${esc(sname[t.sector])}</td>
       <td class="${t.team==="white"?"w":"b"}">${t.team==="white"?"白":"藍"}</td><td>${L.stage[t.stage]}</td>
       <td>${esc(L.ver[t.verification.status])}</td><td>${esc(U.factor_tags[t.tags.primary])}</td><td>${chip(t.v,L.verdict[t.v])}</td>
-      <td>${money(m.fcf)}</td><td>${num(m.net_debt_to_fcf)}</td><td>${num(m.interest_coverage)}</td><td>${pct(m.share_growth)}</td><td>${esc((t.m||{}).source||"—")}</td></tr>`;
+      <td>${money(m.fcf)}${cur(t)}</td><td>${num(m.net_debt_to_fcf)}</td><td>${num(m.interest_coverage)}</td><td>${pct(m.share_growth)}</td><td>${esc((t.m||{}).source||"—")}</td></tr>`;
     if(open.has(t.ticker)){
       const checks=((t.m||{}).checks||[]).map(c=>`<tr><td>${esc(c.label)}</td><td>${fmtVal(c)}</td><td>${chip(c.result,L.verdict[c.result]||c.result)}</td></tr>`).join("");
       const cc=((t.m||{}).crosscheck||[]).map(c=>`${esc(c.field)} 差 ${pct(c.diff)}`).join("、");

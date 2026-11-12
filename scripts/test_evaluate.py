@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-from fetch_metrics import evaluate, extract_sec
+from fetch_metrics import evaluate, extract_sec, merge_sources
 
 RULES = json.loads((Path(__file__).resolve().parent.parent / "universe.json").read_text(encoding="utf-8"))["rules"]
 
@@ -86,6 +86,34 @@ def test_reit_pending():
 
 def test_yield_trap():
     assert verdict(base(), market={**MARKET, "change_52w": -0.4})["verdict"] == "veto"
+
+
+def test_tag_switch_and_merge():
+    facts = {"facts": {"us-gaap": {
+        "NetCashProvidedByUsedInOperatingActivities": dur({2024: 100, 2025: 120}),
+        "Revenues": dur({2023: 300}),
+        "SalesRevenueNet": dur({2024: 360, 2025: 400}),
+        "LongTermDebtCurrent": inst({2025: 20}),
+    }}}
+    fin = extract_sec(facts)
+    assert fin["cur"]["revenue"] == 400 and fin["prev"]["revenue"] == 360
+    yahoo = {"fiscal_end": "2025-12-31", "cur": {"debt": 500, "cash_total": 80, "capex": 30, "shares": 49},
+             "prev": {"shares": 50, "capex": 10}}
+    fin, used = merge_sources(fin, yahoo)
+    assert fin["cur"]["debt"] == 500 and fin["cur"]["leases"] == 0 and fin["cur"]["capex"] == 30
+    assert fin["cur"]["shares"] == 49 and "debt" in used
+
+
+def test_bank_pending_and_prerevenue():
+    assert verdict(base(), sector="banks")["verdict"] == "flag"
+    fin = base(ocf=-50, cash_total=900, debt=0, dividends=None, revenue=None, shares=75)
+    fin["prev"]["revenue"] = None
+    assert verdict(fin, team="blue", sector="smr")["verdict"] == "veto"
+
+
+def test_currency_mismatch_skips_altman():
+    out = verdict(base(), market={**MARKET, "currency_mismatch": True})
+    assert "altman_z" not in out["metrics"]
 
 
 if __name__ == "__main__":
