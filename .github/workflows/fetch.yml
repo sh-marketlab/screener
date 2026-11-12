@@ -1,0 +1,30 @@
+name: 抓取財務資料
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 3 * *"   # 每月 3 日 02:17 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python scripts/test_evaluate.py
+      - run: python scripts/fetch_metrics.py
+        env:
+          SEC_CONTACT: ${{ secrets.SEC_CONTACT }}
+      - name: 提交結果
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/metrics.json
+          git diff --cached --quiet || git commit -m "更新財務資料"
+          git push

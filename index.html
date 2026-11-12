@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>白8藍12篩選儀表板</title>
+<style>
+/* 版面：上方摘要與篩選，下方一張可展開的表格 */
+:root{--bg:#f6f7f9;--panel:#fff;--ink:#1b2430;--mute:#5a6675;--line:#d9dee6;--accent:#3b4cb8;
+  --ok:#1f7a4d;--ok-bg:#e3f4ea;--flag:#8a6412;--flag-bg:#fff3d1;--veto:#a8321f;--veto-bg:#fbe5e0;--na:#56616f;--na-bg:#eceff3;
+  --white-team:#6b7685;--blue-team:#1f6fb5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161c;--panel:#1a2029;--ink:#e6eaf0;--mute:#9aa6b5;--line:#2e3744;--accent:#9aa6f2;
+  --ok:#7fd3a4;--ok-bg:#173826;--flag:#f0d88a;--flag-bg:#3a3115;--veto:#f0957b;--veto-bg:#47241b;--na:#aab4c2;--na-bg:#262d38;--white-team:#b4bdc9;--blue-team:#6db3ee}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#12161c;--panel:#1a2029;--ink:#e6eaf0;--mute:#9aa6b5;--line:#2e3744;--accent:#9aa6f2;
+  --ok:#7fd3a4;--ok-bg:#173826;--flag:#f0d88a;--flag-bg:#3a3115;--veto:#f0957b;--veto-bg:#47241b;--na:#aab4c2;--na-bg:#262d38;--white-team:#b4bdc9;--blue-team:#6db3ee}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 60px}
+header{padding:28px 0 8px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;justify-content:space-between}
+h1{font-size:24px;margin:0}
+header a{color:var(--accent)}
+.meta{color:var(--mute);font-size:13.5px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:14px 0}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.tile b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+.tile span{color:var(--mute);font-size:13px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.filters label{font-size:13px;color:var(--mute);display:flex;flex-direction:column;gap:2px}
+select,input{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:5px 8px}
+select:focus-visible,input:focus-visible,tr.row:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.tw{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th{text-align:left;font-size:13px;color:var(--mute);padding:8px 10px;border-bottom:2px solid var(--line);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.row{cursor:pointer}
+tr.row:hover td{background:var(--na-bg)}
+.chip{display:inline-block;border-radius:4px;padding:0 7px;font-size:12.5px;white-space:nowrap}
+.pass{background:var(--ok-bg);color:var(--ok)}.flag,.pending{background:var(--flag-bg);color:var(--flag)}
+.veto{background:var(--veto-bg);color:var(--veto)}.insufficient,.none,.missing{background:var(--na-bg);color:var(--na)}
+.w{color:var(--white-team);font-weight:700}.b{color:var(--blue-team);font-weight:700}
+.detail td{background:var(--bg);font-size:13.5px}
+.detail table{width:auto;min-width:60%}
+.detail th,.detail td{padding:4px 10px;border-bottom:1px solid var(--line)}
+.small{color:var(--mute);font-size:13px}
+.empty{padding:24px;text-align:center;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>白8藍12篩選儀表板</h1>
+  <div class="meta"><span id="meta">讀取中</span> · <a href="rules.html">規則手冊</a></div>
+</header>
+<div class="tiles" id="tiles"></div>
+<div class="filters">
+  <label>隊別<select id="f-team"><option value="">全部</option><option value="white">白隊（守）</option><option value="blue">藍隊（攻）</option></select></label>
+  <label>狀態<select id="f-stage"><option value="">全部（不含停用）</option><option value="seat">席位</option><option value="watch">觀察名單</option><option value="pool">候選池</option><option value="disabled">停用</option></select></label>
+  <label>板塊<select id="f-sector"><option value="">全部</option></select></label>
+  <label>否決欄<select id="f-verdict"><option value="">全部</option><option value="pass">通過</option><option value="flag">注意</option><option value="veto">否決</option><option value="insufficient">資料不足</option><option value="none">尚未抓取</option></select></label>
+  <label>搜尋<input id="f-q" type="search" placeholder="代碼或名稱"></label>
+</div>
+<div class="tw"><table>
+<thead><tr><th>代碼</th><th>名稱</th><th>板塊</th><th>隊別</th><th>狀態</th><th>題材驗證</th><th>主標籤</th><th>否決欄</th><th>自由現金流</th><th>淨負債÷自由現金流</th><th>利息保障</th><th>股數年增</th><th>來源</th></tr></thead>
+<tbody id="rows"></tbody></table><div class="empty" id="empty" hidden>沒有符合條件的標的</div></div>
+<p class="small">點任一列可以看各項檢查的明細。財務數字是最近一個完整會計年度。否決欄只做了能自動計算的項目，潛在稀釋、近 2 年到期負債、最大客戶占比要人工補。本頁不是投資建議。</p>
+</div>
+<script>
+const L={stage:{seat:"席位",watch:"觀察名單",pool:"候選池",disabled:"停用"},
+  verdict:{pass:"通過",flag:"注意",veto:"否決",insufficient:"資料不足",none:"尚未抓取",pending:"待補規則",missing:"缺資料"},
+  ver:{verified:"已驗證",partial:"部分",unverified:"未驗證",warning:"警告",unreviewed:"未審查"}};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const money=v=>v==null?"—":(Math.abs(v)>=1e9?(v/1e9).toFixed(1)+"B":(v/1e6).toFixed(0)+"M");
+const num=(v,d=1)=>v==null?"—":v.toFixed(d);
+const pct=v=>v==null?"—":(v*100).toFixed(1)+"%";
+const chip=(k,t)=>`<span class="chip ${k}">${esc(t)}</span>`;
+let U,M={},open=new Set();
+async function load(){
+  U=await (await fetch("universe.json",{cache:"no-store"})).json();
+  try{const r=await fetch("data/metrics.json",{cache:"no-store"});if(r.ok)M=await r.json();}catch(e){}
+  const sec=document.getElementById("f-sector");
+  U.sectors.filter(s=>s.active).forEach(s=>sec.insertAdjacentHTML("beforeend",`<option value="${esc(s.id)}">${esc(s.name)}</option>`));
+  document.getElementById("meta").textContent=`名單更新 ${U.updated}`+(M.generated?` · 財務資料 ${M.generated}`:" · 財務資料尚未抓取");
+  document.querySelectorAll(".filters select,.filters input").forEach(e=>e.addEventListener("input",render));
+  render();
+}
+function fmtVal(c){const v=c.value;if(v==null)return "—";
+  return /倍數|年）|Altman|跑道/.test(c.label)?num(v,2):pct(v);}
+function render(){
+  const f={team:val("f-team"),stage:val("f-stage"),sector:val("f-sector"),verdict:val("f-verdict"),q:val("f-q").trim().toLowerCase()};
+  const sname=Object.fromEntries(U.sectors.map(s=>[s.id,s.name]));
+  const mt=M.tickers||{};
+  const all=U.tickers.map(t=>({...t,m:mt[t.ticker],v:(mt[t.ticker]||{}).verdict||"none"}));
+  const live=all.filter(t=>t.stage!=="disabled");
+  const cnt=(arr,fn)=>arr.filter(fn).length;
+  document.getElementById("tiles").innerHTML=[
+    ["候選總數",live.length],["白隊席位",cnt(live,t=>t.team==="white"&&t.stage==="seat")+" / "+U.rules.white_seats],
+    ["藍隊席位",cnt(live,t=>t.team==="blue"&&t.stage==="seat")+" / "+U.rules.blue_seats],
+    ["否決",cnt(live,t=>t.v==="veto")],["注意",cnt(live,t=>t.v==="flag")],["通過",cnt(live,t=>t.v==="pass")]
+  ].map(([k,n])=>`<div class="tile"><b>${n}</b><span>${k}</span></div>`).join("");
+  const rows=all.filter(t=>(f.stage?t.stage===f.stage:t.stage!=="disabled")&&(!f.team||t.team===f.team)&&(!f.sector||t.sector===f.sector)
+    &&(!f.verdict||t.v===f.verdict)&&(!f.q||(t.ticker+" "+t.name).toLowerCase().includes(f.q)));
+  document.getElementById("empty").hidden=rows.length>0;
+  document.getElementById("rows").innerHTML=rows.map(t=>{
+    const m=(t.m||{}).metrics||{};
+    let h=`<tr class="row" tabindex="0" data-t="${esc(t.ticker)}"><td><b>${esc(t.ticker)}</b></td><td>${esc(t.name)}</td><td>${esc(sname[t.sector])}</td>
+      <td class="${t.team==="white"?"w":"b"}">${t.team==="white"?"白":"藍"}</td><td>${L.stage[t.stage]}</td>
+      <td>${esc(L.ver[t.verification.status])}</td><td>${esc(U.factor_tags[t.tags.primary])}</td><td>${chip(t.v,L.verdict[t.v])}</td>
+      <td>${money(m.fcf)}</td><td>${num(m.net_debt_to_fcf)}</td><td>${num(m.interest_coverage)}</td><td>${pct(m.share_growth)}</td><td>${esc((t.m||{}).source||"—")}</td></tr>`;
+    if(open.has(t.ticker)){
+      const checks=((t.m||{}).checks||[]).map(c=>`<tr><td>${esc(c.label)}</td><td>${fmtVal(c)}</td><td>${chip(c.result,L.verdict[c.result]||c.result)}</td></tr>`).join("");
+      const cc=((t.m||{}).crosscheck||[]).map(c=>`${esc(c.field)} 差 ${pct(c.diff)}`).join("、");
+      const err=((t.m||{}).errors||[]).join("；");
+      h+=`<tr class="detail"><td colspan="13">
+        <div><b>題材：</b>${esc(t.theme)}　<b>備註：</b>${esc(t.verification.note)}</div>
+        <div><b>必需性：</b>${esc(t.role.essential)}　<b>瓶頸性：</b>${esc(t.role.bottleneck)}　<b>副標籤：</b>${t.tags.secondary.concat(t.tags.personal).map(x=>esc(U.factor_tags[x])).join("、")||"無"}</div>
+        ${t.disabled_reason?`<div><b>停用原因：</b>${esc(t.disabled_reason)}</div>`:""}
+        ${checks?`<table><tr><th>檢查</th><th>數值</th><th>結果</th></tr>${checks}</table>`:`<div class="small">還沒有財務資料</div>`}
+        ${(t.m||{}).fiscal_end?`<div class="small">會計年度結束日 ${esc(t.m.fiscal_end)}</div>`:""}
+        ${cc?`<div class="small">SEC 與 Yahoo 差距超過 5%：${cc}</div>`:""}${err?`<div class="small">抓取錯誤：${esc(err)}</div>`:""}</td></tr>`;
+    }
+    return h;}).join("");
+}
+const val=id=>document.getElementById(id).value;
+function toggle(e){const tr=e.target.closest("tr.row");if(!tr)return;const t=tr.dataset.t;open.has(t)?open.delete(t):open.add(t);render();}
+document.getElementById("rows").addEventListener("click",toggle);
+document.getElementById("rows").addEventListener("keydown",e=>{if(e.key==="Enter")toggle(e);});
+load().catch(e=>{document.getElementById("meta").textContent="讀取失敗："+e.message;});
+</script>
+</body>
+</html>

@@ -1,0 +1,1371 @@
+{
+  "version": 1,
+  "updated": "2026-11-12",
+  "note": "人工欄位的唯一來源。財務數字、均線、擁擠分數由程式另外寫入 metrics.json，不放在這裡。proxy_score20 是代理版 20 項分數，換成原始 20 項後要重算。",
+  "rules": {
+    "white_seats": 8,
+    "blue_seats": 12,
+    "pass_score": 80,
+    "caps": {
+      "white_same_primary": 2,
+      "white_ai_tag": 2,
+      "white_funding_window": 0,
+      "blue_same_primary": 4,
+      "blue_same_primary_capital_pct": 35,
+      "blue_funding_window": 3,
+      "portfolio_ai_capital_pct": 33
+    },
+    "veto": {
+      "share_growth_check": 0.02,
+      "sbc_to_revenue_flag": 0.15,
+      "cash_runway_years_min": 3,
+      "interest_coverage_min": 3,
+      "net_debt_to_fcf_max_years": 3,
+      "dividend_to_fcf_max": 1.0,
+      "yield_min_for_price_drop_check": 0.0135,
+      "price_drop_1y": -0.3,
+      "altman_z_distress": 1.8,
+      "white_flags_to_veto": 2,
+      "utility_payout_max": 0.75,
+      "utility_ocf_to_debt_min": 0.13,
+      "utility_sectors": [
+        "grid_utility"
+      ],
+      "reit_sectors": [
+        "dc_reit"
+      ],
+      "altman_exempt_sectors": [
+        "grid_utility",
+        "power_gen",
+        "asset_mgmt",
+        "banks",
+        "dc_reit"
+      ],
+      "foreign_filers": [
+        "ASML",
+        "TSM",
+        "SAP",
+        "ENB",
+        "CNI",
+        "ARM"
+      ]
+    }
+  },
+  "factor_tags": {
+    "ai_capex": "AI 資本支出",
+    "rates": "利率敏感",
+    "funding_window": "融資視窗",
+    "gov_budget": "政府與國防預算",
+    "consumer_volume": "消費與交易量",
+    "asset_prices": "資產價格",
+    "drug_policy": "藥價與監管",
+    "geopolitics": "地緣與出口管制",
+    "commodities": "原物料價格",
+    "taiwan_concentration": "台灣集中（個人標籤）",
+    "enterprise_it": "企業 IT 支出"
+  },
+  "sectors": [
+    {
+      "id": "payments",
+      "name": "支付與清算",
+      "default_tag": "consumer_volume",
+      "active": true
+    },
+    {
+      "id": "rail",
+      "name": "鐵路與物流",
+      "default_tag": "consumer_volume",
+      "active": true
+    },
+    {
+      "id": "power_gen",
+      "name": "發電與核電",
+      "default_tag": "ai_capex",
+      "active": true
+    },
+    {
+      "id": "grid_utility",
+      "name": "受監管電網",
+      "default_tag": "rates",
+      "active": true
+    },
+    {
+      "id": "asset_mgmt",
+      "name": "資產管理與交易所",
+      "default_tag": "asset_prices",
+      "active": true
+    },
+    {
+      "id": "cloud_software",
+      "name": "雲端與企業軟體",
+      "default_tag": "ai_capex",
+      "active": true
+    },
+    {
+      "id": "pharma",
+      "name": "製藥與基因",
+      "default_tag": "drug_policy",
+      "active": true
+    },
+    {
+      "id": "semi_equipment",
+      "name": "半導體設備",
+      "default_tag": "ai_capex",
+      "active": true
+    },
+    {
+      "id": "semi_foundry",
+      "name": "晶圓代工",
+      "default_tag": "ai_capex",
+      "active": true
+    },
+    {
+      "id": "semi_design",
+      "name": "晶片設計與 EDA",
+      "default_tag": "ai_capex",
+      "active": true
+    },
+    {
+      "id": "dc_infra",
+      "name": "資料中心基礎設施",
+      "default_tag": "ai_capex",
+      "active": true
+    },
+    {
+      "id": "defense_ai",
+      "name": "國防 AI 與軟體",
+      "default_tag": "gov_budget",
+      "active": true
+    },
+    {
+      "id": "space",
+      "name": "太空",
+      "default_tag": "gov_budget",
+      "active": true
+    },
+    {
+      "id": "quantum",
+      "name": "量子運算",
+      "default_tag": "funding_window",
+      "active": true
+    },
+    {
+      "id": "synbio",
+      "name": "合成生物",
+      "default_tag": "funding_window",
+      "active": true
+    },
+    {
+      "id": "materials",
+      "name": "稀土與關鍵原料",
+      "default_tag": "commodities",
+      "active": true
+    },
+    {
+      "id": "smr",
+      "name": "小型核反應爐",
+      "default_tag": "funding_window",
+      "active": true
+    },
+    {
+      "id": "water",
+      "name": "水",
+      "default_tag": "rates",
+      "active": true
+    },
+    {
+      "id": "banks",
+      "name": "銀行與託管",
+      "default_tag": "asset_prices",
+      "active": true
+    },
+    {
+      "id": "midstream",
+      "name": "管線與天然氣出口",
+      "default_tag": "commodities",
+      "active": true
+    },
+    {
+      "id": "dc_reit",
+      "name": "資料中心 REIT",
+      "default_tag": "ai_capex",
+      "active": true
+    }
+  ],
+  "tickers": [
+    {
+      "ticker": "V",
+      "name": "Visa",
+      "sector": "payments",
+      "team": "white",
+      "stage": "seat",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "yes"
+      },
+      "theme": "全球支付清算網路",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "FY2026 自由現金流 $22.1B；按交易量收費",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "consumer_volume",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "CNI",
+      "name": "Canadian National Railway",
+      "sector": "rail",
+      "team": "white",
+      "stage": "seat",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "partial"
+      },
+      "theme": "北美鐵路寡占",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "否決欄數字待查",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "consumer_volume",
+        "secondary": [
+          "commodities"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "CEG",
+      "name": "Constellation Energy",
+      "sector": "power_gen",
+      "team": "white",
+      "stage": "seat",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "partial"
+      },
+      "theme": "AI 直供核電",
+      "verification": {
+        "status": "partial",
+        "evidence_level": 3,
+        "note": "有長約公告；AI 客戶占比未單獨揭露",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "sector": "cloud_software",
+      "team": "white",
+      "stage": "seat",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "yes"
+      },
+      "theme": "雲端與生產力軟體",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "白隊 AI 標籤超額，待決定是否移到藍隊",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "BLK",
+      "name": "BlackRock",
+      "sector": "asset_mgmt",
+      "team": "white",
+      "stage": "seat",
+      "role": {
+        "essential": "partial",
+        "bottleneck": "yes"
+      },
+      "theme": "資產管理",
+      "verification": {
+        "status": "partial",
+        "evidence_level": 3,
+        "note": "穩定幣儲備金額未單獨揭露；管理費隨市場縮水",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "asset_prices",
+        "secondary": [
+          "rates"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "NEE",
+      "name": "NextEra Energy",
+      "sector": "grid_utility",
+      "team": "white",
+      "stage": "seat",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "no"
+      },
+      "theme": "受監管電網與再生能源",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "用公用事業例外規則檢查；數字待查",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "rates",
+        "secondary": [
+          "ai_capex"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "VRTX",
+      "name": "Vertex Pharmaceuticals",
+      "sector": "pharma",
+      "team": "white",
+      "stage": "watch",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "yes"
+      },
+      "theme": "囊腫纖維化用藥獨占",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "CF 約占營收九成；2026 營收指引 $13.15–13.25B",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "drug_policy",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 17.5,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "ASML",
+      "name": "ASML",
+      "sector": "semi_equipment",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "EUV 曝光機",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "唯一供應商；客戶預付款 €9.3B",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [
+          "geopolitics"
+        ],
+        "personal": []
+      },
+      "proxy_score20": 18.5,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "CDNS",
+      "name": "Cadence",
+      "sector": "semi_design",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "EDA 寡占",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "backlog $8.2B；與 SNPS 合算一個部位",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 18.0,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "SNPS",
+      "name": "Synopsys",
+      "sector": "semi_design",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "EDA 寡占",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "backlog $10.9B；淨負債約 2.3 年自由現金流",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 15.5,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC",
+      "sector": "semi_foundry",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "先進製程代工",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "2nm+3nm 占晶圓營收 41%；自由現金流÷資本支出約 1.1 倍",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [
+          "geopolitics"
+        ],
+        "personal": [
+          "taiwan_concentration"
+        ]
+      },
+      "proxy_score20": 17.5,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "sector": "semi_design",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "AI 算力",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "FY27 Q2 營收 $96.2B；應收與存貨大增",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [
+          "geopolitics"
+        ],
+        "personal": []
+      },
+      "proxy_score20": 17.0,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir",
+      "sector": "defense_ai",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "國防 AI 決策系統",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "美國政府營收 $953M；已做過細胞分裂",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "gov_budget",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 16.5,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "GEV",
+      "name": "GE Vernova",
+      "sector": "dc_infra",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "燃氣渦輪與電網設備",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "尚未評分",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "RKLB",
+      "name": "Rocket Lab",
+      "sector": "space",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "partial"
+      },
+      "theme": "商業發射",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "backlog $2.36B；Q3 財報待更新",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "gov_budget",
+        "secondary": [
+          "funding_window"
+        ],
+        "personal": []
+      },
+      "proxy_score20": 11.0,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "TWST",
+      "name": "Twist Bioscience",
+      "sector": "synbio",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "partial"
+      },
+      "theme": "DNA 合成",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "現金約 $167M；FY Q4 財報待更新",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "funding_window",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 11.0,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "IONQ",
+      "name": "IonQ",
+      "sector": "quantum",
+      "team": "blue",
+      "stage": "watch",
+      "role": {
+        "essential": "no",
+        "bottleneck": "partial"
+      },
+      "theme": "離子阱量子運算",
+      "verification": {
+        "status": "partial",
+        "evidence_level": 2,
+        "note": "RPO $1.2B；每年大額增資",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "funding_window",
+        "secondary": [
+          "gov_budget"
+        ],
+        "personal": []
+      },
+      "proxy_score20": 10.5,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "MP",
+      "name": "MP Materials",
+      "sector": "materials",
+      "team": "blue",
+      "stage": "pool",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "稀土與磁鐵",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "GM 磁鐵 Q4 開始有營收；仍有淨虧損",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "gov_budget",
+        "secondary": [
+          "commodities"
+        ],
+        "personal": []
+      },
+      "proxy_score20": 10.0,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "QNT",
+      "name": "Quantinuum",
+      "sector": "quantum",
+      "team": "blue",
+      "stage": "pool",
+      "role": {
+        "essential": "no",
+        "bottleneck": "partial"
+      },
+      "theme": "容錯量子運算",
+      "verification": {
+        "status": "partial",
+        "evidence_level": 2,
+        "note": "營收成本高於營收",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "funding_window",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 9.0,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "CRSP",
+      "name": "CRISPR Therapeutics",
+      "sector": "pharma",
+      "team": "blue",
+      "stage": "pool",
+      "role": {
+        "essential": "no",
+        "bottleneck": "partial"
+      },
+      "theme": "基因編輯",
+      "verification": {
+        "status": "partial",
+        "evidence_level": 2,
+        "note": "Casgevy 營收認列在 VRTX",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "funding_window",
+        "secondary": [
+          "drug_policy"
+        ],
+        "personal": []
+      },
+      "proxy_score20": 8.0,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "OKLO",
+      "name": "Oklo",
+      "sector": "smr",
+      "team": "blue",
+      "stage": "pool",
+      "role": {
+        "essential": "no",
+        "bottleneck": "no"
+      },
+      "theme": "小型核反應爐",
+      "verification": {
+        "status": "unverified",
+        "evidence_level": 4,
+        "note": "無營收；Q3 財報待更新",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "funding_window",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 7.5,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "SMR",
+      "name": "NuScale Power",
+      "sector": "smr",
+      "team": "blue",
+      "stage": "pool",
+      "role": {
+        "essential": "no",
+        "bottleneck": "no"
+      },
+      "theme": "小型核反應爐",
+      "verification": {
+        "status": "unverified",
+        "evidence_level": 4,
+        "note": "無有約束力的電廠合約；資料較舊",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "funding_window",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 6.0,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "RXRX",
+      "name": "Recursion",
+      "sector": "pharma",
+      "team": "blue",
+      "stage": "pool",
+      "role": {
+        "essential": "no",
+        "bottleneck": "no"
+      },
+      "theme": "AI 製藥",
+      "verification": {
+        "status": "unverified",
+        "evidence_level": 4,
+        "note": "前三季合作夥伴只匯入約 $7M",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "funding_window",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 5.5,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "MA",
+      "name": "Mastercard",
+      "sector": "payments",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "yes"
+      },
+      "theme": "全球支付清算網路",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "與 V 同一組寡占",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "consumer_volume",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "XYL",
+      "name": "Xylem",
+      "sector": "water",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "unknown",
+        "bottleneck": "unknown"
+      },
+      "theme": "水處理設備",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "白隊空席候選（來自 121 檔報告）",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "rates",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "VLTO",
+      "name": "Veralto",
+      "sector": "water",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "unknown",
+        "bottleneck": "unknown"
+      },
+      "theme": "水質分析",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "白隊空席候選（來自 121 檔報告）",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "rates",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "PNR",
+      "name": "Pentair",
+      "sector": "water",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "unknown",
+        "bottleneck": "unknown"
+      },
+      "theme": "水處理設備",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "白隊空席候選（來自 121 檔報告）",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "rates",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "NDAQ",
+      "name": "Nasdaq",
+      "sector": "asset_mgmt",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "unknown",
+        "bottleneck": "unknown"
+      },
+      "theme": "交易所與清算",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "白隊空席候選；和 BLK 標籤部分重疊",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "asset_prices",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "BK",
+      "name": "BNY",
+      "sector": "banks",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "unknown",
+        "bottleneck": "unknown"
+      },
+      "theme": "託管與清算",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "金融主權題材",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "asset_prices",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "JPM",
+      "name": "JPMorgan Chase",
+      "sector": "banks",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "unknown",
+        "bottleneck": "unknown"
+      },
+      "theme": "數位金融節點",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "金融主權題材",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "asset_prices",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "SPCX",
+      "name": "SpaceX",
+      "sector": "space",
+      "team": "blue",
+      "stage": "disabled",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "太空物流與 Starlink",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "AI 資本支出已是營收 1.3 倍",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [
+          "gov_budget"
+        ],
+        "personal": []
+      },
+      "proxy_score20": 12.5,
+      "disabled_reason": "判定為賣設備／屬性改變，移出藍隊",
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "VRT",
+      "name": "Vertiv",
+      "sector": "dc_infra",
+      "team": "blue",
+      "stage": "disabled",
+      "role": {
+        "essential": "no",
+        "bottleneck": "partial"
+      },
+      "theme": "資料中心冷卻與電源",
+      "verification": {
+        "status": "verified",
+        "evidence_level": 1,
+        "note": "不再每季揭露 backlog",
+        "source": "",
+        "date": "2026-11-11"
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": 14.5,
+      "disabled_reason": "判定為賣設備，移出藍隊",
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "PWR",
+      "name": "Quanta Services",
+      "sector": "dc_infra",
+      "team": "blue",
+      "stage": "disabled",
+      "role": {
+        "essential": "no",
+        "bottleneck": "partial"
+      },
+      "theme": "電力工程承包",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": "判定為賣設備，移出藍隊",
+      "updated": "2026-11-11"
+    },
+    {
+      "ticker": "AEP",
+      "name": "American Electric Power",
+      "sector": "grid_utility",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "no"
+      },
+      "theme": "受監管輸電網",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "角色為初判；用公用事業例外規則檢查",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "rates",
+        "secondary": [
+          "ai_capex"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-12"
+    },
+    {
+      "ticker": "EXC",
+      "name": "Exelon",
+      "sector": "grid_utility",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "no"
+      },
+      "theme": "受監管輸配電",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "角色為初判；用公用事業例外規則檢查",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "rates",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-12"
+    },
+    {
+      "ticker": "DLR",
+      "name": "Digital Realty",
+      "sector": "dc_reit",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "partial",
+        "bottleneck": "partial"
+      },
+      "theme": "資料中心租賃",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "角色為初判；REIT 要看 AFFO，否決欄規則待補",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [
+          "rates"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-12"
+    },
+    {
+      "ticker": "EQIX",
+      "name": "Equinix",
+      "sector": "dc_reit",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "partial",
+        "bottleneck": "partial"
+      },
+      "theme": "資料中心互連與租賃",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "角色為初判；REIT 要看 AFFO，否決欄規則待補",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [
+          "rates"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-12"
+    },
+    {
+      "ticker": "WMB",
+      "name": "Williams Companies",
+      "sector": "midstream",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "partial"
+      },
+      "theme": "天然氣管線",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "角色為初判；收費型管線，資料中心用電帶動天然氣需求",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "commodities",
+        "secondary": [
+          "rates",
+          "ai_capex"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-12"
+    },
+    {
+      "ticker": "ENB",
+      "name": "Enbridge",
+      "sector": "midstream",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "partial"
+      },
+      "theme": "原油與天然氣管線",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "角色為初判；收費型管線，負債比偏高待查",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "commodities",
+        "secondary": [
+          "rates"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-12"
+    },
+    {
+      "ticker": "LNG",
+      "name": "Cheniere Energy",
+      "sector": "midstream",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "partial",
+        "bottleneck": "partial"
+      },
+      "theme": "液化天然氣出口",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "角色為初判；長約為主，仍受天然氣價差影響",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "commodities",
+        "secondary": [
+          "geopolitics"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-12"
+    },
+    {
+      "ticker": "SAP",
+      "name": "SAP",
+      "sector": "cloud_software",
+      "team": "white",
+      "stage": "pool",
+      "role": {
+        "essential": "yes",
+        "bottleneck": "partial"
+      },
+      "theme": "企業 ERP 軟體",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "角色為初判；白隊或藍隊待定",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "enterprise_it",
+        "secondary": [],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-12"
+    },
+    {
+      "ticker": "ARM",
+      "name": "Arm Holdings",
+      "sector": "semi_design",
+      "team": "blue",
+      "stage": "pool",
+      "role": {
+        "essential": "no",
+        "bottleneck": "yes"
+      },
+      "theme": "CPU 架構授權",
+      "verification": {
+        "status": "unreviewed",
+        "evidence_level": null,
+        "note": "角色為初判；估值與 SoftBank 持股待查",
+        "source": "",
+        "date": ""
+      },
+      "tags": {
+        "primary": "ai_capex",
+        "secondary": [
+          "geopolitics",
+          "consumer_volume"
+        ],
+        "personal": []
+      },
+      "proxy_score20": null,
+      "disabled_reason": null,
+      "updated": "2026-11-12"
+    }
+  ]
+}
