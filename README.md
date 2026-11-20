@@ -26,7 +26,7 @@
 
 之後財務資料每月 3 日自動更新一次。
 
-信用追蹤頁每週六自動更新。第一次可以到 Actions → 信用追蹤 → Run workflow 手動跑；4 週變化要累積 4 週以上的資料才會出現。
+信用追蹤頁每週六自動更新。公司債利差來自 FRED，建議在 Secrets 新增 `FRED_API_KEY`（可以和 liquidity-dashboard 用同一把），GitHub 主機直接連 FRED 網頁常常逾時。第一次可以到 Actions → 信用追蹤 → Run workflow 手動跑；4 週變化要累積 4 週以上的資料才會出現。
 
 ## 增刪標的或板塊
 

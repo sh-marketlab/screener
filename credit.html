@@ -130,11 +130,11 @@ async function load(){
   try{const r=await fetch("data/credit.json",{cache:"no-store"});if(r.ok)D=await r.json();}catch(e){}
   if(!D){document.getElementById("meta").textContent="資料尚未抓取";
     const e=document.getElementById("empty");e.hidden=false;e.textContent="還沒有資料。到 Actions → 信用追蹤 → Run workflow 手動跑第一次。";return;}
-  document.getElementById("meta").textContent=`股價資料 ${D.price_date||"—"} · 產生於 ${D.generated}`+(D.errors&&D.errors.length?" · FRED 有錯誤":"");
+  document.getElementById("meta").textContent=`股價資料 ${D.price_date||"—"} · 產生於 ${D.generated}`+(D.errors&&D.errors.length?" · FRED 這次沒抓到":"");
   document.getElementById("mkt").innerHTML=["ig","bbb","hy"].map(k=>{const m=D.market[k];if(!m||m.value==null)return "";
     return `<div class="tile"><div class="lab">${esc(m.label)}（${esc(m.id)}）</div><b>${m.value.toFixed(2)}</b>
       <span class="small"> 4 週 ${bad(m.change_4w,2)}</span>
-      ${spark(m.spark,180,30)}<div class="small">資料日 ${esc(m.date)}</div></div>`;}).join("");
+      ${spark(m.spark,180,30)}<div class="small">資料日 ${esc(m.date)}${m.stale?"（這次沒抓到，沿用上次）":""}</div></div>`;}).join("")||'<div class="tile small">這次沒抓到 FRED 資料，下次排程會再試。</div>';
   const cnt={};D.tickers.forEach(t=>cnt[t.status]=(cnt[t.status]||0)+1);
   const div=D.tickers.filter(t=>t.divergence).length;
   document.getElementById("counts").innerHTML=Object.keys(ORDER).filter(s=>cnt[s]).map(s=>`${chip(s)} ${cnt[s]}`).join("　")+(div?`　<span class="chip watch">股債背離</span> ${div}`:"");
