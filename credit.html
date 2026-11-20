@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>信用追蹤</title>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--ink:#1b2430;--mute:#5a6675;--line:#d9dee6;--accent:#3b4cb8;
+  --ok:#1f7a4d;--ok-bg:#e3f4ea;--flag:#8a6412;--flag-bg:#fff3d1;--veto:#a8321f;--veto-bg:#fbe5e0;--na:#56616f;--na-bg:#eceff3;
+  --white-team:#6b7685;--blue-team:#1f6fb5}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#12161c;--panel:#1a2029;--ink:#e6eaf0;--mute:#9aa6b5;--line:#2e3744;--accent:#9aa6f2;
+  --ok:#7fd3a4;--ok-bg:#173826;--flag:#f0d88a;--flag-bg:#3a3115;--veto:#f0957b;--veto-bg:#47241b;--na:#aab4c2;--na-bg:#262d38;--white-team:#b4bdc9;--blue-team:#6db3ee}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 60px}
+header{padding:28px 0 8px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;justify-content:space-between}
+h1{font-size:24px;margin:0}
+a{color:var(--accent)}
+.meta{color:var(--mute);font-size:13.5px}
+h2{font-size:17px;margin:22px 0 8px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:10px 0}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.tile b{font-size:22px;font-variant-numeric:tabular-nums}
+.tile .lab{color:var(--mute);font-size:13px}
+.tile svg{display:block;margin-top:4px}
+.counts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.filters label{font-size:13px;color:var(--mute);display:flex;flex-direction:column;gap:2px}
+select,input{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:5px 8px}
+select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.tw{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th{text-align:left;font-size:13px;color:var(--mute);padding:8px 10px;border-bottom:2px solid var(--line);white-space:nowrap;cursor:pointer}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{text-align:right;white-space:nowrap}
+td.nw{white-space:nowrap}
+.cds .small{min-width:150px;display:block}
+.chip{display:inline-block;border-radius:4px;padding:0 7px;font-size:12.5px;white-space:nowrap}
+.ok{background:var(--ok-bg);color:var(--ok)}.watch{background:var(--flag-bg);color:var(--flag)}
+.alert{background:var(--veto-bg);color:var(--veto)}.na,.insufficient{background:var(--na-bg);color:var(--na)}
+.w{color:var(--white-team);font-weight:700}.b{color:var(--blue-team);font-weight:700}.x{color:var(--mute);font-weight:700}
+.up{color:var(--ok)}.down{color:var(--veto)}
+.small{color:var(--mute);font-size:13px}
+.why{font-size:13px;max-width:340px}
+.empty{padding:24px;text-align:center;color:var(--mute)}
+.guide{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 18px;margin-top:10px}
+.guide h3{font-size:15px;margin:14px 0 4px}
+.guide p,.guide li{font-size:14px}
+code{background:var(--na-bg);padding:0 4px;border-radius:3px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>信用追蹤</h1>
+  <div class="meta"><span id="meta">讀取中</span> · <a href="index.html">篩選儀表板</a> · <a href="#guide">怎麼讀</a></div>
+</header>
+
+<h2>市場基準：公司債利差</h2>
+<div class="tiles" id="mkt"></div>
+<p class="small">ICE BofA 指數的選擇權調整利差（FRED），單位是百分點。先看整體信用市場在變寬還是變窄，再看個股是跟著大盤動，還是自己出問題。</p>
+
+<h2>個股</h2>
+<div class="counts" id="counts"></div>
+<div class="filters">
+  <label>狀態<select id="f-status"><option value="">全部</option><option value="alert">警戒</option><option value="watch">注意</option><option value="ok">正常</option><option value="na">不適用</option><option value="insufficient">資料不足</option></select></label>
+  <label>名單<select id="f-list"><option value="">全部</option><option value="seat">席位</option><option value="watch">觀察名單</option><option value="pool">候選池</option><option value="extra">額外追蹤</option></select></label>
+  <label>只看背離<select id="f-div"><option value="">否</option><option value="1">是</option></select></label>
+  <label>搜尋<input id="f-q" type="search" placeholder="代碼或名稱"></label>
+</div>
+<div class="tw"><table>
+<thead><tr>
+  <th data-k="ticker">代碼</th><th data-k="name">名稱</th><th data-k="list">名單</th><th data-k="status">狀態</th>
+  <th data-k="dd">違約距離</th><th data-k="dd_change_4w">4 週變化</th><th>走勢</th><th data-k="pd_1y">隱含 1 年違約率</th>
+  <th data-k="ret_1m">近 1 月</th><th data-k="drawdown_52w">距 52 週高</th><th data-k="vol_ratio">波動倍數</th>
+  <th data-k="cds">CDS（手動）</th><th>理由</th>
+</tr></thead>
+<tbody id="rows"></tbody></table><div class="empty" id="empty" hidden></div></div>
+<p class="small">點欄位標題可以排序。違約距離是從股價和負債推算的代理指標，不是 CDS 報價。本頁是個人研究工具，不是投資建議。</p>
+
+<div class="guide" id="guide">
+<h3>為什麼不是直接抓 CDS</h3>
+<p>個股 CDS 是場外交易，報價在 Bloomberg、S&amp;P Global（Markit）、LSEG、ICE 這些付費資料商手上，沒有免費 API。這頁用兩種方法補：自動算的「違約距離」，加上你從新聞讀到後手動輸入的 CDS。</p>
+<h3>違約距離（distance to default）</h3>
+<p>簡化版 Merton 模型（Bharath &amp; Shumway 2008）：把股票看成公司資產的買權，用市值、負債和一年股價波動，算出資產價值離「不夠還債」還有幾個標準差。數字越小越危險。</p>
+<ul>
+  <li>大於 5：很安全。2 到 5：普通。小於 2：信用市場會開始在意。</li>
+  <li>公用事業、REIT、中游管線、鐵路、發電本來就靠舉債經營，數字天生比較低，所以門檻另外設在 1。</li>
+  <li>比絕對數字更重要的是<b>變化</b>：4 週內掉超過 1，代表槓桿或波動在惡化。</li>
+  <li>銀行的負債大多是存款，這個模型不適用。沒有負債的公司也不算。</li>
+  <li>負債用 metrics.json 的總負債加租賃負債（每月更新一次），抓不到時用 Yahoo。</li>
+</ul>
+<h3>股債背離</h3>
+<p>股價近 1 月上漲，但違約距離下降或 CDS 上升。Oracle 2025 年就是這樣：股價漲，CDS 卻沒有跟著收窄，股票投資人忽略了債券投資人看到的風險。</p>
+<h3>新增手動 CDS</h3>
+<p>在 GitHub 打開 <code>data/cds_manual.json</code>，在代碼底下加一筆 <code>{"date": "2026-11-20", "bps": 150, "tenor": "5Y", "source": "Reuters 引用 LSEG"}</code>。舊的不要刪，頁面會拿最新兩筆比較。不同資料商的數字有落差，最好盡量用同一家。</p>
+<h3>增減追蹤標的、改門檻</h3>
+<p>名單自動讀 <code>universe.json</code> 裡沒有停用的標的。不在篩選名單裡、但想追蹤信用的公司（例如 META、ORCL），加在 <code>data/credit_watch.json</code> 的 <code>extra</code>。門檻在同一個檔案的 <code>rules</code>。</p>
+<h3>更新頻率</h3>
+<p>每週六自動跑一次，抓週五收盤的資料。違約距離用到的負債數字是每月 3 日更新的財報資料。</p>
+</div>
+</div>
+
+<script>
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const SL={alert:"警戒",watch:"注意",ok:"正常",na:"不適用",insufficient:"資料不足"};
+const LL={seat:"席位",watch:"觀察",pool:"候選池",extra:"額外追蹤"};
+const ORDER={alert:0,watch:1,ok:2,insufficient:3,na:4};
+const pct=(v,d=1)=>v==null?"—":(v*100).toFixed(d)+"%";
+const sgn=(v,d=1,suf="")=>v==null?"—":`<span class="${v>0?"up":v<0?"down":""}">${v>0?"+":""}${v.toFixed(d)}${suf}</span>`;
+// 利差、CDS 上升是壞事，顏色反過來
+const bad=(v,d=1,suf="")=>v==null?"—":`<span class="${v>0?"down":v<0?"up":""}">${v>0?"+":""}${v.toFixed(d)}${suf}</span>`;
+const chip=s=>`<span class="chip ${s}">${SL[s]}</span>`;
+function spark(vals,w=110,h=26){
+  if(!vals||vals.length<2)return '<span class="small">累積中</span>';
+  const mn=Math.min(...vals),mx=Math.max(...vals),rg=mx-mn||1;
+  const pts=vals.map((v,i)=>`${(i/(vals.length-1)*w).toFixed(1)},${(h-2-(v-mn)/rg*(h-4)).toFixed(1)}`).join(" ");
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>`;
+}
+let D=null,sortK="status",sortDir=1;
+function listKey(t){return t.list==="extra"?"extra":t.stage;}
+function val(t,k){
+  if(k==="status")return ORDER[t.status];
+  if(k==="list")return listKey(t);
+  if(["ret_1m","drawdown_52w","vol_ratio"].includes(k))return (t.price||{})[k];
+  if(k==="cds")return t.cds?t.cds.bps:null;
+  return t[k];
+}
+async function load(){
+  try{const r=await fetch("data/credit.json",{cache:"no-store"});if(r.ok)D=await r.json();}catch(e){}
+  if(!D){document.getElementById("meta").textContent="資料尚未抓取";
+    const e=document.getElementById("empty");e.hidden=false;e.textContent="還沒有資料。到 Actions → 信用追蹤 → Run workflow 手動跑第一次。";return;}
+  document.getElementById("meta").textContent=`股價資料 ${D.price_date||"—"} · 產生於 ${D.generated}`+(D.errors&&D.errors.length?" · FRED 有錯誤":"");
+  document.getElementById("mkt").innerHTML=["ig","bbb","hy"].map(k=>{const m=D.market[k];if(!m||m.value==null)return "";
+    return `<div class="tile"><div class="lab">${esc(m.label)}（${esc(m.id)}）</div><b>${m.value.toFixed(2)}</b>
+      <span class="small"> 4 週 ${bad(m.change_4w,2)}</span>
+      ${spark(m.spark,180,30)}<div class="small">資料日 ${esc(m.date)}</div></div>`;}).join("");
+  const cnt={};D.tickers.forEach(t=>cnt[t.status]=(cnt[t.status]||0)+1);
+  const div=D.tickers.filter(t=>t.divergence).length;
+  document.getElementById("counts").innerHTML=Object.keys(ORDER).filter(s=>cnt[s]).map(s=>`${chip(s)} ${cnt[s]}`).join("　")+(div?`　<span class="chip watch">股債背離</span> ${div}`:"");
+  document.querySelectorAll(".filters select,.filters input").forEach(e=>e.addEventListener("input",render));
+  document.querySelectorAll("th[data-k]").forEach(th=>th.addEventListener("click",()=>{const k=th.dataset.k;sortDir=sortK===k?-sortDir:1;sortK=k;render();}));
+  render();
+}
+function render(){
+  const fs=document.getElementById("f-status").value,fl=document.getElementById("f-list").value,
+    fd=document.getElementById("f-div").value,q=document.getElementById("f-q").value.trim().toLowerCase();
+  let rows=D.tickers.filter(t=>(!fs||t.status===fs)&&(!fl||listKey(t)===fl)&&(!fd||t.divergence)&&
+    (!q||t.ticker.toLowerCase().includes(q)||String(t.name).toLowerCase().includes(q)));
+  rows.sort((a,b)=>{const x=val(a,sortK),y=val(b,sortK);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;
+    return (x<y?-1:x>y?1:0)*sortDir||((val(a,"dd")??99)-(val(b,"dd")??99));});
+  document.getElementById("rows").innerHTML=rows.map(t=>{const p=t.price||{},c=t.cds;
+    const team=t.list==="extra"?'<span class="x">額外</span>':`<span class="${t.team==="white"?"w":"b"}">${t.team==="white"?"白":"藍"}</span> ${LL[t.stage]}`;
+    const dd=t.dd==null?"—":(t.dd>20?">20":t.dd.toFixed(1));
+    const cds=c?`${c.bps} bps${c.change_pct!=null?" "+bad(c.change_pct*100,0,"%"):""}<div class="small">${esc(c.date)} · ${esc(c.tenor)}<br>${esc(c.source)}</div>`:'<span class="small">—</span>';
+    const why=[...(t.reasons||[])];if(t.why)why.push("追蹤原因："+t.why);if(t.fx_note)why.push(t.fx_note);
+    return `<tr><td><b>${esc(t.ticker)}</b></td><td>${esc(t.name)}<div class="small">${esc(t.sector_name||"")}</div></td><td class="nw">${team}</td>
+      <td>${chip(t.status)}${t.divergence?' <span class="chip watch">背離</span>':""}</td>
+      <td class="n">${dd}</td><td class="n">${t.dd_change_4w==null?'<span class="small">—</span>':sgn(t.dd_change_4w)}</td>
+      <td class="nw">${spark(t.dd_spark)}</td><td class="n">${t.pd_1y==null?"—":t.pd_1y<0.0001?"<0.01%":pct(t.pd_1y,2)}</td>
+      <td class="n">${p.ret_1m==null?"—":sgn(p.ret_1m*100,1,"%")}</td><td class="n">${pct(p.drawdown_52w,0)}</td>
+      <td class="n">${p.vol_ratio==null?"—":p.vol_ratio.toFixed(2)}</td><td class="cds">${cds}</td><td class="why">${why.map(esc).join("<br>")}</td></tr>`;}).join("");
+  const e=document.getElementById("empty");e.hidden=rows.length>0;e.textContent="沒有符合條件的標的";
+}
+load();
+</script>
+</body>
+</html>

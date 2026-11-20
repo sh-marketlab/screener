@@ -1,0 +1,29 @@
+{
+  "note": "信用追蹤頁的設定。名單 = universe.json 裡 stage 不是 disabled 的標的 + 下面的 extra。改門檻只改 rules。",
+  "extra": [
+    {"ticker": "META", "name": "Meta Platforms", "why": "小部位觀察；AI 資本支出大量發債"},
+    {"ticker": "ORCL", "name": "Oracle", "why": "AI 信用壓力的領先指標"},
+    {"ticker": "AMZN", "name": "Amazon", "why": "藍隊第三層；AI 資本支出"},
+    {"ticker": "GOOG", "name": "Alphabet", "why": "藍隊第三層；AI 資本支出"},
+    {"ticker": "CRWV", "name": "CoreWeave", "why": "AI 信用壓力溫度計（高槓桿）"}
+  ],
+  "rules": {
+    "dd_alert": 2.0,
+    "dd_alert_asset_heavy": 1.0,
+    "dd_drop_4w": 1.0,
+    "vol_ratio_flag": 1.5,
+    "drawdown_flag": -0.2,
+    "cds_alert_bps": 200,
+    "cds_rise_flag": 0.3,
+    "divergence_dd_drop": 0.5
+  },
+  "rules_note": {
+    "dd_alert": "違約距離低於這個數字列為警戒（一般公司）",
+    "dd_alert_asset_heavy": "公用事業、REIT、中游管線、鐵路、發電這類本來就高槓桿的板塊，用比較低的門檻",
+    "dd_drop_4w": "違約距離比 4 週前少這麼多，列為注意",
+    "vol_ratio_flag": "近 1 月波動 ÷ 近 1 年波動超過這個倍數，且 52 週回檔超過 drawdown_flag，列為注意",
+    "cds_alert_bps": "手動 CDS 超過這個基點，列為警戒",
+    "cds_rise_flag": "手動 CDS 比上一筆上升超過這個比例（0.3 = 30%），列為注意",
+    "divergence_dd_drop": "股價近 1 月上漲，但違約距離 4 週內下降超過這個數字或 CDS 上升，標記股債背離"
+  }
+}

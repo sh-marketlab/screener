@@ -12,6 +12,11 @@
 | `scripts/test_evaluate.py` | 用假資料測試解析和否決邏輯 |
 | `index.html` | 儀表板頁面，含第 5 步組合檢查 |
 | `rules.html` | 8 步規則手冊 |
+| `credit.html` | 信用追蹤頁：違約距離、股債背離、手動 CDS、公司債利差 |
+| `scripts/fetch_credit.py` | 每週算信用指標，輸出 `data/credit.json` 和 `data/credit_history.json` |
+| `scripts/test_credit.py` | 信用指標的計算和分類測試 |
+| `data/credit_watch.json` | 信用追蹤的額外標的（不在篩選名單裡的，例如 META、ORCL）和門檻 |
+| `data/cds_manual.json` | 手動輸入的 CDS 報價，從新聞讀到時加一筆 |
 
 ## 第一次設定
 
@@ -19,7 +24,9 @@
 2. Settings → Pages，Source 選 Deploy from a branch，分支選 `main`、資料夾選 `/ (root)`。
 3. Actions → 抓取財務資料 → Run workflow，手動跑第一次。
 
-之後每月 3 日自動更新一次。
+之後財務資料每月 3 日自動更新一次。
+
+信用追蹤頁每週六自動更新。第一次可以到 Actions → 信用追蹤 → Run workflow 手動跑；4 週變化要累積 4 週以上的資料才會出現。
 
 ## 增刪標的或板塊
 
