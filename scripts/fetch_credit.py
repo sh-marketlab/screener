@@ -16,6 +16,7 @@ from __future__ import annotations
 import io
 import json
 import math
+import os
 import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -155,14 +156,38 @@ def classify(row: dict, rules: dict, asset_heavy: bool) -> tuple[str, list[str],
 # ---------- 抓資料 ----------
 
 def fred_series(session, sid: str) -> list[tuple[str, float]]:
+    """有 FRED_API_KEY 時走官方 API（GitHub 主機比較穩），沒有時退回 fredgraph.csv，各重試 3 次。"""
+    import time
     import pandas as pd
-    r = session.get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}", timeout=60)
-    r.raise_for_status()
-    df = pd.read_csv(io.StringIO(r.text))
-    df.columns = ["date", "value"]
-    df["value"] = pd.to_numeric(df["value"], errors="coerce")
-    df = df.dropna()
-    return [(str(d)[:10], float(v)) for d, v in zip(df["date"], df["value"])]
+    key = os.environ.get("FRED_API_KEY")
+    start = (date.today() - timedelta(days=400)).isoformat()
+    last_err = None
+    for attempt in range(3):
+        try:
+            if key:
+                r = session.get("https://api.stlouisfed.org/fred/series/observations",
+                                params={"series_id": sid, "api_key": key, "file_type": "json",
+                                        "observation_start": start}, timeout=45)
+                r.raise_for_status()
+                out = []
+                for o in r.json()["observations"]:
+                    try:
+                        out.append((o["date"], float(o["value"])))
+                    except ValueError:
+                        pass  # FRED 用 "." 表示缺值
+                return out
+            r = session.get("https://fred.stlouisfed.org/graph/fredgraph.csv",
+                            params={"id": sid, "cosd": start}, timeout=45)
+            r.raise_for_status()
+            df = pd.read_csv(io.StringIO(r.text))
+            df.columns = ["date", "value"]
+            df["value"] = pd.to_numeric(df["value"], errors="coerce")
+            df = df.dropna()
+            return [(str(d)[:10], float(v)) for d, v in zip(df["date"], df["value"])]
+        except Exception as e:  # noqa: BLE001
+            last_err = e
+            time.sleep(5 * (attempt + 1))
+    raise RuntimeError(f"{'API' if key else 'fredgraph'} 重試 3 次失敗：{last_err}")
 
 
 def fred_block(series: list[tuple[str, float]]) -> dict:
@@ -213,13 +238,21 @@ def main() -> int:
             seen.add(e["ticker"])
 
     session = requests.Session()
-    session.headers["User-Agent"] = "sh-marketlab-screener credit tracker"
+    session.headers["User-Agent"] = "Mozilla/5.0 (sh-marketlab-screener credit tracker)"
     market, fred_err = {}, []
+    prev_market = {}
+    if OUT.exists():
+        try:
+            prev_market = json.loads(OUT.read_text(encoding="utf-8")).get("market", {})
+        except Exception:  # noqa: BLE001
+            pass
     for key, (sid, label) in FRED_SERIES.items():
         try:
             market[key] = {"id": sid, "label": label, **fred_block(fred_series(session, sid))}
         except Exception as e:  # noqa: BLE001
             fred_err.append(f"{sid}: {e}")
+            if key in prev_market:  # 抓不到時沿用上一次的數字，頁面標示為舊資料
+                market[key] = {**prev_market[key], "stale": True}
     r = (market.get("tbill", {}).get("value") or 4.0) / 100
 
     symbols = [n["ticker"] for n in names]
@@ -310,7 +343,7 @@ def main() -> int:
         print(f"{tkr:6s} {row['status']:12s} dd={row.get('dd')}  {'; '.join(row['reasons'])}")
 
     snap = {"date": today, "dd": {r_["ticker"]: round(r_["dd"], 3) for r_ in rows if r_.get("dd") is not None},
-            "oas": {k: market[k]["value"] for k in ("ig", "bbb", "hy") if k in market}}
+            "oas": {k: market[k]["value"] for k in ("ig", "bbb", "hy") if k in market and not market[k].get("stale")}}
     history = [s for s in history if s["date"] != today] + [snap]
     HISTORY.write_text(json.dumps({"snapshots": history[-HISTORY_KEEP:]}, ensure_ascii=False, indent=1), encoding="utf-8")
 
