@@ -1,0 +1,1412 @@
+{
+ "generated": "2026-11-20 06:12 UTC",
+ "price_date": "2026-11-19",
+ "risk_free": 0.04,
+ "market": {},
+ "errors": [
+  "BAMLC0A0CM: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=60)",
+  "BAMLC0A4CBBB: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=60)",
+  "BAMLH0A0HYM2: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=60)",
+  "DTB3: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=60)"
+ ],
+ "rules": {
+  "dd_alert": 2.0,
+  "dd_alert_asset_heavy": 1.0,
+  "dd_drop_4w": 1.0,
+  "vol_ratio_flag": 1.5,
+  "drawdown_flag": -0.2,
+  "cds_alert_bps": 200,
+  "cds_rise_flag": 0.3,
+  "divergence_dd_drop": 0.5
+ },
+ "tickers": [
+  {
+   "ticker": "V",
+   "name": "Visa",
+   "list": "screener",
+   "team": "white",
+   "stage": "seat",
+   "sector": "payments",
+   "sector_name": "支付與清算",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.011904957346610345,
+    "drawdown_52w": -0.07690732500904296,
+    "vol_1m": 0.28893993079389324,
+    "vol_1y": 0.229758701725756,
+    "vol_ratio": 1.257579924606194,
+    "last": 402.25,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 815884600175.0,
+   "debt": 22955000000,
+   "dd": 15.957024960556431,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    15.957024960556431
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "CNI",
+   "name": "Canadian National Railway",
+   "list": "screener",
+   "team": "white",
+   "stage": "seat",
+   "sector": "rail",
+   "sector_name": "鐵路與物流",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.020729198820453654,
+    "drawdown_52w": -0.04079396116005485,
+    "vol_1m": 0.22324491652743572,
+    "vol_1y": 0.22135260231343964,
+    "vol_ratio": 1.008548868159754,
+    "last": 124.58000183105469,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "fx_note": "負債由 CAD 換成 USD",
+   "equity": 74710622208,
+   "debt": 16227727576.494217,
+   "dd": 8.688409155702542,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    8.688409155702542
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "CEG",
+   "name": "Constellation Energy",
+   "list": "screener",
+   "team": "white",
+   "stage": "seat",
+   "sector": "power_gen",
+   "sector_name": "發電與核電",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.0166163955363392,
+    "drawdown_52w": -0.3018787280557539,
+    "vol_1m": 0.6057210359078069,
+    "vol_1y": 0.49583891222538484,
+    "vol_ratio": 1.2216085123074707,
+    "last": 262.739990234375,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 93009956542.96875,
+   "debt": 23387000000.0,
+   "dd": 3.5992541987249465,
+   "pd_1y": 0.0001595655605367563,
+   "cds": null,
+   "dd_spark": [
+    3.5992541987249465
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "MSFT",
+   "name": "Microsoft",
+   "list": "screener",
+   "team": "white",
+   "stage": "seat",
+   "sector": "cloud_software",
+   "sector_name": "雲端與企業軟體",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.06320939325656016,
+    "drawdown_52w": -0.10172258427250636,
+    "vol_1m": 0.3681524092324065,
+    "vol_1y": 0.3353257865260338,
+    "vol_ratio": 1.0978947161995969,
+    "last": 498.29998779296875,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 3710341709106.4453,
+   "debt": 57200000000.0,
+   "dd": 12.557455635831712,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    12.557455635831712
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "BLK",
+   "name": "BlackRock",
+   "list": "screener",
+   "team": "white",
+   "stage": "seat",
+   "sector": "asset_mgmt",
+   "sector_name": "資產管理與交易所",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.011995404736468429,
+    "drawdown_52w": -0.07379862814122173,
+    "vol_1m": 0.34622315218491634,
+    "vol_1y": 0.28222423453371825,
+    "vol_ratio": 1.2267662015522338,
+    "last": 1135.81005859375,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 186840754638.67188,
+   "debt": 14985000000.0,
+   "dd": 9.635990851109675,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    9.635990851109675
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "NEE",
+   "name": "NextEra Energy",
+   "list": "screener",
+   "team": "white",
+   "stage": "seat",
+   "sector": "grid_utility",
+   "sector_name": "受監管電網",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.0703883779018113,
+    "drawdown_52w": -0.1311970754173153,
+    "vol_1m": 0.27298827113558627,
+    "vol_1y": 0.21229040476386524,
+    "vol_ratio": 1.2859190288851559,
+    "last": 83.79000091552734,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 175791421920.77637,
+   "debt": 113932000000.0,
+   "dd": 5.663045946635996,
+   "pd_1y": 7.43546596515543e-09,
+   "cds": null,
+   "dd_spark": [
+    5.663045946635996
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "VRTX",
+   "name": "Vertex Pharmaceuticals",
+   "list": "screener",
+   "team": "white",
+   "stage": "watch",
+   "sector": "pharma",
+   "sector_name": "製藥與基因",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.007359197443347121,
+    "drawdown_52w": -0.06838682973869381,
+    "vol_1m": 0.30136358226599164,
+    "vol_1y": 0.2951302690876975,
+    "vol_ratio": 1.0211205485549226,
+    "last": 520.6599731445312,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 132872425146.48438,
+   "debt": 6478400000.0,
+   "dd": 10.681303404598964,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    10.681303404598964
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "ASML",
+   "name": "ASML",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "semi_equipment",
+   "sector_name": "半導體設備",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.19007741146466506,
+    "drawdown_52w": -0.3165185255636451,
+    "vol_1m": 0.642179655683088,
+    "vol_1y": 0.49035891350902777,
+    "vol_ratio": 1.309611466196515,
+    "last": 1356.199951171875,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "fx_note": "負債由 EUR 換成 USD",
+   "equity": 522703503360,
+   "debt": 2156905912.6377106,
+   "dd": 11.072155052211608,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    11.072155052211608
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "CDNS",
+   "name": "Cadence",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "semi_design",
+   "sector_name": "晶片設計與 EDA",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.06498605196870055,
+    "drawdown_52w": -0.2678018344406603,
+    "vol_1m": 0.497303890600747,
+    "vol_1y": 0.42260665152028476,
+    "vol_ratio": 1.176753581165243,
+    "last": 304.8800048828125,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 83926757984.13086,
+   "debt": 2812517000.0,
+   "dd": 8.172832708971,
+   "pd_1y": 1.6653345369377348e-16,
+   "cds": null,
+   "dd_spark": [
+    8.172832708971
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "SNPS",
+   "name": "Synopsys",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "semi_design",
+   "sector_name": "晶片設計與 EDA",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.04494780174551971,
+    "drawdown_52w": -0.19389777456200918,
+    "vol_1m": 0.479845906991028,
+    "vol_1y": 0.4468931388819413,
+    "vol_ratio": 1.0737374670632212,
+    "last": 430.9100036621094,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 82872180994.29321,
+   "debt": 10841789000.0,
+   "dd": 5.10068335531655,
+   "pd_1y": 1.692146718301757e-07,
+   "cds": null,
+   "dd_spark": [
+    5.10068335531655
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "TSM",
+   "name": "TSMC",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "semi_foundry",
+   "sector_name": "晶圓代工",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.18476930608248687,
+    "drawdown_52w": -0.2752367122579277,
+    "vol_1m": 0.6544673150852243,
+    "vol_1y": 0.425771012357223,
+    "vol_ratio": 1.5371345067900595,
+    "last": 352.0899963378906,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "fx_note": "負債由 TWD 換成 USD",
+   "equity": 1826105196544,
+   "debt": 32363482343.273083,
+   "dd": 9.50369093857474,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    9.50369093857474
+   ],
+   "status": "watch",
+   "reasons": [
+    "波動放大 1.5 倍，且距 52 週高點 -28%"
+   ],
+   "divergence": false
+  },
+  {
+   "ticker": "NVDA",
+   "name": "NVIDIA",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "semi_design",
+   "sector_name": "晶片設計與 EDA",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.34234358280517274,
+    "drawdown_52w": -0.3898177880968564,
+    "vol_1m": 0.5061210264051619,
+    "vol_1y": 0.3892946717049332,
+    "vol_ratio": 1.3000974921865294,
+    "last": 145.97999572753906,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 3545124196243.286,
+   "debt": 38351000000.0,
+   "dd": 11.643337168334915,
+   "pd_1y": 0.0,
+   "cds": {
+    "date": "2026-11-06",
+    "bps": 139,
+    "tenor": "未註明",
+    "source": "CNBC 報導（未註明資料商）"
+   },
+   "dd_spark": [
+    11.643337168334915
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "PLTR",
+   "name": "Palantir",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "defense_ai",
+   "sector_name": "國防 AI 與軟體",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.18655247557603516,
+    "drawdown_52w": -0.2505620861906611,
+    "vol_1m": 0.5634468305170228,
+    "vol_1y": 0.5853087625016328,
+    "vol_ratio": 0.9626488899787333,
+    "last": 156.6699981689453,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 403256981707.00073,
+   "debt": 225267000.0,
+   "dd": 12.578261986661667,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    12.578261986661667
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "GEV",
+   "name": "GE Vernova",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "dc_infra",
+   "sector_name": "資料中心基礎設施",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.13215130247420914,
+    "drawdown_52w": -0.34232861082304755,
+    "vol_1m": 0.7880849193321947,
+    "vol_1y": 0.5550545464697578,
+    "vol_ratio": 1.41983328367374,
+    "last": 772.219970703125,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 206954952148.4375,
+   "debt": 2795000000.0,
+   "dd": 7.646202404628452,
+   "pd_1y": 1.0325074129013956e-14,
+   "cds": null,
+   "dd_spark": [
+    7.646202404628452
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "RKLB",
+   "name": "Rocket Lab",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "space",
+   "sector_name": "太空",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.04263257571499346,
+    "drawdown_52w": -0.6467416547686434,
+    "vol_1m": 1.065287950252403,
+    "vol_1y": 0.9382308616711552,
+    "vol_ratio": 1.135421988096764,
+    "last": 53.06999969482422,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 34615633510.82492,
+   "debt": 120284000.0,
+   "dd": 5.628034677889535,
+   "pd_1y": 9.11372249889908e-09,
+   "cds": null,
+   "dd_spark": [
+    5.628034677889535
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "TWST",
+   "name": "Twist Bioscience",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "synbio",
+   "sector_name": "合成生物",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.1846531116863186,
+    "drawdown_52w": -0.4324390318335556,
+    "vol_1m": 1.3341254461934493,
+    "vol_1y": 0.8328072074864299,
+    "vol_ratio": 1.6019619357283097,
+    "last": 116.3499984741211,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 7285255154.457092,
+   "debt": 189970000.0,
+   "dd": 4.128251022787664,
+   "pd_1y": 1.8276647338055785e-05,
+   "cds": null,
+   "dd_spark": [
+    4.128251022787664
+   ],
+   "status": "watch",
+   "reasons": [
+    "波動放大 1.6 倍，且距 52 週高點 -43%"
+   ],
+   "divergence": false
+  },
+  {
+   "ticker": "IONQ",
+   "name": "IonQ",
+   "list": "screener",
+   "team": "blue",
+   "stage": "watch",
+   "sector": "quantum",
+   "sector_name": "量子運算",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.2488803784287047,
+    "drawdown_52w": -0.6742056383840589,
+    "vol_1m": 1.1678231654237987,
+    "vol_1y": 0.9306785511197362,
+    "vol_ratio": 1.2548082944629426,
+    "last": 23.479999542236328,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 9412316849.178432,
+   "debt": 154254000.0,
+   "dd": 4.068568165117931,
+   "pd_1y": 2.365146159311049e-05,
+   "cds": null,
+   "dd_spark": [
+    4.068568165117931
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "MP",
+   "name": "MP Materials",
+   "list": "screener",
+   "team": "blue",
+   "stage": "pool",
+   "sector": "materials",
+   "sector_name": "稀土與關鍵原料",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.07938536580505307,
+    "drawdown_52w": -0.5051617342343264,
+    "vol_1m": 0.6691294371443288,
+    "vol_1y": 0.6859554211957578,
+    "vol_ratio": 0.9754707324535785,
+    "last": 35.95000076293945,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 6417120864.585663,
+   "debt": 953277000,
+   "dd": 3.01887167980641,
+   "pd_1y": 0.001268589851048496,
+   "cds": null,
+   "dd_spark": [
+    3.01887167980641
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "QNT",
+   "name": "Quantinuum",
+   "list": "screener",
+   "team": "blue",
+   "stage": "pool",
+   "sector": "quantum",
+   "sector_name": "量子運算",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.10341929659463434,
+    "drawdown_52w": -0.6153661118744277,
+    "vol_1m": 1.3279832595651284,
+    "vol_1y": 1.0175546629686292,
+    "vol_ratio": 1.305073140435375,
+    "last": 31.989999771118164,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 1177453138.4455662,
+   "debt": 31995000.0,
+   "dd": 3.17781850568829,
+   "pd_1y": 0.0007419380340727422,
+   "cds": null,
+   "dd_spark": [
+    3.17781850568829
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "CRSP",
+   "name": "CRISPR Therapeutics",
+   "list": "screener",
+   "team": "blue",
+   "stage": "pool",
+   "sector": "pharma",
+   "sector_name": "製藥與基因",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.19426628375917143,
+    "drawdown_52w": -0.35062208720216825,
+    "vol_1m": 0.6254268714320045,
+    "vol_1y": 0.5784239884214778,
+    "vol_ratio": 1.081260258826398,
+    "last": 40.189998626708984,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 3888023470.4463577,
+   "debt": 779827000.0,
+   "dd": 3.299867403814263,
+   "pd_1y": 0.0004836525984329154,
+   "cds": null,
+   "dd_spark": [
+    3.299867403814263
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "OKLO",
+   "name": "Oklo",
+   "list": "screener",
+   "team": "blue",
+   "stage": "pool",
+   "sector": "smr",
+   "sector_name": "小型核反應爐",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.20669579329671062,
+    "drawdown_52w": -0.8047469866625339,
+    "vol_1m": 1.1508691243243345,
+    "vol_1y": 0.9340435013655767,
+    "vol_ratio": 1.2321365360839807,
+    "last": 21.799999237060547,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 4111497078.1090164,
+   "debt": 8626000.0,
+   "dd": 6.190655460987511,
+   "pd_1y": 2.995726999799331e-10,
+   "cds": null,
+   "dd_spark": [
+    6.190655460987511
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "SMR",
+   "name": "NuScale Power",
+   "list": "screener",
+   "team": "blue",
+   "stage": "pool",
+   "sector": "smr",
+   "sector_name": "小型核反應爐",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.29928312915929334,
+    "drawdown_52w": -0.8288840253586379,
+    "vol_1m": 1.0316452860830634,
+    "vol_1y": 0.9485143375182973,
+    "vol_ratio": 1.0876433231175722,
+    "last": 3.9100000858306885,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 1604892289.299925,
+   "debt": 7479000.0,
+   "dd": 5.2529970034867794,
+   "pd_1y": 7.482198599584322e-08,
+   "cds": null,
+   "dd_spark": [
+    5.2529970034867794
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "RXRX",
+   "name": "Recursion",
+   "list": "screener",
+   "team": "blue",
+   "stage": "pool",
+   "sector": "pharma",
+   "sector_name": "製藥與基因",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.22814208157524063,
+    "drawdown_52w": -0.4304435431538586,
+    "vol_1m": 0.8825917392594196,
+    "vol_1y": 0.7497501535188447,
+    "vol_ratio": 1.1771811384327193,
+    "last": 2.825000047683716,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 1533977785.9173043,
+   "debt": 74700000.0,
+   "dd": 3.920568769661982,
+   "pd_1y": 4.4170110620134206e-05,
+   "cds": null,
+   "dd_spark": [
+    3.920568769661982
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "MA",
+   "name": "Mastercard",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "payments",
+   "sector_name": "支付與清算",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.006231738320710667,
+    "drawdown_52w": -0.06865075991347214,
+    "vol_1m": 0.3091098254357998,
+    "vol_1y": 0.2356944329740233,
+    "vol_ratio": 1.311485475220655,
+    "last": 626.5,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 548814000000.0,
+   "debt": 23938000000,
+   "dd": 13.838969944460048,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    13.838969944460048
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "XYL",
+   "name": "Xylem",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "water",
+   "sector_name": "水",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.10446639181715678,
+    "drawdown_52w": -0.3409792805394434,
+    "vol_1m": 0.6634213499353483,
+    "vol_1y": 0.31270647319883,
+    "vol_ratio": 2.1215465837623424,
+    "last": 95.23999786376953,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 22194729102.17285,
+   "debt": 3026000000.0,
+   "dd": 7.28993363634864,
+   "pd_1y": 1.550426453889031e-13,
+   "cds": null,
+   "dd_spark": [
+    7.28993363634864
+   ],
+   "status": "watch",
+   "reasons": [
+    "波動放大 2.1 倍，且距 52 週高點 -34%"
+   ],
+   "divergence": false
+  },
+  {
+   "ticker": "VLTO",
+   "name": "Veralto",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "water",
+   "sector_name": "水",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.16288478726138012,
+    "drawdown_52w": -0.020280898192383212,
+    "vol_1m": 0.3027678928133707,
+    "vol_1y": 0.24390179209915586,
+    "vol_ratio": 1.2413516530878272,
+    "last": 117.87000274658203,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 28913511673.736572,
+   "debt": 3116000000,
+   "dd": 10.146052984557603,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    10.146052984557603
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "PNR",
+   "name": "Pentair",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "water",
+   "sector_name": "水",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.30563974030285634,
+    "drawdown_52w": -0.35633036105891014,
+    "vol_1m": 0.5511424009725608,
+    "vol_1y": 0.37202418452439684,
+    "vol_ratio": 1.48146928049087,
+    "last": 68.68000030517578,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 11009404048.919678,
+   "debt": 1639100000.0,
+   "dd": 5.914457159521875,
+   "pd_1y": 1.6648594169943465e-09,
+   "cds": null,
+   "dd_spark": [
+    5.914457159521875
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "NDAQ",
+   "name": "Nasdaq",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "asset_mgmt",
+   "sector_name": "資產管理與交易所",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.08146061150563777,
+    "drawdown_52w": -0.055171785857409894,
+    "vol_1m": 0.34446165473369456,
+    "vol_1y": 0.2892502809063884,
+    "vol_ratio": 1.190877511524957,
+    "last": 103.94999694824219,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 58556438788.85356,
+   "debt": 9216000000.0,
+   "dd": 7.502139019037992,
+   "pd_1y": 3.141931159689193e-14,
+   "cds": null,
+   "dd_spark": [
+    7.502139019037992
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "BK",
+   "name": "BNY",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "banks",
+   "sector_name": "銀行與託管",
+   "errors": [
+    "抓不到股價"
+   ],
+   "price": {},
+   "not_applicable": "銀行的負債以存款為主，違約距離不適用",
+   "cds": null,
+   "dd_spark": [],
+   "status": "na",
+   "reasons": [
+    "銀行的負債以存款為主，違約距離不適用"
+   ],
+   "divergence": false
+  },
+  {
+   "ticker": "JPM",
+   "name": "JPMorgan Chase",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "banks",
+   "sector_name": "銀行與託管",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.04466124022693663,
+    "drawdown_52w": -0.11874265966653053,
+    "vol_1m": 0.29365005294864566,
+    "vol_1y": 0.22966548788540783,
+    "vol_ratio": 1.2785989556043487,
+    "last": 320.2200012207031,
+    "date": "2026-11-19"
+   },
+   "not_applicable": "銀行的負債以存款為主，違約距離不適用",
+   "cds": null,
+   "dd_spark": [],
+   "status": "na",
+   "reasons": [
+    "銀行的負債以存款為主，違約距離不適用"
+   ],
+   "divergence": false
+  },
+  {
+   "ticker": "AEP",
+   "name": "American Electric Power",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "grid_utility",
+   "sector_name": "受監管電網",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.011525218101710255,
+    "drawdown_52w": -0.08515036535748022,
+    "vol_1m": 0.18666485801049418,
+    "vol_1y": 0.18550615742341123,
+    "vol_ratio": 1.0062461570180565,
+    "last": 124.97000122070312,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 68746401949.46274,
+   "debt": 55095000000.0,
+   "dd": 5.754431853705067,
+   "pd_1y": 4.3466831800564876e-09,
+   "cds": null,
+   "dd_spark": [
+    5.754431853705067
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "EXC",
+   "name": "Exelon",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "grid_utility",
+   "sector_name": "受監管電網",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.05505224097296857,
+    "drawdown_52w": -0.0796642213434996,
+    "vol_1m": 0.22548161703993724,
+    "vol_1y": 0.20104941941729076,
+    "vol_ratio": 1.1215233433324963,
+    "last": 45.41999816894531,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 47100538101.19629,
+   "debt": 53193000000.0,
+   "dd": 4.493945361459156,
+   "pd_1y": 3.495778721829268e-06,
+   "cds": null,
+   "dd_spark": [
+    4.493945361459156
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "DLR",
+   "name": "Digital Realty",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "dc_reit",
+   "sector_name": "資料中心 REIT",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.012988448289052767,
+    "drawdown_52w": -0.13500336113586442,
+    "vol_1m": 0.35517416419370323,
+    "vol_1y": 0.2785982558286918,
+    "vol_ratio": 1.274861406211019,
+    "last": 174.02000427246094,
+    "date": "2026-11-19"
+   },
+   "debt_source": "Yahoo",
+   "equity": 61473262589.263916,
+   "debt": 20891783168,
+   "dd": 5.805815349510358,
+   "pd_1y": 3.20267617981429e-09,
+   "cds": null,
+   "dd_spark": [
+    5.805815349510358
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "EQIX",
+   "name": "Equinix",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "dc_reit",
+   "sector_name": "資料中心 REIT",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.028293254731335038,
+    "drawdown_52w": -0.07876717397884003,
+    "vol_1m": 0.4025399468846328,
+    "vol_1y": 0.2652473451397672,
+    "vol_ratio": 1.517602171182983,
+    "last": 1018.0499877929688,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 101068948638.12256,
+   "debt": 26411000000.0,
+   "dd": 6.769489023070397,
+   "pd_1y": 6.46188658137703e-12,
+   "cds": null,
+   "dd_spark": [
+    6.769489023070397
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "WMB",
+   "name": "Williams Companies",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "midstream",
+   "sector_name": "管線與天然氣出口",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.09162095492767686,
+    "drawdown_52w": -0.15488524765345324,
+    "vol_1m": 0.4232788895907409,
+    "vol_1y": 0.26413485770231854,
+    "vol_ratio": 1.6025105253914596,
+    "last": 66.12999725341797,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 81935066596.98486,
+   "debt": 33934000000.0,
+   "dd": 5.6335784986086255,
+   "pd_1y": 8.825405906076611e-09,
+   "cds": null,
+   "dd_spark": [
+    5.6335784986086255
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "ENB",
+   "name": "Enbridge",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "midstream",
+   "sector_name": "管線與天然氣出口",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.029819760317127075,
+    "drawdown_52w": -0.18643850150859265,
+    "vol_1m": 0.15241957173077056,
+    "vol_1y": 0.18276152354614048,
+    "vol_ratio": 0.8339806364783904,
+    "last": 45.91999816894531,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "fx_note": "負債由 CAD 換成 USD",
+   "equity": 102350536704,
+   "debt": 79793192953.46738,
+   "dd": 5.911459184856868,
+   "pd_1y": 1.695451445904439e-09,
+   "cds": null,
+   "dd_spark": [
+    5.911459184856868
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "LNG",
+   "name": "Cheniere Energy",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "midstream",
+   "sector_name": "管線與天然氣出口",
+   "errors": [],
+   "price": {
+    "ret_1m": 0.04157223892826578,
+    "drawdown_52w": -0.10379128387039249,
+    "vol_1m": 0.5121648420594338,
+    "vol_1y": 0.3177252984464268,
+    "vol_ratio": 1.6119737539432746,
+    "last": 295.3699951171875,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "equity": 61112051989.74609,
+   "debt": 26301000000.0,
+   "dd": 4.623103734954188,
+   "pd_1y": 1.8902027424938517e-06,
+   "cds": null,
+   "dd_spark": [
+    4.623103734954188
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "SAP",
+   "name": "SAP",
+   "list": "screener",
+   "team": "white",
+   "stage": "pool",
+   "sector": "cloud_software",
+   "sector_name": "雲端與企業軟體",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.12675632940128678,
+    "drawdown_52w": -0.169093041885908,
+    "vol_1m": 0.3871875746196473,
+    "vol_1y": 0.3990471194871568,
+    "vol_ratio": 0.9702803396181608,
+    "last": 203.22999572753906,
+    "date": "2026-11-19"
+   },
+   "debt_source": "metrics.json",
+   "fx_note": "負債由 EUR 換成 USD",
+   "equity": 234568925184,
+   "debt": 11633886807.441711,
+   "dd": 7.791113022588423,
+   "pd_1y": 3.3306690738754696e-15,
+   "cds": null,
+   "dd_spark": [
+    7.791113022588423
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "ARM",
+   "name": "Arm Holdings",
+   "list": "screener",
+   "team": "blue",
+   "stage": "pool",
+   "sector": "semi_design",
+   "sector_name": "晶片設計與 EDA",
+   "errors": [],
+   "price": {
+    "ret_1m": -0.1732561452761533,
+    "drawdown_52w": -0.584125977198273,
+    "vol_1m": 0.9999413679093136,
+    "vol_1y": 0.8187833760875013,
+    "vol_ratio": 1.221252650105652,
+    "last": 182.75999450683594,
+    "date": "2026-11-18"
+   },
+   "debt_source": "metrics.json",
+   "equity": 189571891200,
+   "debt": 500000000.0,
+   "dd": 6.908801908262596,
+   "pd_1y": 2.4438229218048946e-12,
+   "cds": null,
+   "dd_spark": [
+    6.908801908262596
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "META",
+   "name": "Meta Platforms",
+   "list": "extra",
+   "why": "小部位觀察；AI 資本支出大量發債",
+   "team": null,
+   "stage": null,
+   "sector": null,
+   "sector_name": null,
+   "errors": [],
+   "price": {
+    "ret_1m": -0.1121641989444544,
+    "drawdown_52w": -0.20732007408142916,
+    "vol_1m": 0.408143838301364,
+    "vol_1y": 0.4143052982441474,
+    "vol_ratio": 0.9851282134964335,
+    "last": 616.3800048828125,
+    "date": "2026-11-18"
+   },
+   "debt_source": "Yahoo",
+   "equity": 1524082016256,
+   "debt": 114842001408,
+   "dd": 6.615101759631063,
+   "pd_1y": 1.856481635087448e-11,
+   "cds": null,
+   "dd_spark": [
+    6.615101759631063
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "ORCL",
+   "name": "Oracle",
+   "list": "extra",
+   "why": "AI 信用壓力的領先指標",
+   "team": null,
+   "stage": null,
+   "sector": null,
+   "sector_name": null,
+   "errors": [],
+   "price": {
+    "ret_1m": -0.1437311584153642,
+    "drawdown_52w": -0.5512188652289532,
+    "vol_1m": 0.7739809861586332,
+    "vol_1y": 0.5979417995676748,
+    "vol_ratio": 1.2944085640412473,
+    "last": 110.56999969482422,
+    "date": "2026-11-19"
+   },
+   "debt_source": "Yahoo",
+   "equity": 344724963328,
+   "debt": 169142992896,
+   "dd": 2.232872879962921,
+   "pd_1y": 0.012778664238244974,
+   "cds": {
+    "date": "2026-11-06",
+    "bps": 298,
+    "tenor": "未註明",
+    "source": "CNBC 報導（未註明資料商）"
+   },
+   "dd_spark": [
+    2.232872879962921
+   ],
+   "status": "alert",
+   "reasons": [
+    "CDS 298 bps 高於 200"
+   ],
+   "divergence": false
+  },
+  {
+   "ticker": "AMZN",
+   "name": "Amazon",
+   "list": "extra",
+   "why": "藍隊第三層；AI 資本支出",
+   "team": null,
+   "stage": null,
+   "sector": null,
+   "sector_name": null,
+   "errors": [],
+   "price": {
+    "ret_1m": -0.01905705718280304,
+    "drawdown_52w": -0.09383140246231592,
+    "vol_1m": 0.4359856187935155,
+    "vol_1y": 0.336119902768209,
+    "vol_ratio": 1.2971133669944404,
+    "last": 257.3699951171875,
+    "date": "2026-11-19"
+   },
+   "debt_source": "Yahoo",
+   "equity": 2782977327104,
+   "debt": 304840998912,
+   "dd": 7.291826979116858,
+   "pd_1y": 1.5287771049088406e-13,
+   "cds": null,
+   "dd_spark": [
+    7.291826979116858
+   ],
+   "status": "ok",
+   "reasons": [],
+   "divergence": false
+  },
+  {
+   "ticker": "GOOG",
+   "name": "Alphabet",
+   "list": "extra",
+   "why": "藍隊第三層；AI 資本支出",
+   "team": null,
+   "stage": null,
+   "sector": null,
+   "sector_name": null,
+   "errors": [],
+   "price": {
+    "ret_1m": -0.1700356204734489,
+    "drawdown_52w": -0.2994451506194772,
+    "vol_1m": 0.5213025229782443,
+    "vol_1y": 0.3308752640054177,
+    "vol_ratio": 1.575525824045005,
+    "last": 279.20001220703125,
+    "date": "2026-11-18"
+   },
+   "debt_source": "Yahoo",
+   "equity": 3331919708160,
+   "debt": 150330998784,
+   "dd": 9.71283895261887,
+   "pd_1y": 0.0,
+   "cds": null,
+   "dd_spark": [
+    9.71283895261887
+   ],
+   "status": "watch",
+   "reasons": [
+    "波動放大 1.6 倍，且距 52 週高點 -30%"
+   ],
+   "divergence": false
+  },
+  {
+   "ticker": "CRWV",
+   "name": "CoreWeave",
+   "list": "extra",
+   "why": "AI 信用壓力溫度計（高槓桿）",
+   "team": null,
+   "stage": null,
+   "sector": null,
+   "sector_name": null,
+   "errors": [],
+   "price": {
+    "ret_1m": -0.23016254613263198,
+    "drawdown_52w": -0.6533555347725785,
+    "vol_1m": 1.3156874000423968,
+    "vol_1y": 0.9859495954092684,
+    "vol_ratio": 1.3344367766551535,
+    "last": 47.83000183105469,
+    "date": "2026-11-18"
+   },
+   "debt_source": "Yahoo",
+   "equity": 24975605760,
+   "debt": 66220998656,
+   "dd": 0.4991856500064517,
+   "pd_1y": 0.30882430146822143,
+   "cds": {
+    "date": "2026-11-06",
+    "bps": 1155,
+    "tenor": "5Y",
+    "source": "CNBC 引用 Deutsche Bank 資料"
+   },
+   "dd_spark": [
+    0.4991856500064517
+   ],
+   "status": "alert",
+   "reasons": [
+    "違約距離 0.5 低於 2.0",
+    "CDS 1155 bps 高於 200"
+   ],
+   "divergence": false
+  }
+ ]
+}
