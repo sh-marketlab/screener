@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12",
+  "generated": "2026-11-20",
   "basis": "近四季（抓不到季報時用最近年度）",
   "tickers": {
     "V": {
@@ -12,13 +12,13 @@
         "稀釋比較用年度數字"
       ],
       "market": {
-        "price": 425.55,
-        "market_cap": 793991184384,
+        "price": 402.25,
+        "market_cap": 750518075392,
         "beta": 0.786,
-        "dividend_yield": 0.0065957448,
-        "change_52w": 0.2482295,
-        "forward_pe": 24.827293,
-        "inst_held": 0.89322,
+        "dividend_yield": 0.0067193294,
+        "change_52w": 0.28245354,
+        "forward_pe": 23.467947,
+        "inst_held": 0.89734,
         "short_float": 0.0124,
         "currency": "USD",
         "financial_currency": "USD",
@@ -65,7 +65,7 @@
         "net_debt_incl_leases": 8872000000.0,
         "net_debt_to_fcf": 0.40223058439497666,
         "dividend_to_fcf": 0.23176315908781792,
-        "altman_z": 9.836373331769686
+        "altman_z": 9.388573963622594
       },
       "checks": [
         {
@@ -106,7 +106,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 9.836373331769686,
+          "value": 9.388573963622594,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -172,13 +172,13 @@
       "source": "Yahoo",
       "errors": [],
       "market": {
-        "price": 127.56,
-        "market_cap": 76497723392,
+        "price": 124.58,
+        "market_cap": 74710622208,
         "beta": 0.953,
-        "dividend_yield": 0.028655939,
-        "change_52w": 0.2953918,
-        "forward_pe": 19.880407,
-        "inst_held": 0.74424005,
+        "dividend_yield": 0.028996726,
+        "change_52w": 0.36155188,
+        "forward_pe": 19.427462,
+        "inst_held": 0.73850995,
         "short_float": null,
         "currency": "USD",
         "financial_currency": "CAD",
@@ -258,7 +258,7 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": 0.2953918,
+          "value": 0.36155188,
           "threshold": -0.3,
           "result": "pass"
         }
@@ -326,13 +326,13 @@
       "note": "SEC 算得出的近四季只到 2026-06-30，改用較新的 Yahoo 資料",
       "sec_latest_fact_end": "2026-06-30",
       "market": {
-        "price": 274.73,
-        "market_cap": 96597409792,
+        "price": 252.03,
+        "market_cap": 88615895040,
         "beta": 1.127,
-        "dividend_yield": 0.0062257247,
-        "change_52w": -0.24365854,
-        "forward_pe": 20.491383,
-        "inst_held": 0.84188,
+        "dividend_yield": 0.006344676,
+        "change_52w": -0.24015272,
+        "forward_pe": 18.825235,
+        "inst_held": 0.85056,
         "short_float": 0.0334,
         "currency": "USD",
         "financial_currency": "USD",
@@ -477,13 +477,13 @@
         "debt"
       ],
       "market": {
-        "price": 521.125,
-        "market_cap": 3869975511040,
+        "price": 498.3,
+        "market_cap": 3700472676352,
         "beta": 1.045,
-        "dividend_yield": 0.006958512,
-        "change_52w": 0.04308021,
-        "forward_pe": 21.537926,
-        "inst_held": 0.76192003,
+        "dividend_yield": 0.007313083,
+        "change_52w": 0.0624125,
+        "forward_pe": 20.58771,
+        "inst_held": 0.76916003,
         "short_float": 0.0082,
         "currency": "USD",
         "financial_currency": "USD",
@@ -530,7 +530,7 @@
         "net_debt_incl_leases": -7094000000.0,
         "net_debt_to_fcf": 0.0,
         "dividend_to_fcf": 0.45087312574011373,
-        "altman_z": 9.342454286211922
+        "altman_z": 9.01320962360015
       },
       "checks": [
         {
@@ -571,7 +571,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 9.342454286211922,
+          "value": 9.01320962360015,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -646,13 +646,13 @@
         "debt"
       ],
       "market": {
-        "price": 1226.31,
-        "market_cap": 189370990592,
+        "price": 1135.81,
+        "market_cap": 175395684352,
         "beta": 1.382,
-        "dividend_yield": 0.018328356,
-        "change_52w": 0.11721039,
-        "forward_pe": 18.91843,
-        "inst_held": 0.85594004,
+        "dividend_yield": 0.019158235,
+        "change_52w": 0.17802155,
+        "forward_pe": 17.487501,
+        "inst_held": 0.85333997,
         "short_float": 0.0139999995,
         "currency": "USD",
         "financial_currency": "USD",
@@ -739,7 +739,7 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": 0.11721039,
+          "value": 0.17802155,
           "threshold": -0.3,
           "result": "pass"
         }
@@ -807,13 +807,13 @@
       "note": "SEC 算得出的近四季只到 2026-03-31，改用較新的 Yahoo 資料",
       "sec_latest_fact_end": "2026-03-31",
       "market": {
-        "price": 85.99,
-        "market_cap": 180347355136,
+        "price": 83.79,
+        "market_cap": 175733276672,
         "beta": 0.6,
-        "dividend_yield": 0.028236933,
-        "change_52w": 0.0044242144,
-        "forward_pe": 19.653645,
-        "inst_held": 0.86799,
+        "dividend_yield": 0.028733194,
+        "change_52w": 0.0056939125,
+        "forward_pe": 19.150818,
+        "inst_held": 0.87911004,
         "short_float": 0.0,
         "currency": "USD",
         "financial_currency": "USD",
@@ -893,7 +893,7 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": 0.0044242144,
+          "value": 0.0056939125,
           "threshold": -0.3,
           "result": "pass"
         }
@@ -963,13 +963,13 @@
         "debt"
       ],
       "market": {
-        "price": 547.03,
-        "market_cap": 138692722688,
+        "price": 520.66,
+        "market_cap": 132006920192,
         "beta": 0.28,
         "dividend_yield": 0.0,
-        "change_52w": 0.26186693,
-        "forward_pe": 27.421207,
-        "inst_held": 0.98428,
+        "change_52w": 0.2702453,
+        "forward_pe": 26.141275,
+        "inst_held": 0.98337,
         "short_float": 0.0214,
         "currency": "USD",
         "financial_currency": "USD",
@@ -1015,7 +1015,7 @@
         "interest_coverage": 94.38157894736842,
         "net_debt_incl_leases": 175100000.0,
         "net_debt_to_fcf": 0.054679449145926366,
-        "altman_z": 8.808510871953532
+        "altman_z": 8.469385382888614
       },
       "checks": [
         {
@@ -1049,7 +1049,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 8.808510871953532,
+          "value": 8.469385382888614,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -1115,13 +1115,13 @@
       "source": "Yahoo",
       "errors": [],
       "market": {
-        "price": 1534.42,
-        "market_cap": 591392669696,
+        "price": 1356.2,
+        "market_cap": 522703503360,
         "beta": 1.333,
-        "dividend_yield": 0.0049739694,
-        "change_52w": 0.45358753,
-        "forward_pe": 24.20248,
-        "inst_held": 0.20367001,
+        "dividend_yield": 0.005375304,
+        "change_52w": 0.4222356,
+        "forward_pe": 21.391407,
+        "inst_held": 0.19894,
         "short_float": 0.003,
         "currency": "USD",
         "financial_currency": "EUR",
@@ -1264,13 +1264,13 @@
         "debt"
       ],
       "market": {
-        "price": 329.26,
-        "market_cap": 90342031360,
+        "price": 304.88,
+        "market_cap": 83652673536,
         "beta": 1.102,
         "dividend_yield": 0.0,
-        "change_52w": 0.051023602,
-        "forward_pe": 33.44347,
-        "inst_held": 0.90933,
+        "change_52w": 0.012179732,
+        "forward_pe": 30.967155,
+        "inst_held": 0.91231,
         "short_float": 0.0201,
         "currency": "USD",
         "financial_currency": "USD",
@@ -1316,7 +1316,7 @@
         "interest_coverage": 14.014214152523625,
         "net_debt_incl_leases": 1360497000.0,
         "net_debt_to_fcf": 0.7714159837971101,
-        "altman_z": 12.127089301394538
+        "altman_z": 11.376814053601416
       },
       "checks": [
         {
@@ -1350,7 +1350,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 12.127089301394538,
+          "value": 11.376814053601416,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -1420,13 +1420,13 @@
         "debt"
       ],
       "market": {
-        "price": 462.12,
-        "market_cap": 88559124480,
+        "price": 430.91,
+        "market_cap": 82578145280,
         "beta": 1.184,
         "dividend_yield": 0.0,
-        "change_52w": 0.15330613,
-        "forward_pe": 24.784533,
-        "inst_held": 0.91866994,
+        "change_52w": 0.12554455,
+        "forward_pe": 23.055424,
+        "inst_held": 0.93779,
         "short_float": 0.033099998,
         "currency": "USD",
         "financial_currency": "USD",
@@ -1474,7 +1474,7 @@
         "interest_coverage": 1.2856929967230977,
         "net_debt_incl_leases": 7234120000.0,
         "net_debt_to_fcf": 2.6327853125479947,
-        "altman_z": 3.821676345875548
+        "altman_z": 3.6051687962601173
       },
       "checks": [
         {
@@ -1508,7 +1508,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 3.821676345875548,
+          "value": 3.6051687962601173,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -1574,13 +1574,13 @@
       "source": "Yahoo",
       "errors": [],
       "market": {
-        "price": 413.35,
-        "market_cap": 2143828574208,
+        "price": 352.09,
+        "market_cap": 1826105196544,
         "beta": 1.233,
-        "dividend_yield": 0.015133171,
-        "change_52w": 0.3642558,
-        "forward_pe": 17.675642,
-        "inst_held": 0.15491,
+        "dividend_yield": 0.07721582,
+        "change_52w": 0.30673873,
+        "forward_pe": 15.056046,
+        "inst_held": 0.15406,
         "short_float": 0.0066000004,
         "currency": "USD",
         "financial_currency": "TWD",
@@ -1603,49 +1603,49 @@
         }
       ],
       "raw": {
-        "ocf": 3127626004000.0,
-        "capex": 1664774809000.0,
+        "ocf": 3127625487000.0,
+        "capex": 1670041204000.0,
         "revenue": 4944817423000.0,
-        "op_income": 2866894811000.0,
+        "op_income": 2866829715000.0,
         "net_income": 2527571475000.0,
-        "interest_expense": 12370400000.0,
-        "sbc": 1246100000.0,
-        "dividends": 570516138000.0,
-        "shares": 5186474013.0,
-        "cash_total": 4016979000000.0,
-        "debt": 983513000000.0,
+        "interest_expense": 12005289000.0,
+        "sbc": 513361000.0,
+        "dividends": 570516285000.0,
+        "shares": 5186390400.0,
+        "cash_total": 4094652764000.0,
+        "debt": 1065988362000.0,
         "leases": 0,
-        "da": 746304743000.0,
+        "da": 746304318000.0,
         "equity": 6997901424000.0
       },
       "metrics": {
-        "fcf": 1462851195000.0,
-        "ebitda": 3613199554000.0,
-        "share_growth": 3.51720974198777e-05,
-        "sbc_to_revenue": 0.0002520012152934044,
-        "interest_coverage": 231.75441465110262,
-        "net_debt_incl_leases": -3033466000000.0,
+        "fcf": 1457584283000.0,
+        "ebitda": 3613134033000.0,
+        "share_growth": 3.68304309603662e-05,
+        "sbc_to_revenue": 0.00010381798883254743,
+        "interest_coverage": 238.79722637247633,
+        "net_debt_incl_leases": -3028664402000.0,
         "net_debt_to_fcf": 0.0
       },
       "checks": [
         {
           "id": "dilution",
           "label": "已發生的稀釋",
-          "value": 3.51720974198777e-05,
+          "value": 3.68304309603662e-05,
           "threshold": 0.02,
           "result": "pass"
         },
         {
           "id": "sbc",
           "label": "股票薪酬 ÷ 營收",
-          "value": 0.0002520012152934044,
+          "value": 0.00010381798883254743,
           "threshold": 0.15,
           "result": "pass"
         },
         {
           "id": "coverage",
           "label": "利息保障倍數",
-          "value": 231.75441465110262,
+          "value": 238.79722637247633,
           "threshold": 3,
           "result": "pass"
         },
@@ -1671,19 +1671,19 @@
             "note": null
           },
           "debt_to_equity": {
-            "value": 0.1405439917497186,
+            "value": 0.15232971964196104,
             "points": 1.0,
             "note": null
           },
           "interest_coverage": {
-            "value": 231.75441465110262,
+            "value": 238.79722637247633,
             "points": 1.0,
             "note": null
           }
         },
         "indicators": {
           "fcf_to_capex": {
-            "value": 0.878708151451852,
+            "value": 0.8727834256477423,
             "points": 0.0,
             "note": null
           },
@@ -1717,19 +1717,26 @@
     "NVDA": {
       "source": "SEC",
       "errors": [],
-      "crosscheck": [],
+      "crosscheck": [
+        {
+          "field": "revenue",
+          "sec": 302970000000,
+          "yahoo": 215938000000.0,
+          "diff": -0.28726276529029277
+        }
+      ],
       "yahoo_filled": [
         "cash_total",
         "debt"
       ],
       "market": {
-        "price": 173.73,
-        "market_cap": 4195058188288,
+        "price": 145.98,
+        "market_cap": 3524978802688,
         "beta": 2.247,
-        "dividend_yield": 0.001658807,
-        "change_52w": -0.12853456,
-        "forward_pe": 10.907824,
-        "inst_held": 0.71384,
+        "dividend_yield": 0.0034446209,
+        "change_52w": -0.16430467,
+        "forward_pe": 8.79118,
+        "inst_held": 0.71578,
         "short_float": 0.0121,
         "currency": "USD",
         "financial_currency": "USD",
@@ -1775,7 +1782,7 @@
         "interest_coverage": 425.81681034482756,
         "net_debt_incl_leases": -24118000000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 32.09072181267436
+        "altman_z": 27.68655443733477
       },
       "checks": [
         {
@@ -1809,7 +1816,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 32.09072181267436,
+          "value": 27.68655443733477,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -1879,13 +1886,13 @@
         "debt"
       ],
       "market": {
-        "price": 172.4,
-        "market_cap": 415397380096,
+        "price": 153.68,
+        "market_cap": 370291572736,
         "beta": 1.61,
         "dividend_yield": 0.0,
-        "change_52w": -0.0833469,
-        "forward_pe": 67.9069,
-        "inst_held": 0.66245,
+        "change_52w": 0.005939245,
+        "forward_pe": 60.53325,
+        "inst_held": 0.66595,
         "short_float": 0.025999999,
         "currency": "USD",
         "financial_currency": "USD",
@@ -1931,7 +1938,7 @@
         "interest_coverage": null,
         "net_debt_incl_leases": -10336264000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 122.8194904633667
+        "altman_z": 109.73191441141776
       },
       "checks": [
         {
@@ -1965,7 +1972,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 122.8194904633667,
+          "value": 109.73191441141776,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -2036,13 +2043,13 @@
         "debt"
       ],
       "market": {
-        "price": 808.24,
-        "market_cap": 213922594816,
+        "price": 756.28,
+        "market_cap": 200169979904,
         "beta": 1.058,
-        "dividend_yield": 0.0025092845,
-        "change_52w": 0.38519287,
-        "forward_pe": 31.248793,
-        "inst_held": 0.8199,
+        "dividend_yield": 0.0025899357,
+        "change_52w": 0.38383245,
+        "forward_pe": 29.200363,
+        "inst_held": 0.79815,
         "short_float": 0.028299998,
         "currency": "USD",
         "financial_currency": "USD",
@@ -2088,7 +2095,7 @@
         "interest_coverage": null,
         "net_debt_incl_leases": -13969000000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 2.4131392948399855
+        "altman_z": 2.301150356602695
       },
       "checks": [
         {
@@ -2115,7 +2122,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 2.4131392948399855,
+          "value": 2.301150356602695,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -2185,13 +2192,13 @@
         "debt"
       ],
       "market": {
-        "price": 66.15,
-        "market_cap": 44517109760,
+        "price": 50.99,
+        "market_cap": 34314852352,
         "beta": 3.176,
         "dividend_yield": 0.0,
-        "change_52w": 0.25495303,
-        "forward_pe": 972.3652,
-        "inst_held": 0.59568,
+        "change_52w": 0.34422493,
+        "forward_pe": 712.34985,
+        "inst_held": 0.59598,
         "short_float": 0.073,
         "currency": "USD",
         "financial_currency": "USD",
@@ -2240,7 +2247,7 @@
         "interest_coverage": -33.863276365152146,
         "net_debt_incl_leases": -4487671000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 35.47007519262473
+        "altman_z": 27.480179854323623
       },
       "checks": [
         {
@@ -2281,7 +2288,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 35.47007519262473,
+          "value": 27.480179854323623,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -2346,30 +2353,34 @@
     "TWST": {
       "source": "SEC",
       "errors": [],
-      "crosscheck": [],
+      "crosscheck": [
+        {
+          "field": "capex",
+          "sec": 47583000,
+          "yahoo": 54533000.0,
+          "diff": 0.14606056784986235
+        }
+      ],
       "yahoo_filled": [
-        "debt"
+        "debt",
+        "capex"
       ],
       "market": {
-        "price": 122.59,
-        "market_cap": 8127860736,
+        "price": 111.62,
+        "market_cap": 7610105344,
         "beta": 2.222,
         "dividend_yield": 0.0,
-        "change_52w": 3.145905,
-        "forward_pe": -306.47498,
-        "inst_held": 1.2075801,
-        "short_float": 0.1871,
+        "change_52w": 3.462984,
+        "forward_pe": 1708.5566,
+        "inst_held": 1.17621,
+        "short_float": 0.18190001,
         "currency": "USD",
         "financial_currency": "USD",
         "currency_mismatch": false
       },
-      "fiscal_end": "2026-06-30",
-      "basis": "近四季",
+      "fiscal_end": "2026-09-30",
+      "basis": "年度",
       "trend": [
-        {
-          "end": "2023-09-30",
-          "capex_to_revenue": 0.11333325173698232
-        },
         {
           "end": "2024-09-30",
           "capex_to_revenue": 0.016218599628084123
@@ -2377,57 +2388,62 @@
         {
           "end": "2025-09-30",
           "capex_to_revenue": 0.074365592768448
+        },
+        {
+          "end": "2026-09-30",
+          "capex_to_revenue": 0.10356896435388838
         }
       ],
       "raw": {
-        "ocf": -53072000,
-        "capex": 40051000,
-        "revenue": 431798000,
-        "op_income": -144977000,
-        "net_income": -136717000,
+        "ocf": -41431000,
+        "capex": 54533000.0,
+        "revenue": 459433000,
+        "op_income": -139455000,
+        "net_income": -130202000,
         "interest_expense": null,
-        "sbc": 66468000,
+        "sbc": 69856000,
         "dividends": null,
-        "shares": 62403000,
-        "cash_total": 166839000,
-        "debt": 93590000.0,
-        "leases": 93590000,
-        "da": 25390000,
-        "equity": 445739000
+        "shares": 62615000,
+        "cash_total": 581907000,
+        "debt": 94985000.0,
+        "leases": 94985000,
+        "da": 26482000,
+        "equity": 888016000
       },
       "metrics": {
-        "fcf": -93123000,
-        "ebitda": -119587000,
-        "share_growth": 0.020257013929762646,
-        "per_share_growth": 0.1682480635711172,
+        "fcf": -95964000.0,
+        "ebitda": -112973000,
+        "share_growth": 0.04693352059925093,
+        "per_share_growth": 0.16534644645554164,
         "per_share_basis": "每股營收",
-        "sbc_to_revenue": 0.15393308908332137,
-        "cash_runway_years": 1.7915982088205922,
+        "sbc_to_revenue": 0.15204828560421216,
+        "cash_runway_years": 6.063805176941353,
         "interest_coverage": null,
-        "net_debt_incl_leases": 20341000.0,
-        "altman_z": 18.825904003085235
+        "net_debt_incl_leases": -391937000.0,
+        "net_debt_to_fcf": 0.0,
+        "altman_z": 18.374492342001435
       },
       "checks": [
         {
           "id": "dilution",
-          "label": "已發生的稀釋（每股營收成長 16.8%）",
-          "value": 0.020257013929762646,
-          "threshold": 0.020257013929762646,
+          "label": "已發生的稀釋（每股營收成長 16.5%）",
+          "value": 0.04693352059925093,
+          "threshold": 0.04693352059925093,
           "result": "pass"
         },
         {
           "id": "sbc",
           "label": "股票薪酬 ÷ 營收",
-          "value": 0.15393308908332137,
+          "value": 0.15204828560421216,
           "threshold": 0.15,
           "result": "flag"
         },
         {
           "id": "runway",
           "label": "現金跑道（年）",
-          "value": 1.7915982088205922,
+          "value": 6.063805176941353,
           "threshold": 3,
-          "result": "veto"
+          "result": "pass"
         },
         {
           "id": "coverage",
@@ -2438,20 +2454,20 @@
         },
         {
           "id": "leverage",
-          "label": "含租賃淨負債 ÷ 自由現金流（自由現金流為負）",
-          "value": null,
+          "label": "含租賃淨負債 ÷ 自由現金流（淨現金）",
+          "value": 0.0,
           "threshold": 3,
-          "result": "flag"
+          "result": "pass"
         },
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 18.825904003085235,
+          "value": 18.374492342001435,
           "threshold": 1.8,
           "result": "pass"
         }
       ],
-      "verdict": "veto",
+      "verdict": "flag",
       "manual_todo": [
         "潛在稀釋（權證、可轉債、ATM）",
         "近 2 年到期負債",
@@ -2460,12 +2476,12 @@
       "score": {
         "triangle": {
           "roe": {
-            "value": -0.30671985175180994,
+            "value": -0.14662123204987298,
             "points": 0.0,
             "note": null
           },
           "debt_to_equity": {
-            "value": 0.2099659217613895,
+            "value": 0.10696316282589503,
             "points": 1.0,
             "note": null
           },
@@ -2477,14 +2493,14 @@
         },
         "indicators": {
           "fcf_to_capex": {
-            "value": -2.325110484132731,
+            "value": -1.7597418077127611,
             "points": 0.0,
             "note": null
           },
           "net_debt_to_fcf": {
-            "value": null,
-            "points": 0.0,
-            "note": "自由現金流為負"
+            "value": 0.0,
+            "points": 1.0,
+            "note": null
           },
           "top_customer": {
             "value": null,
@@ -2492,9 +2508,9 @@
             "note": "要人工填 top_customer_pct"
           },
           "capex_trend": {
-            "value": -0.038967658968534324,
+            "value": 0.08735036472580425,
             "note": null,
-            "points": 1.0
+            "points": 0.0
           }
         },
         "triangle_points": 1.0,
@@ -2524,13 +2540,13 @@
         "debt"
       ],
       "market": {
-        "price": 34.06,
-        "market_cap": 15827544064,
+        "price": 22.71,
+        "market_cap": 10512047104,
         "beta": 3.409,
         "dividend_yield": 0.0,
-        "change_52w": -0.30999804,
-        "forward_pe": -24.256323,
-        "inst_held": 0.44184,
+        "change_52w": -0.42731708,
+        "forward_pe": -15.9839525,
+        "inst_held": 0.41489,
         "short_float": 0.1176,
         "currency": "USD",
         "financial_currency": "USD",
@@ -2579,7 +2595,7 @@
         "interest_coverage": null,
         "net_debt_incl_leases": -915256000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 2.749831416864573
+        "altman_z": 1.6222784673112207
       },
       "checks": [
         {
@@ -2620,9 +2636,9 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 2.749831416864573,
+          "value": 1.6222784673112207,
           "threshold": 1.8,
-          "result": "pass"
+          "result": "flag"
         }
       ],
       "verdict": "veto",
@@ -2688,13 +2704,13 @@
       "crosscheck": [],
       "yahoo_filled": [],
       "market": {
-        "price": 36.73,
-        "market_cap": 6547782144,
+        "price": 36.66,
+        "market_cap": 6535303680,
         "beta": 2.108,
         "dividend_yield": 0.0,
-        "change_52w": -0.3894843,
-        "forward_pe": 78.73189,
-        "inst_held": 0.79150003,
+        "change_52w": -0.3657375,
+        "forward_pe": 92.59914,
+        "inst_held": 0.78523004,
         "short_float": 0.2183,
         "currency": "USD",
         "financial_currency": "USD",
@@ -2741,7 +2757,7 @@
         "interest_coverage": -2.108433734939759,
         "net_debt_incl_leases": -384634000,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 3.310768057296197
+        "altman_z": 3.3055057580040383
       },
       "checks": [
         {
@@ -2782,7 +2798,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 3.310768057296197,
+          "value": 3.3055057580040383,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -2848,19 +2864,19 @@
       "source": "Yahoo",
       "errors": [],
       "market": {
-        "price": 40.57,
-        "market_cap": 10868468736,
+        "price": 27.96,
+        "market_cap": 7490322432,
         "beta": null,
         "dividend_yield": 0.0,
-        "change_52w": -0.28784364,
-        "forward_pe": -23.424328,
-        "inst_held": 0.88891,
+        "change_52w": -0.4701888,
+        "forward_pe": -16.143559,
+        "inst_held": 0.76018995,
         "short_float": null,
         "currency": "USD",
         "financial_currency": "USD",
         "currency_mismatch": false
       },
-      "fiscal_end": "2026-06-30",
+      "fiscal_end": "2026-09-30",
       "basis": "近四季",
       "trend": [
         {
@@ -2873,31 +2889,31 @@
         }
       ],
       "raw": {
-        "ocf": -194865000.0,
-        "capex": 76898000.0,
-        "revenue": 30931000.0,
-        "op_income": -530053000.0,
-        "net_income": -71530000.0,
+        "ocf": -293326000.0,
+        "capex": 78761000.0,
+        "revenue": 29308000.0,
+        "op_income": -1221727000.0,
+        "net_income": -31196000.0,
         "interest_expense": null,
         "sbc": 0.0,
         "dividends": null,
         "shares": 36806913.0,
-        "cash_total": 2106686000.0,
-        "debt": 32653000.0,
+        "cash_total": 1936114000.0,
+        "debt": 31995000.0,
         "leases": 0,
-        "da": 33311000.0,
-        "equity": 413082000.0
+        "da": 35226000.0,
+        "equity": 454091000.0
       },
       "metrics": {
-        "fcf": -271763000.0,
-        "ebitda": -496742000.0,
+        "fcf": -372087000.0,
+        "ebitda": -1186501000.0,
         "share_growth": -0.04199918584805329,
         "sbc_to_revenue": 0.0,
-        "cash_runway_years": 7.751923551035277,
+        "cash_runway_years": 5.203390604885416,
         "interest_coverage": null,
-        "net_debt_incl_leases": -2074033000.0,
+        "net_debt_incl_leases": -1904119000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 29.218421505159164
+        "altman_z": 26.64046066832581
       },
       "checks": [
         {
@@ -2917,7 +2933,7 @@
         {
           "id": "runway",
           "label": "現金跑道（年）",
-          "value": 7.751923551035277,
+          "value": 5.203390604885416,
           "threshold": 3,
           "result": "pass"
         },
@@ -2938,7 +2954,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 29.218421505159164,
+          "value": 26.64046066832581,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -2952,12 +2968,12 @@
       "score": {
         "triangle": {
           "roe": {
-            "value": -0.17316174512566512,
+            "value": -0.06869988614616894,
             "points": 0.0,
             "note": null
           },
           "debt_to_equity": {
-            "value": 0.07904725938191448,
+            "value": 0.07045944535346439,
             "points": 1.0,
             "note": null
           },
@@ -2969,7 +2985,7 @@
         },
         "indicators": {
           "fcf_to_capex": {
-            "value": -3.534071107180941,
+            "value": -4.724254389863003,
             "points": 0.0,
             "note": null
           },
@@ -3022,13 +3038,13 @@
         "capex"
       ],
       "market": {
-        "price": 45.75,
-        "market_cap": 4437787136,
+        "price": 38.93,
+        "market_cap": 3776241920,
         "beta": 1.897,
         "dividend_yield": 0.0,
-        "change_52w": -0.13489175,
-        "forward_pe": -12.463937,
-        "inst_held": 0.78526,
+        "change_52w": -0.18462163,
+        "forward_pe": -10.564193,
+        "inst_held": 0.78734,
         "short_float": 0.2028,
         "currency": "USD",
         "financial_currency": "USD",
@@ -3077,7 +3093,7 @@
         "interest_coverage": null,
         "net_debt_incl_leases": -1492721000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 2.0156638918239156
+        "altman_z": 1.5786850274289284
       },
       "checks": [
         {
@@ -3118,9 +3134,9 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 2.0156638918239156,
+          "value": 1.5786850274289284,
           "threshold": 1.8,
-          "result": "pass"
+          "result": "flag"
         }
       ],
       "verdict": "veto",
@@ -3190,13 +3206,13 @@
         "cash_total"
       ],
       "market": {
-        "price": 25.86,
-        "market_cap": 5050189312,
+        "price": 20.84,
+        "market_cap": 4069835264,
         "beta": 1.313,
         "dividend_yield": 0.0,
-        "change_52w": -0.77430964,
-        "forward_pe": -22.594034,
-        "inst_held": 0.45948002,
+        "change_52w": -0.7522727,
+        "forward_pe": -18.337646,
+        "inst_held": 0.49311,
         "short_float": 0.2188,
         "currency": "USD",
         "financial_currency": "USD",
@@ -3232,7 +3248,7 @@
         "interest_coverage": null,
         "net_debt_incl_leases": -2493203000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 25.73053303273529
+        "altman_z": 20.830273706027697
       },
       "checks": [
         {
@@ -3273,7 +3289,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 25.73053303273529,
+          "value": 20.830273706027697,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -3344,13 +3360,13 @@
         "debt"
       ],
       "market": {
-        "price": 5.23,
-        "market_cap": 2147131392,
+        "price": 3.81,
+        "market_cap": 1564162560,
         "beta": 2.429,
         "dividend_yield": 0.0,
-        "change_52w": -0.7989214,
-        "forward_pe": -7.802244,
-        "inst_held": 0.62450004,
+        "change_52w": -0.7909091,
+        "forward_pe": -5.6279354,
+        "inst_held": 0.65025,
         "short_float": 0.2636,
         "currency": "USD",
         "financial_currency": "USD",
@@ -3399,7 +3415,7 @@
         "interest_coverage": null,
         "net_debt_incl_leases": -925912000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 27.74897905330475
+        "altman_z": 20.08589877726137
       },
       "checks": [
         {
@@ -3440,7 +3456,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 27.74897905330475,
+          "value": 20.08589877726137,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -3518,13 +3534,13 @@
         "capex"
       ],
       "market": {
-        "price": 3.59,
-        "market_cap": 2237890560,
+        "price": 2.72,
+        "market_cap": 1695560576,
         "beta": 1.15,
         "dividend_yield": 0.0,
-        "change_52w": -0.23655915,
-        "forward_pe": -4.345352,
-        "inst_held": 0.61959,
+        "change_52w": -0.26623374,
+        "forward_pe": -3.364796,
+        "inst_held": 0.66936994,
         "short_float": 0.2376,
         "currency": "USD",
         "financial_currency": "USD",
@@ -3573,7 +3589,7 @@
         "interest_coverage": -541.5557986870897,
         "net_debt_incl_leases": -475153000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 0.6535430741597787
+        "altman_z": -0.3765233721840007
       },
       "checks": [
         {
@@ -3614,7 +3630,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 0.6535430741597787,
+          "value": -0.3765233721840007,
           "threshold": 1.8,
           "result": "flag"
         }
@@ -3684,13 +3700,13 @@
         "cash_total"
       ],
       "market": {
-        "price": 660.73,
-        "market_cap": 575612190720,
+        "price": 626.5,
+        "market_cap": 545791836160,
         "beta": 0.77,
-        "dividend_yield": 0.0052820104,
-        "change_52w": 0.17392159,
-        "forward_pe": 28.523016,
-        "inst_held": 0.91111,
+        "dividend_yield": 0.005409018,
+        "change_52w": 0.21878076,
+        "forward_pe": 27.04984,
+        "inst_held": 0.91533995,
         "short_float": 0.0082,
         "currency": "USD",
         "financial_currency": "USD",
@@ -3737,7 +3753,7 @@
         "net_debt_incl_leases": 13474000000.0,
         "net_debt_to_fcf": 0.8732339598185354,
         "dividend_to_fcf": 0.19410239792611794,
-        "altman_z": 10.85744296677223
+        "altman_z": 10.5094063829834
       },
       "checks": [
         {
@@ -3778,7 +3794,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 10.85744296677223,
+          "value": 10.5094063829834,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -3848,13 +3864,13 @@
         "debt"
       ],
       "market": {
-        "price": 95.11,
-        "market_cap": 21812013056,
+        "price": 95.24,
+        "market_cap": 21841825792,
         "beta": 0.994,
-        "dividend_yield": 0.017451467,
-        "change_52w": -0.35384,
-        "forward_pe": 16.191416,
-        "inst_held": 0.99263,
+        "dividend_yield": 0.017752102,
+        "change_52w": -0.31034482,
+        "forward_pe": 16.34306,
+        "inst_held": 0.9926,
         "short_float": 0.049099997,
         "currency": "USD",
         "financial_currency": "USD",
@@ -3901,7 +3917,7 @@
         "net_debt_incl_leases": 2318000000.0,
         "net_debt_to_fcf": 2.516829533116178,
         "dividend_to_fcf": 0.43973941368078173,
-        "altman_z": 3.1164978364904505
+        "altman_z": 3.1191225821397537
       },
       "checks": [
         {
@@ -3942,14 +3958,14 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": -0.35384,
+          "value": -0.31034482,
           "threshold": -0.3,
           "result": "veto"
         },
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 3.1164978364904505,
+          "value": 3.1191225821397537,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -4017,13 +4033,13 @@
       "crosscheck": [],
       "yahoo_filled": [],
       "market": {
-        "price": 118.77,
-        "market_cap": 28877953024,
+        "price": 116.08,
+        "market_cap": 28223903744,
         "beta": 0.666,
-        "dividend_yield": 0.004398951,
-        "change_52w": 0.20955694,
-        "forward_pe": 24.34984,
-        "inst_held": 1.02874,
+        "dividend_yield": 0.0044116396,
+        "change_52w": 0.21153247,
+        "forward_pe": 23.915482,
+        "inst_held": 1.0145301,
         "short_float": 0.0233,
         "currency": "USD",
         "financial_currency": "USD",
@@ -4171,13 +4187,13 @@
       "note": "SEC 算得出的近四季只到 2026-03-31，改用較新的 Yahoo 資料",
       "sec_latest_fact_end": "2026-03-31",
       "market": {
-        "price": 69.33,
-        "market_cap": 11068859392,
+        "price": 68.68,
+        "market_cap": 10965084160,
         "beta": 1.01,
-        "dividend_yield": 0.015223323,
-        "change_52w": -0.35931176,
-        "forward_pe": 13.082737,
-        "inst_held": 1.00084,
+        "dividend_yield": 0.015503874,
+        "change_52w": -0.32627118,
+        "forward_pe": 12.948669,
+        "inst_held": 0.99266,
         "short_float": 0.0547,
         "currency": "USD",
         "financial_currency": "USD",
@@ -4224,7 +4240,7 @@
         "net_debt_incl_leases": 1565100000.0,
         "net_debt_to_fcf": 2.420507268790597,
         "dividend_to_fcf": 0.2656974945870708,
-        "altman_z": 4.120578921677232
+        "altman_z": 4.098382593714877
       },
       "checks": [
         {
@@ -4265,14 +4281,14 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": -0.35931176,
+          "value": -0.32627118,
           "threshold": -0.3,
           "result": "veto"
         },
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 4.120578921677232,
+          "value": 4.098382593714877,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -4343,14 +4359,14 @@
         "debt"
       ],
       "market": {
-        "price": 109.68,
-        "market_cap": 61308637184,
+        "price": 103.95,
+        "market_cap": 57688375296,
         "beta": 0.957,
-        "dividend_yield": 0.010543537,
-        "change_52w": 0.23938262,
-        "forward_pe": 23.101664,
-        "inst_held": 0.87708,
-        "short_float": 0.024,
+        "dividend_yield": 0.01097238,
+        "change_52w": 0.21531212,
+        "forward_pe": 21.88951,
+        "inst_held": 0.8757,
+        "short_float": 0.0242,
         "currency": "USD",
         "financial_currency": "USD",
         "currency_mismatch": false
@@ -4533,13 +4549,13 @@
         "debt"
       ],
       "market": {
-        "price": 343.39,
-        "market_cap": 911909847040,
+        "price": 320.22,
+        "market_cap": 850379341824,
         "beta": 1.02,
-        "dividend_yield": 0.017978776,
-        "change_52w": 0.06760085,
-        "forward_pe": 13.427804,
-        "inst_held": 0.75737,
+        "dividend_yield": 0.01897504,
+        "change_52w": 0.086232305,
+        "forward_pe": 12.521771,
+        "inst_held": 0.75511,
         "short_float": 0.009,
         "currency": "USD",
         "financial_currency": "USD",
@@ -4566,13 +4582,13 @@
       "note": "SEC 算得出的近四季只到 2026-03-31，改用較新的 Yahoo 資料",
       "sec_latest_fact_end": "2026-03-31",
       "market": {
-        "price": 129.21,
-        "market_cap": 70358253568,
+        "price": 124.97,
+        "market_cap": 68049457152,
         "beta": 0.442,
-        "dividend_yield": 0.029724656,
-        "change_52w": 0.042060614,
-        "forward_pe": 18.731247,
-        "inst_held": 0.96999,
+        "dividend_yield": 0.030039525,
+        "change_52w": 0.046319246,
+        "forward_pe": 18.116583,
+        "inst_held": 0.9428,
         "short_float": 0.050300002,
         "currency": "USD",
         "financial_currency": "USD",
@@ -4652,7 +4668,7 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": 0.042060614,
+          "value": 0.046319246,
           "threshold": -0.3,
           "result": "pass"
         }
@@ -4720,13 +4736,13 @@
       "note": "SEC 算得出的近四季只到 2026-03-31，改用較新的 Yahoo 資料",
       "sec_latest_fact_end": "2026-03-31",
       "market": {
-        "price": 45.61,
-        "market_cap": 47201640448,
+        "price": 45.42,
+        "market_cap": 47005007872,
         "beta": 0.337,
-        "dividend_yield": 0.036459476,
-        "change_52w": -0.008708894,
-        "forward_pe": 15.041587,
-        "inst_held": 0.95706004,
+        "dividend_yield": 0.03607127,
+        "change_52w": 0.013433218,
+        "forward_pe": 15.013287,
+        "inst_held": 0.93919,
         "short_float": 0.0385,
         "currency": "USD",
         "financial_currency": "USD",
@@ -4806,7 +4822,7 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": -0.008708894,
+          "value": 0.013433218,
           "threshold": -0.3,
           "result": "pass"
         }
@@ -4887,13 +4903,13 @@
       ],
       "yahoo_filled": [],
       "market": {
-        "price": 181.13,
-        "market_cap": 69733400576,
+        "price": 174.02,
+        "market_cap": 66996113408,
         "beta": 1.002,
-        "dividend_yield": 0.026979212,
-        "change_52w": 0.10359979,
-        "forward_pe": 62.61862,
-        "inst_held": 1.03368,
+        "dividend_yield": 0.027368069,
+        "change_52w": 0.13148046,
+        "forward_pe": 60.160618,
+        "inst_held": 1.00553,
         "short_float": 0.0001,
         "currency": "USD",
         "financial_currency": "USD",
@@ -4961,7 +4977,7 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": 0.10359979,
+          "value": 0.13148046,
           "threshold": -0.3,
           "result": "pass"
         }
@@ -5032,13 +5048,13 @@
         "debt"
       ],
       "market": {
-        "price": 1068.06,
-        "market_cap": 105725468672,
+        "price": 1018.05,
+        "market_cap": 100775059456,
         "beta": 0.966,
-        "dividend_yield": 0.019209525,
-        "change_52w": 0.29113173,
-        "forward_pe": 51.60957,
-        "inst_held": 1.0129399,
+        "dividend_yield": 0.01945972,
+        "change_52w": 0.37684143,
+        "forward_pe": 49.193043,
+        "inst_held": 1.01247,
         "short_float": 0.020499999,
         "currency": "USD",
         "financial_currency": "USD",
@@ -5125,7 +5141,7 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": 0.29113173,
+          "value": 0.37684143,
           "threshold": -0.3,
           "result": "pass"
         }
@@ -5194,13 +5210,13 @@
       "note": "SEC 算得出的近四季只到 2026-06-30，改用較新的 Yahoo 資料",
       "sec_latest_fact_end": "2026-06-30",
       "market": {
-        "price": 68.92,
-        "market_cap": 86163955712,
+        "price": 66.13,
+        "market_cap": 82675884032,
         "beta": 0.627,
-        "dividend_yield": 0.03075897,
-        "change_52w": 0.11633289,
-        "forward_pe": 26.683392,
-        "inst_held": 0.89691,
+        "dividend_yield": 0.030864196,
+        "change_52w": 0.14123237,
+        "forward_pe": 25.95491,
+        "inst_held": 0.91073,
         "short_float": 0.026800001,
         "currency": "USD",
         "financial_currency": "USD",
@@ -5247,7 +5263,7 @@
         "net_debt_incl_leases": 32178000000.0,
         "net_debt_to_ebitda": 4.617305208781747,
         "dividend_to_fcf": null,
-        "altman_z": 1.183164490812089
+        "altman_z": 1.1406149236994962
       },
       "checks": [
         {
@@ -5288,14 +5304,14 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": 0.11633289,
+          "value": 0.14123237,
           "threshold": -0.3,
           "result": "pass"
         },
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 1.183164490812089,
+          "value": 1.1406149236994962,
           "threshold": 1.8,
           "result": "veto"
         }
@@ -5361,13 +5377,13 @@
       "source": "Yahoo",
       "errors": [],
       "market": {
-        "price": 47.91,
-        "market_cap": 106786029568,
+        "price": 45.92,
+        "market_cap": 102350536704,
         "beta": 0.786,
-        "dividend_yield": 0.08082077,
-        "change_52w": -0.019503176,
-        "forward_pe": 21.52617,
-        "inst_held": 0.52146,
+        "dividend_yield": 0.08251389,
+        "change_52w": -0.03147,
+        "forward_pe": 20.675713,
+        "inst_held": 0.52908003,
         "short_float": 0.024500001,
         "currency": "USD",
         "financial_currency": "CAD",
@@ -5392,10 +5408,10 @@
       "raw": {
         "ocf": 11024000000.0,
         "capex": 11470000000.0,
-        "revenue": 65194000000.0,
-        "op_income": 11528000000.0,
-        "net_income": 7491000000.0,
-        "interest_expense": 4992000000.0,
+        "revenue": 75250000000.0,
+        "op_income": 10600000000.0,
+        "net_income": 6021000000.0,
+        "interest_expense": 4748000000.0,
         "sbc": null,
         "dividends": 8773000000.0,
         "shares": 2198000000.0,
@@ -5407,12 +5423,12 @@
       },
       "metrics": {
         "fcf": -446000000.0,
-        "ebitda": 17313000000.0,
+        "ebitda": 16385000000.0,
         "share_growth": 0.01297497683039861,
         "sbc_to_revenue": null,
-        "interest_coverage": 2.309294871794872,
+        "interest_coverage": 2.232518955349621,
         "net_debt_incl_leases": 109385000000.0,
-        "net_debt_to_ebitda": 6.318084676254838,
+        "net_debt_to_ebitda": 6.675923100396704,
         "dividend_to_fcf": null
       },
       "checks": [
@@ -5426,14 +5442,14 @@
         {
           "id": "coverage",
           "label": "利息保障倍數",
-          "value": 2.309294871794872,
+          "value": 2.232518955349621,
           "threshold": 3,
           "result": "veto"
         },
         {
           "id": "leverage",
           "label": "含租賃淨負債 ÷ EBITDA（倍）",
-          "value": 6.318084676254838,
+          "value": 6.675923100396704,
           "threshold": 4.5,
           "result": "veto"
         },
@@ -5447,7 +5463,7 @@
         {
           "id": "yield_trap",
           "label": "高殖利率是否來自股價下跌（52 週漲跌）",
-          "value": -0.019503176,
+          "value": -0.03147,
           "threshold": -0.3,
           "result": "pass"
         }
@@ -5461,7 +5477,7 @@
       "score": {
         "triangle": {
           "roe": {
-            "value": 0.11085952761498846,
+            "value": 0.0891049547149707,
             "points": 0.5,
             "note": null
           },
@@ -5471,7 +5487,7 @@
             "note": null
           },
           "interest_coverage": {
-            "value": 2.309294871794872,
+            "value": 2.232518955349621,
             "points": 0.0,
             "note": null
           }
@@ -5517,13 +5533,13 @@
         "debt"
       ],
       "market": {
-        "price": 304.51,
-        "market_cap": 62182137856,
+        "price": 295.37,
+        "market_cap": 60315709440,
         "beta": 0.004,
-        "dividend_yield": 0.007802651,
-        "change_52w": 0.3743385,
-        "forward_pe": 13.365157,
-        "inst_held": 0.95841,
+        "dividend_yield": 0.0077237007,
+        "change_52w": 0.4242686,
+        "forward_pe": 12.839081,
+        "inst_held": 0.93623,
         "short_float": 0.0227,
         "currency": "USD",
         "financial_currency": "USD",
@@ -5570,7 +5586,7 @@
         "net_debt_incl_leases": 24638000000.0,
         "net_debt_to_ebitda": 3.0732194087563927,
         "dividend_to_fcf": 0.12305254819118035,
-        "altman_z": 2.287839470079354
+        "altman_z": 2.2574622274481326
       },
       "checks": [
         {
@@ -5611,7 +5627,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 2.287839470079354,
+          "value": 2.2574622274481326,
           "threshold": 1.8,
           "result": "pass"
         }
@@ -5677,13 +5693,13 @@
       "source": "Yahoo",
       "errors": [],
       "market": {
-        "price": 234.1,
-        "market_cap": 270199226368,
+        "price": 203.23,
+        "market_cap": 234568925184,
         "beta": 0.702,
-        "dividend_yield": 0.010695645,
-        "change_52w": -0.07736641,
-        "forward_pe": 24.564611,
-        "inst_held": 0.082270004,
+        "dividend_yield": 0.011861834,
+        "change_52w": -0.09908521,
+        "forward_pe": 21.325356,
+        "inst_held": 0.07829,
         "short_float": 0.0023,
         "currency": "USD",
         "financial_currency": "EUR",
@@ -5829,13 +5845,13 @@
       "source": "Yahoo",
       "errors": [],
       "market": {
-        "price": 203.36,
-        "market_cap": 217595199488,
+        "price": 177.17,
+        "market_cap": 189571891200,
         "beta": 3.939,
         "dividend_yield": 0.0,
-        "change_52w": 0.22010088,
-        "forward_pe": 66.162384,
-        "inst_held": 0.96005994,
+        "change_52w": 0.37900853,
+        "forward_pe": 57.39415,
+        "inst_held": 0.95759004,
         "short_float": 0.1071,
         "currency": "USD",
         "financial_currency": "USD",
@@ -5881,7 +5897,7 @@
         "interest_coverage": null,
         "net_debt_incl_leases": -3121000000.0,
         "net_debt_to_fcf": 0.0,
-        "altman_z": 58.018787059774496
+        "altman_z": 50.790074689697114
       },
       "checks": [
         {
@@ -5915,7 +5931,7 @@
         {
           "id": "altman",
           "label": "Altman Z（大量回購的公司可能誤判）",
-          "value": 58.018787059774496,
+          "value": 50.790074689697114,
           "threshold": 1.8,
           "result": "pass"
         }
